@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>We're Hiring a Pixel Artist - Smoke &amp; Honey | Five Cats Studios</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="images/logo_64.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-deep:       #0F0D1A;
+      --bg-main:       #1A1A2E;
+      --bg-card:       rgba(255,255,255,0.04);
+      --border:        rgba(232,104,63,0.18);
+      --orange:        #E8683F;
+      --gold:          #F5CC5B;
+      --amber:         #E8A83E;
+      --pink:          #D4547A;
+      --green:         #4A7A3D;
+      --cream:         #FCF5D7;
+      --text:          #FCF5D7;
+      --text-dim:      rgba(252,245,215,0.65);
+      --text-faint:    rgba(252,245,215,0.35);
+
+      --wax-cream:     #F2E4B2;
+      --wax-white:     #FCF5D7;
+      --amber-dark:    #985808;
+      --amber-mid:     #C8820C;
+      --amber-lt:      #E6A220;
+      --honey-pale:    #F4CC6E;
+      --wd-darkest:    #261206;
+      --wd-dark:       #46260C;
+      --wd-mid:        #6C4016;
+      --wd-light:      #94602A;
+      --wd-pale:       #BA8A48;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg-deep);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      background: rgba(15,13,26,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { width: 44px; height: 44px; border-radius: 8px; border: 1px solid rgba(232,104,63,0.3); }
+    .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--gold); }
+
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; transition: color 0.2s; letter-spacing: 0.3px; }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-hiring {
+      background: var(--amber-mid);
+      color: var(--bg-deep) !important;
+      font-weight: 700 !important;
+      padding: 9px 22px;
+      border-radius: 6px;
+      transition: background 0.2s !important;
+      animation: hirePulse 3s ease-in-out infinite;
+    }
+
+    @keyframes hirePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(200,130,12,0.4); }
+      50% { box-shadow: 0 0 0 8px rgba(200,130,12,0); }
+    }
+
+    .nav-hiring:hover { background: var(--amber-lt) !important; }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--bg-deep) !important;
+      font-weight: 600 !important;
+      padding: 9px 22px;
+      border-radius: 6px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: #d95a34 !important; }
+
+    /* ===== HIRING BANNER ===== */
+    .hiring-banner {
+      background: linear-gradient(135deg, var(--amber-dark) 0%, var(--amber-mid) 50%, var(--amber-lt) 100%);
+      padding: 14px 24px;
+      text-align: center;
+      margin-top: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hiring-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.05) 10px, rgba(0,0,0,0.05) 20px);
+    }
+
+    .hiring-banner-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hiring-banner-badge {
+      background: var(--bg-deep);
+      color: var(--amber-lt);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .hiring-banner p { font-size: 15px; font-weight: 600; color: var(--bg-deep); }
+
+    .hiring-banner a {
+      background: var(--bg-deep);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .hiring-banner a:hover { background: #1A1A2E; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 30% 50%, rgba(200,130,12,0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(232,104,63,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-honeycomb {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpolygon points='28,2 54,16 54,44 28,58 2,44 2,16' fill='none' stroke='%23F4CC6E' stroke-width='1'/%3E%3Cpolygon points='28,52 54,66 54,94 28,108 2,94 2,66' fill='none' stroke='%23F4CC6E' stroke-width='1'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--amber-mid);
+      margin-bottom: 24px;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--amber-mid); }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.1;
+      background: linear-gradient(160deg, var(--cream) 0%, var(--gold) 35%, var(--amber) 65%, var(--orange) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    .hero-sub {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 3vw, 32px);
+      font-style: italic;
+      color: var(--honey-pale);
+      margin-bottom: 28px;
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: var(--text-dim);
+      max-width: 640px;
+      margin: 0 auto 48px;
+      line-height: 1.75;
+    }
+
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--bg-deep);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: #d95a34; transform: translateY(-2px); }
+
+    .btn-amber {
+      display: inline-block;
+      background: var(--amber-mid);
+      color: var(--bg-deep);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-amber:hover { background: var(--amber-lt); transform: translateY(-2px); }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--text-dim);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 1.5px solid rgba(252,245,215,0.2);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-secondary:hover { border-color: var(--amber); color: var(--gold); transform: translateY(-2px); }
+
+    /* ===== KICKSTARTER CTA ===== */
+    .kickstarter-section {
+      padding: 60px 24px;
+      background: linear-gradient(135deg, rgba(200,130,12,0.08) 0%, rgba(232,104,63,0.05) 100%);
+      border-top: 1px solid rgba(200,130,12,0.15);
+      border-bottom: 1px solid rgba(200,130,12,0.15);
+    }
+
+    .kickstarter-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .ks-text h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+    .ks-text p { font-size: 15px; color: var(--text-dim); max-width: 420px; }
+
+    .ks-budget { text-align: center; flex-shrink: 0; }
+    .ks-budget-amount { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 800; color: var(--amber-lt); line-height: 1; display: block; }
+    .ks-budget-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-faint); margin-top: 4px; display: block; }
+
+    .btn-kickstarter {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #05ce78;
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 20px;
+      position: relative;
+      opacity: 0.75;
+      cursor: default;
+    }
+
+    .btn-kickstarter::after {
+      content: 'LIVE';
+      position: absolute;
+      top: -10px; right: -10px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 3px 7px;
+      border-radius: 10px;
+    }
+
+    .ks-goal-bar { margin-top: 16px; }
+    .ks-goal-bar-track { height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; width: 200px; }
+    .ks-goal-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--amber-dark), var(--amber-lt)); border-radius: 4px; transition: width 1.5s ease; }
+    .ks-goal-note { font-size: 12px; color: var(--text-faint); margin-top: 6px; }
+
+    /* ===== SECTIONS ===== */
+    .section { padding: 100px 24px; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--cream); margin-bottom: 20px; line-height: 1.2; }
+    .section-body { font-size: 16px; color: var(--text-dim); max-width: 700px; line-height: 1.8; margin-bottom: 16px; }
+    .section-divider { border: none; border-top: 1px solid rgba(232,104,63,0.12); margin: 0; }
+
+    /* ===== CALLOUT QUOTE ===== */
+    .callout-quote {
+      background: rgba(200,130,12,0.08);
+      border-left: 4px solid var(--amber-mid);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 32px;
+      margin: 40px 0;
+    }
+
+    .callout-quote p { font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; color: var(--honey-pale); line-height: 1.6; }
+
+    /* ===== STAT CARDS ===== */
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 40px 0; }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .stat-card .stat-number { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 8px; display: block; }
+    .stat-card .stat-label { font-size: 13px; color: var(--text-faint); }
+
+    /* ===== TAGS ===== */
+    .tag-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
+    .tag { display: inline-block; background: rgba(200,130,12,0.12); border: 1px solid rgba(200,130,12,0.25); color: var(--honey-pale); font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 20px; }
+
+    /* ===== CHECKLIST ===== */
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 18px; margin: 28px 0; }
+    .check-list li { position: relative; padding-left: 22px; font-size: 15px; color: var(--text-dim); line-height: 1.65; }
+    .check-list li::before { content: '\2726'; color: var(--amber-mid); font-size: 11px; position: absolute; left: 0; top: 3px; }
+    .check-list li strong { color: var(--cream); }
+
+    /* ===== TWO-COL ===== */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 32px 0; }
+    @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ===== COMP BLOCK ===== */
+    .comp-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+      margin: 32px 0;
+    }
+
+    .comp-block h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+    .comp-block .comp-sub { font-size: 13px; color: var(--text-faint); margin-bottom: 24px; }
+    .payment-phases { display: flex; flex-direction: column; gap: 12px; }
+
+    .phase-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .phase-badge { background: var(--amber-dark); color: var(--honey-pale); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 4px; flex-shrink: 0; white-space: nowrap; }
+    .phase-amount { font-weight: 700; color: var(--amber-lt); font-size: 16px; flex-shrink: 0; min-width: 64px; }
+    .phase-desc { font-size: 13px; color: var(--text-dim); flex: 1; }
+
+    .bonus-card {
+      background: linear-gradient(135deg, rgba(200,130,12,0.12) 0%, rgba(232,168,62,0.06) 100%);
+      border: 1px solid rgba(200,130,12,0.3);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .bonus-icon { font-size: 36px; flex-shrink: 0; }
+    .bonus-card h4 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--gold); margin-bottom: 4px; }
+    .bonus-card p { font-size: 14px; color: var(--text-dim); }
+
+    /* ===== PALETTE ===== */
+    .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px; margin: 32px 0; }
+    .swatch { border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+    .swatch-color { height: 48px; }
+    .swatch-info { background: rgba(255,255,255,0.04); padding: 6px 8px; }
+    .swatch-name { font-size: 10px; font-weight: 700; color: var(--text-faint); display: block; letter-spacing: 0.5px; }
+    .swatch-hex { font-size: 10px; color: var(--text-dim); font-family: monospace; }
+
+    /* ===== RULES ===== */
+    .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 32px 0; }
+    .rule-card { background: var(--bg-card); border: 1px solid rgba(232,104,63,0.15); border-radius: 10px; padding: 20px; }
+    .rule-card .rule-no { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+    .rule-card p { font-size: 14px; color: var(--text-dim); }
+
+    /* ===== ASSET TABLE ===== */
+    .asset-table-wrap { overflow-x: auto; margin: 24px 0; border-radius: 12px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead th { background: rgba(200,130,12,0.12); color: var(--honey-pale); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 12px 16px; text-align: left; }
+    tbody tr { border-top: 1px solid rgba(255,255,255,0.04); transition: background 0.15s; }
+    tbody tr:hover { background: rgba(255,255,255,0.03); }
+    tbody td { padding: 11px 16px; color: var(--text-dim); vertical-align: top; }
+    tbody td:first-child { color: var(--cream); font-weight: 500; }
+    .priority-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+    .p1 { background: rgba(232,104,63,0.2); color: var(--orange); }
+    .p2 { background: rgba(200,130,12,0.2); color: var(--amber-lt); }
+    .p3 { background: rgba(74,122,61,0.2); color: #7ec26e; }
+    .p4 { background: rgba(252,245,215,0.08); color: var(--text-faint); }
+
+    .status-placeholder {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(212,84,122,0.15);
+      color: var(--pink);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .status-placeholder::before {
+      content: '\26A0';
+      font-size: 10px;
+    }
+
+    .status-needed {
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* ===== MANIFESTO BANNER ===== */
+    .manifesto {
+      background: linear-gradient(135deg, rgba(212,84,122,0.08) 0%, rgba(232,104,63,0.06) 50%, rgba(200,130,12,0.08) 100%);
+      border: 1px solid rgba(212,84,122,0.2);
+      border-radius: 16px;
+      padding: 48px 40px;
+      margin: 48px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .manifesto::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--pink), var(--orange), var(--gold));
+    }
+
+    .manifesto h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--cream);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .manifesto p {
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .manifesto p:last-child { margin-bottom: 0; }
+
+    .manifesto strong { color: var(--cream); }
+    .manifesto em.highlight { color: var(--gold); font-style: normal; font-weight: 700; }
+
+    /* ===== APPLY SECTION ===== */
+    .apply-section {
+      padding: 100px 24px;
+      text-align: center;
+      background: linear-gradient(180deg, transparent 0%, rgba(200,130,12,0.05) 50%, transparent 100%);
+    }
+
+    .apply-inner { max-width: 640px; margin: 0 auto; }
+    .apply-inner .section-title { margin-bottom: 16px; }
+    .apply-inner .section-body { margin: 0 auto 40px; }
+
+    .apply-form {
+      background: var(--bg-card);
+      border: 1px solid rgba(200,130,12,0.25);
+      border-radius: 16px;
+      padding: 40px 36px;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+
+    .apply-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--gold);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .apply-form .apply-form-sub {
+      font-size: 14px;
+      color: var(--text-faint);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .form-group { margin-bottom: 20px; }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 13px 18px;
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-faint); }
+
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--amber-mid); }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .apply-form button {
+      display: block;
+      width: 100%;
+      background: var(--orange);
+      color: var(--bg-deep);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: 'Inter', sans-serif;
+      margin-top: 8px;
+    }
+
+    .apply-form button:hover { background: #d95a34; }
+
+    .apply-details {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .apply-detail { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-faint); }
+    .apply-detail span { color: var(--text-dim); }
+
+    .apply-or {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 28px 0;
+      color: var(--text-faint);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .apply-or::before,
+    .apply-or::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+
+    .apply-email-link {
+      display: inline-block;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--amber-lt);
+      text-decoration: none;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+
+    .apply-email-link:hover { color: var(--gold); }
+
+    .apply-email-note { font-size: 13px; color: var(--text-faint); }
+
+    /* ===== NEWSLETTER ===== */
+    #stay-updated { padding: 100px 24px; text-align: center; }
+    .newsletter-inner { max-width: 540px; margin: 0 auto; }
+
+    .newsletter-form { display: flex; gap: 10px; margin-top: 32px; }
+
+    .newsletter-form input {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 13px 18px;
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .newsletter-form input::placeholder { color: var(--text-faint); }
+    .newsletter-form input:focus { border-color: var(--orange); }
+
+    .newsletter-form button {
+      background: var(--orange);
+      color: var(--bg-deep);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 13px 28px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+
+    .newsletter-form button:hover { background: #d95a34; }
+    .newsletter-note { font-size: 12px; color: var(--text-faint); margin-top: 14px; }
+
+    /* ===== FOOTER ===== */
+    footer { padding: 48px 24px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--gold); font-weight: 700; }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a { font-size: 13px; color: var(--text-faint); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 12px; color: var(--text-faint); text-align: center; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.05); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .kickstarter-inner { flex-direction: column; text-align: center; }
+      .apply-details { flex-direction: column; align-items: center; gap: 12px; }
+      .newsletter-form { flex-direction: column; }
+      .bonus-card { flex-direction: column; text-align: center; }
+      .phase-row { flex-wrap: wrap; }
+      .apply-form { padding: 28px 20px; }
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="images/logo_64.png" alt="Five Cats Studios">
+      <span class="nav-logo-text">Five Cats Studios</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#games">Games</a></li>
+      <li><a href="index.html#devlog">Dev Log</a></li>
+      <li><a href="smoke-and-honey.html">Smoke &amp; Honey</a></li>
+      <li><a href="#apply" class="nav-hiring">We're Hiring</a></li>
+    </ul>
+  </nav>
+
+  <!-- HIRING BANNER -->
+  <div class="hiring-banner">
+    <div class="hiring-banner-inner">
+      <span class="hiring-banner-badge">Now Open</span>
+      <p>Five Cats Studios is actively seeking a Lead Pixel Artist for <em>Smoke &amp; Honey</em></p>
+      <a href="#apply">Apply Now &rarr;</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-honeycomb"></div>
+    <p class="hero-eyebrow">Five Cats Studios - Smoke &amp; Honey</p>
+    <h1>We're Hiring a<br>Lead Pixel Artist</h1>
+    <p class="hero-sub">"You inherit a single hive. What you do with the next five years is up to you."</p>
+    <p class="hero-desc">
+      Every single art asset in this game is currently AI-generated placeholder. We built the systems first -
+      now we need a real artist to replace all of it. $18,000 dedicated art budget, an exclusive 2% net sales bonus
+      for early-start artists, Lead Pixel Artist credit across every platform, and the knowledge that
+      every pixel in the shipped game came from a human hand.
+    </p>
+    <div class="hero-actions">
+      <a href="#apply" class="btn-primary">Apply Now</a>
+      <a href="#compensation" class="btn-amber">View Compensation</a>
+      <a href="#role" class="btn-secondary">See the Full Role</a>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- KICKSTARTER -->
+  <section class="kickstarter-section">
+    <div class="kickstarter-inner">
+      <div class="ks-text">
+        <h2>Kickstarter Campaign - LIVE</h2>
+        <p>
+          Our Kickstarter is live! We're raising funds to produce pixel art for Smoke &amp; Honey. The entire $18,000 goal
+          goes straight to the artist. Back us now to help bring the game to life visually.
+        </p>
+        <a class="btn-kickstarter" href="https://www.kickstarter.com/projects/5catssmokeandhoney/smoke-and-honey" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14.41 11.58L19.5 19H16l-4.59-7.42L9 14v5H6V5h3v5.59l6.41-7.59h3.5z"/></svg>
+          Back Us on Kickstarter - LIVE
+        </a>
+        <div class="ks-goal-bar">
+          <div class="ks-goal-bar-track"><div class="ks-goal-bar-fill" id="ksBar"></div></div>
+          <p class="ks-goal-note">Campaign is LIVE - back us now!</p>
+        </div>
+      </div>
+      <div class="ks-budget">
+        <span class="ks-budget-amount">$18K</span>
+        <span class="ks-budget-label">Art Budget Goal</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ABOUT THE GAME -->
+  <section class="section fade-in">
+    <div class="section-inner">
+      <p class="section-eyebrow">The Game</p>
+      <h2 class="section-title">What Is Smoke &amp; Honey?</h2>
+      <p class="section-body">
+        Smoke &amp; Honey is a beekeeping simulation game where you learn by looking. You inherit a single hive on a
+        quiet Iowa homestead, and through weekly inspections, seasonal rhythms, and hard-earned intuition,
+        you become a skilled beekeeper over five in-game years.
+      </p>
+      <p class="section-body">
+        The game teaches real beekeeping science - actual queen-rearing, varroa management, honey extraction,
+        colony splitting - through observation and consequence, not tutorials. Built in Godot 4.6.
+        Targeting Steam (PC + Mac), v0.1 Alpha Q4 2026, v1.0 full release Q3-Q4 2027.
+      </p>
+
+      <div class="callout-quote">
+        <p>"There is no beekeeping simulation game with real depth. Zero. Smoke &amp; Honey is the first game to simulate beekeeping at the level of actual practice."</p>
+      </div>
+
+      <div class="manifesto">
+        <h3>We Don't Ship AI Art. Period.</h3>
+        <p>
+          Let's be direct: <strong>every art asset currently in Smoke &amp; Honey is AI-generated placeholder.</strong>
+          We used it to prototype systems, test layouts, and prove the game works mechanically. It served its purpose.
+          Now we're done with it.
+        </p>
+        <p>
+          When this game ships on Steam, <em class="highlight">every single pixel will be hand-crafted by a real artist.</em>
+          Not "AI-assisted." Not "touched up." Not "refined from a generation." Original pixel art, made by a human being
+          who understands light, color, and the craft of making 32x32 tiles feel alive.
+        </p>
+        <p>
+          We believe artists deserve real work and real pay - not to be replaced by generators. That's why the entire
+          $18,000 Kickstarter art budget goes directly to the pixel artist. That's why we're offering a 2% revenue
+          bonus on top of it. We want a creative partner, not a prompt engineer.
+        </p>
+        <p>
+          <strong>If you're tired of seeing studios cut corners with AI slop and call it "good enough" -
+          we are too. Come make something real with us.</strong>
+        </p>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <span class="stat-number">41M+</span>
+          <span class="stat-label">Stardew Valley copies sold - the genre we're entering</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Serious beekeeping sims exist. We own this space entirely.</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">5 yrs</span>
+          <span class="stat-label">In-game progression from nervous beginner to master beekeeper</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">Q4 2026</span>
+          <span class="stat-label">v0.1 Alpha target - core systems already functional</span>
+        </div>
+      </div>
+
+      <div class="tag-list">
+        <span class="tag">Godot 4.6</span>
+        <span class="tag">Steam - PC + Mac</span>
+        <span class="tag">32x32 Pixel Art</span>
+        <span class="tag">Top-Down</span>
+        <span class="tag">Cozy Farm Sim</span>
+        <span class="tag">Educational</span>
+        <span class="tag">Rural Iowa, Mid-1990s</span>
+        <span class="tag">No Fail States</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- THE ROLE -->
+  <section id="role" class="section fade-in">
+    <div class="section-inner">
+      <p class="section-eyebrow">Your Role</p>
+      <h2 class="section-title">What We Need From You</h2>
+      <p class="section-body">
+        We need a pixel artist to <strong style="color:var(--cream);">replace every AI placeholder asset in the game</strong> and
+        build the complete visual identity of Smoke &amp; Honey from scratch. This is not a piecemeal project or a
+        touch-up job - you're redoing everything. Every sprite, tile, UI element, and particle currently in the game
+        is disposable prototype art. You'll own the look and feel of a full original game, in a space with real market
+        potential. Full details on every system and asset are documented in our
+        <strong style="color:var(--gold);">90+ page Game Design Document (GDD)</strong>, provided upon application.
+      </p>
+
+      <div class="two-col">
+        <div>
+          <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--gold); margin-bottom:16px;">Scope of Work</h3>
+          <ul class="check-list">
+            <li><strong>All character sprites:</strong> Player character generator system (3 builds, 6 skin tones, 8 hair styles, 10 hair colors — layered tilesets), beekeeper gear overlay, Uncle Bob, 10 named NPCs (Darlene, Frank, Dr. Harwick, Walt, Kacey, Rose, Carl, June, Silas, Lloyd), Terri Vogel, and 4-6 ambient pedestrians. Full 8-direction movement at 120x120 px per frame.</li>
+            <li><strong>All buildings &amp; structures:</strong> Farmhouse (4 seasonal variants), Honey House (dilapidated + restored + upgraded), Shed, Barn, Crossroads Diner, Tanner's Supply, Post Office, Hardware Store, Grange Hall, Saturday Market stalls, County Fairgrounds, plus 3 background town facades.</li>
+            <li><strong>Beehive system sprites:</strong> Langstroth hive components (bottom board, deep body, medium super, lid), hive stands, modular assembly for 1-4+ box hives.</li>
+            <li><strong>Environment &amp; world:</strong> Grass tiles (mowed/unmowed), dirt paths, gravel road (4 seasonal variants), mud/puddle tiles, snow/leaf/frost overlays, creek and water features (3 seasonal states), fences, garden beds, and props.</li>
+            <li><strong>Full UI &amp; HUD kit:</strong> The Langstroth Frame Aesthetic: panels, buttons, fill bars, inventory cells, dialogue boxes, level badges, title plates (30+ individual sprites).</li>
+            <li><strong>Frame inspection visuals:</strong> Front-facing honeycomb frame view (320x192 px) with 15+ cell state variants and bee animations.</li>
+            <li><strong>Inventory icons:</strong> 22+ items including honey jars (3 grades), tools (smoker, hive tool, veil, uncapping knife, refractometer, marking pen), hive components (stand, body, super, frames, excluder, lid), and consumables (syrup, beeswax, pollen substitute). 16x16 px each.</li>
+            <li><strong>Ambient particles &amp; wildlife:</strong> Bee sprites (8x8 px), fireflies, cottonwood seeds, pollen drift, smoke puffs, plus ambient wildlife (butterfly, dragonfly, 3 bird species, heron, kingfisher, red-winged blackbird).</li>
+            <li><strong>Seasonal trees:</strong> 8+ species (silver maple, apple, cherry, pear, willow, linden, cottonwood, wild plum) with growth stages and seasonal variants.</li>
+            <li><strong>Forage lifecycle system:</strong> 9 wildflower species, each with 5 lifecycle phase sprites (Seed, Sprout, Growing, Mature, Withered) = 45+ forage sprites total.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--gold); margin-bottom:16px;">What We're Looking For</h3>
+          <ul class="check-list">
+            <li><strong>Experience:</strong> with top-down RPG or farming sim pixel art - sprites, tilesets, environments.</li>
+            <li><strong>Style matching:</strong> ability to match and extend Cainos Village aesthetic.</li>
+            <li><strong>Character animation:</strong> 8-direction movement, idle cycles, walk cycles.</li>
+            <li><strong>Tile grid comfort:</strong> 16x16 and 32x32 grids.</li>
+            <li><strong>Communication:</strong> reliable and responsive, with consistent deadline adherence.</li>
+            <li><strong>Portfolio:</strong> showing warm, muted, earthy palettes - pastoral and nostalgic tone.</li>
+          </ul>
+
+          <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--gold); margin: 28px 0 16px;">What We Provide</h3>
+          <ul class="check-list">
+            <li><strong>Full GDD:</strong> 90+ page Game Design Document with full specs on every system, scene, character, and asset.</li>
+            <li><strong>Style reference:</strong> Cainos Village pack as visual baseline (match and extend the style).</li>
+            <li><strong>Color palette:</strong> complete palette with exact hex codes for every asset category.</li>
+            <li><strong>Priority roadmap:</strong> asset priority ranking so you know what to build first.</li>
+            <li><strong>Fast feedback:</strong> collaborative creative feedback, usually same day.</li>
+            <li><strong>Lead credit:</strong> 'Lead Pixel Artist' on Steam page, press kit, and all marketing.</li>
+            <li><strong>Zero AI art:</strong> your work replaces all of it in the shipped game - every pixel is yours.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- COMPENSATION -->
+  <section id="compensation" class="section fade-in">
+    <div class="section-inner">
+      <p class="section-eyebrow">Financial Terms</p>
+      <h2 class="section-title">Up to $18,000 + Exclusive 2% Bonus</h2>
+      <p class="section-body">
+        The entire Kickstarter art budget - $18,000 - goes to the pixel artist. Payments are milestone-based.
+        Two options below - but only Option A includes the revenue-sharing bonus.
+      </p>
+
+      <div class="two-col">
+        <div class="comp-block" style="border:2px solid var(--gold); position:relative;">
+          <div style="position:absolute;top:-13px;left:24px;background:var(--gold);color:var(--bg-deep);font-size:11px;font-weight:700;padding:3px 12px;border-radius:6px;letter-spacing:0.5px;">RECOMMENDED</div>
+          <h3>Option A - Start Before Kickstarter</h3>
+          <p class="comp-sub">Jump in now and help shape the Kickstarter campaign with real art. <strong>No payment until the campaign funds</strong> - but upon successful funding, your initial payment is determined by how many art phases you have fully completed by the time the Kickstarter closes. Finish more phases before the campaign ends, and you get paid more up front. You also receive the <strong style="color:var(--gold);">exclusive 2% revenue bonus</strong> that only early-start artists receive.</p>
+          <p class="comp-sub" style="margin-top:12px;">Total budget: <strong style="color:var(--amber-lt);">$18,000</strong> across four phases ($4,500 each). Each completed phase is paid out at Kickstarter close; remaining phases are paid as delivered and approved after the campaign funds.</p>
+          <div class="bonus-card" style="margin-top:20px;">
+            <span class="bonus-icon">&#x1F36F;</span>
+            <div>
+              <h4>+ Exclusive 2% of First-Year Net Sales</h4>
+              <p>
+                Only available with Option A. Upon game release, you receive 2% of net revenue from the first 12 months on Steam (after platform fees),
+                paid as a lump sum within 30 days of the 12-month anniversary.
+                At 100,000 sales x $29.99, your bonus = <strong style="color:var(--amber-lt);">~$42,000</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-block">
+          <h3>Option B - Start After Kickstarter</h3>
+          <p class="comp-sub">Begin only after the campaign successfully funds. Total budget: <strong style="color:var(--amber-lt);">$18,000</strong>, paid in four equal installments - <strong style="color:var(--gold);">25% ($4,500)</strong> released after each phase is completed and approved. <strong>No revenue bonus.</strong></p>
+          <p class="comp-sub" style="margin-top:10px;">The registry below lists <strong style="color:var(--amber-lt);">203 tracked art assets</strong> across four phases, but these are just the individually scoped deliverables - the full role covers every visual element in the game. Each phase payment is released upon delivery and approval of all assets in that phase.</p>
+          <div class="payment-phases" style="margin-top:20px;">
+            <div class="phase-row">
+              <span class="phase-badge">PHASE 1</span>
+              <span class="phase-amount">$4,500 <span style="font-size:13px;color:var(--text-dim);font-weight:400;">(25%)</span></span>
+              <span class="phase-desc">Core Loop - 61 assets - Hive sprites, cell states, inspection UI, player character generator (layered tilesets), Uncle Bob, core buildings, environment tiles, base forage</span>
+            </div>
+            <div class="phase-row">
+              <span class="phase-badge">PHASE 2</span>
+              <span class="phase-amount">$4,500 <span style="font-size:13px;color:var(--text-dim);font-weight:400;">(25%)</span></span>
+              <span class="phase-desc">Gameplay Loop - 72 assets - NPCs &amp; portraits, town buildings, inventory icons, all forage lifecycle sprites, trees</span>
+            </div>
+            <div class="phase-row">
+              <span class="phase-badge">PHASE 3</span>
+              <span class="phase-amount">$4,500 <span style="font-size:13px;color:var(--text-dim);font-weight:400;">(25%)</span></span>
+              <span class="phase-desc">Depth - 40 assets - FX particles, ambient wildlife, seasonal variants, additional props, queen markers</span>
+            </div>
+            <div class="phase-row">
+              <span class="phase-badge">PHASE 4</span>
+              <span class="phase-amount">$4,500 <span style="font-size:13px;color:var(--text-dim);font-weight:400;">(25%)</span></span>
+              <span class="phase-desc">Polish - 30 assets - Full UI kit, HUD elements, overlays, seasonal transitions, Knowledge Log</span>
+            </div>
+          </div>
+          <p class="comp-sub" style="margin-top:16px;font-size:13px;color:var(--text-faint);">See the full asset breakdown by phase in the <a href="#asset-registry" style="color:var(--gold);">Complete Asset Registry</a> below.</p>
+        </div>
+      </div>
+
+      <p class="section-body" style="margin-top:28px;">
+        <strong style="color:var(--cream);">Additional terms:</strong> 'Lead Pixel Artist' credit everywhere.
+        Portfolio rights retained. Non-exclusive - you may work on other projects concurrently.
+        Up to 2 revision rounds per approved milestone.
+      </p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ART STYLE -->
+  <section class="section fade-in">
+    <div class="section-inner">
+      <p class="section-eyebrow">Art Direction</p>
+      <h2 class="section-title">Style Guide &amp; Visual Direction</h2>
+      <p class="section-body">
+        Primary visual reference: <strong style="color:var(--cream);">Pixel Art Top Down - Village by Cainos (v1.0.7)</strong>.
+        This hand-crafted tileset pack is the visual foundation and your style baseline. All original assets you create must look like they belong in the same scene as Cainos tiles. This is a style guide, not something to generate from - we want your artistic interpretation of this aesthetic.
+      </p>
+      <p class="section-body">
+        Secondary references: Stardew Valley (character scale and charm), early Harvest Moon GBA (palette mood), Moonstone Island (environmental density).
+      </p>
+
+      <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--gold); margin: 36px 0 20px;">The Five Non-Negotiables</h3>
+      <div class="rules-grid">
+        <div class="rule-card">
+          <p class="rule-no">&#x2717; No Pure Black Outlines</p>
+          <p>All edges use the darkest shade of the local hue. Black outlines read as cartoon. This game is not cartoon.</p>
+        </div>
+        <div class="rule-card">
+          <p class="rule-no">&#x2717; No Bright Saturated Colors</p>
+          <p>Every color is muted and earthy. If it reads as 'vivid,' desaturate it. Greens are olive, not lime.</p>
+        </div>
+        <div class="rule-card">
+          <p class="rule-no">&#x2717; No Pure White Backgrounds</p>
+          <p>All sprites are transparent PNGs. Interior fills use wax-cream (#F2E4B2) or off-whites, never #FFFFFF.</p>
+        </div>
+        <div class="rule-card">
+          <p class="rule-no">&#x2717; No Fantasy Theming</p>
+          <p>This is rural Iowa, mid-1990s. Wooden Langstroth hives, not decorative garden hives. No smartphones, no internet - landlines, paper maps, and pickup trucks.</p>
+        </div>
+        <div class="rule-card">
+          <p class="rule-no">&#x2714; The Cainos Test</p>
+          <p>Does this asset look like it belongs in a Cainos Village scene? If yes, ship it. If no, regenerate.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--gold); margin: 40px 0 20px;">Official Color Palette</h3>
+      <p class="section-body" style="margin-bottom:8px;">Every sprite pulls from these tokens. No new colors added without discussion.</p>
+
+      <h4 style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-faint); margin: 20px 0 12px;">Wood Tones</h4>
+      <div class="palette-grid">
+        <div class="swatch"><div class="swatch-color" style="background:#261206;"></div><div class="swatch-info"><span class="swatch-name">WD_DARKEST</span><span class="swatch-hex">#261206</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#46260C;"></div><div class="swatch-info"><span class="swatch-name">WD_DARK</span><span class="swatch-hex">#46260C</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#6C4016;"></div><div class="swatch-info"><span class="swatch-name">WD_MID</span><span class="swatch-hex">#6C4016</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#94602A;"></div><div class="swatch-info"><span class="swatch-name">WD_LIGHT</span><span class="swatch-hex">#94602A</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#BA8A48;"></div><div class="swatch-info"><span class="swatch-name">WD_PALE</span><span class="swatch-hex">#BA8A48</span></div></div>
+      </div>
+
+      <h4 style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-faint); margin: 20px 0 12px;">Amber &amp; Honey</h4>
+      <div class="palette-grid">
+        <div class="swatch"><div class="swatch-color" style="background:#985808;"></div><div class="swatch-info"><span class="swatch-name">AMBER_DARK</span><span class="swatch-hex">#985808</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#C8820C;"></div><div class="swatch-info"><span class="swatch-name">AMBER_MID</span><span class="swatch-hex">#C8820C</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#E6A220;"></div><div class="swatch-info"><span class="swatch-name">AMBER_LT</span><span class="swatch-hex">#E6A220</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F4CC6E;"></div><div class="swatch-info"><span class="swatch-name">HONEY_PALE</span><span class="swatch-hex">#F4CC6E</span></div></div>
+      </div>
+
+      <h4 style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-faint); margin: 20px 0 12px;">Wax &amp; Comb</h4>
+      <div class="palette-grid">
+        <div class="swatch"><div class="swatch-color" style="background:#F2E4B2; border:1px solid rgba(255,255,255,0.1);"></div><div class="swatch-info"><span class="swatch-name">WAX_CREAM</span><span class="swatch-hex">#F2E4B2</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#FCF5D7; border:1px solid rgba(255,255,255,0.1);"></div><div class="swatch-info"><span class="swatch-name">WAX_WHITE</span><span class="swatch-hex">#FCF5D7</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#E4D498;"></div><div class="swatch-info"><span class="swatch-name">CELL_EMPTY</span><span class="swatch-hex">#E4D498</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#D49E28;"></div><div class="swatch-info"><span class="swatch-name">CELL_HONEY</span><span class="swatch-hex">#D49E28</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#B48430;"></div><div class="swatch-info"><span class="swatch-name">CELL_WALL</span><span class="swatch-hex">#B48430</span></div></div>
+      </div>
+
+      <h4 style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-faint); margin: 20px 0 12px;">Environment</h4>
+      <div class="palette-grid">
+        <div class="swatch"><div class="swatch-color" style="background:#6B7C3D;"></div><div class="swatch-info"><span class="swatch-name">GRASS_BASE</span><span class="swatch-hex">#6B7C3D</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#4A5928;"></div><div class="swatch-info"><span class="swatch-name">GRASS_SHAD</span><span class="swatch-hex">#4A5928</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#8A9E52;"></div><div class="swatch-info"><span class="swatch-name">GRASS_HI</span><span class="swatch-hex">#8A9E52</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#B89060;"></div><div class="swatch-info"><span class="swatch-name">DIRT_MID</span><span class="swatch-hex">#B89060</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#5080A0;"></div><div class="swatch-info"><span class="swatch-name">WATER_MID</span><span class="swatch-hex">#5080A0</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#404858;"></div><div class="swatch-info"><span class="swatch-name">ROOF_DARK</span><span class="swatch-hex">#404858</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- NEWSLETTER / STAY UPDATED -->
+  <section id="stay-updated">
+    <div class="newsletter-inner">
+      <p class="section-eyebrow" style="text-align:center;">Stay in the Loop</p>
+      <h2 class="section-title" style="text-align:center;">Get Kickstarter &amp; Launch Alerts</h2>
+      <p class="section-body" style="text-align:center; margin: 0 auto;">
+        Sign up for updates on the Kickstarter launch date, game progress, and when we release dev art.
+        No spam - just big moments.
+      </p>
+
+      <!-- Updates Mailing List (Buttondown) -->
+      <iframe name="bdFrame" id="bdFrame" style="display:none;"></iframe>
+      <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/fivecatsgamestudios" method="post" target="bdFrame" id="updateForm">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="newsletter-note">
+        You can also follow us on
+        <a href="https://x.com/fiveCatsStudios" target="_blank" style="color:var(--amber);">X/Twitter @fiveCatsStudios</a>
+      </p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- FULL ASSET REGISTRY -->
+  <section id="asset-registry" class="section">
+    <div class="section-inner" style="max-width:1100px;">
+      <p class="section-eyebrow">Complete Asset Registry</p>
+      <h2 class="section-title">Tracked Art Assets - By Phase</h2>
+      <p class="section-body">
+        Below are the individually tracked deliverables organized by development phase -
+        but <strong style="color:var(--cream);">the full scope is every visual element in the game.</strong>
+        If it's on screen, it needs original pixel art. Assets marked "PLACEHOLDER (AI)" have temporary AI-generated art that must be completely replaced.
+        Assets marked "NEEDED" have no art at all yet. The Notes column references the relevant section in the
+        <strong style="color:var(--gold);">Game Design Document (GDD)</strong>, which provides full specs, gameplay context, and dependencies for every asset.
+      </p>
+
+      <!-- Phase summary pills -->
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 40px;">
+        <div style="background:rgba(200,130,12,0.12);border:1px solid rgba(200,130,12,0.3);border-radius:8px;padding:12px 20px;text-align:center;">
+          <span style="display:block;font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--amber-lt);">61</span>
+          <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-faint);">Phase 1</span>
+        </div>
+        <div style="background:rgba(200,130,12,0.08);border:1px solid rgba(200,130,12,0.2);border-radius:8px;padding:12px 20px;text-align:center;">
+          <span style="display:block;font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--amber-lt);">72</span>
+          <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-faint);">Phase 2</span>
+        </div>
+        <div style="background:rgba(200,130,12,0.06);border:1px solid rgba(200,130,12,0.15);border-radius:8px;padding:12px 20px;text-align:center;">
+          <span style="display:block;font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--amber-lt);">40</span>
+          <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-faint);">Phase 3</span>
+        </div>
+        <div style="background:rgba(200,130,12,0.04);border:1px solid rgba(200,130,12,0.12);border-radius:8px;padding:12px 20px;text-align:center;">
+          <span style="display:block;font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--amber-lt);">30</span>
+          <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-faint);">Phase 4</span>
+        </div>
+        <div style="background:rgba(212,84,122,0.1);border:1px solid rgba(212,84,122,0.25);border-radius:8px;padding:12px 20px;text-align:center;">
+          <span style="display:block;font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--pink);">19</span>
+          <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-faint);">Placeholder (AI)</span>
+        </div>
+        <div style="background:rgba(232,104,63,0.08);border:1px solid rgba(232,104,63,0.2);border-radius:8px;padding:12px 20px;text-align:center;">
+          <span style="display:block;font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--orange);">185</span>
+          <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-faint);">Not Started</span>
+        </div>
+        <div style="background:rgba(232,104,63,0.15);border:2px solid rgba(232,104,63,0.4);border-radius:8px;padding:12px 20px;text-align:center;">
+          <span style="display:block;font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--cream);">ALL</span>
+          <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Everything Gets Replaced</span>
+        </div>
+      </div>
+
+      <!-- PHASE 1 -->
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);margin:0 0 12px;display:flex;align-items:center;gap:12px;">
+        <span style="background:var(--amber-dark);color:var(--honey-pale);font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:1px;">PHASE 1</span>
+        Core Loop - 61 Assets
+      </h3>
+      <div class="asset-table-wrap" style="margin-bottom:36px;">
+        <table>
+          <thead><tr><th>Asset</th><th>Category</th><th>Size</th><th>Priority</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Overworld hive sprite</td><td>Hive / Overworld</td><td>26&times;36px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Langstroth hive shown in apiary overworld; connects to inspection scene</td></tr>
+            <tr><td>Overworld hive - shadow layer</td><td>Hive / Overworld</td><td>26&times;36px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Rendered below hive sprite for ground shadow</td></tr>
+            <tr><td>Overworld hive - health tint states</td><td>Hive / Overworld</td><td>varies</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Color overlay: white=healthy, amber=warning, pink=critical</td></tr>
+            <tr><td>Cell sprite: empty foundation (state 0)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Blank wax foundation</td></tr>
+            <tr><td>Cell sprite: drawn empty comb (state 1)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Hexagonal wax structure visible</td></tr>
+            <tr><td>Cell sprite: egg (state 2)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Tiny vertical egg, day 1-3 of brood cycle</td></tr>
+            <tr><td>Cell sprite: open larva (state 3)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">C-shaped larva in royal jelly, day 4-8</td></tr>
+            <tr><td>Cell sprite: capped brood (state 4)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Sealed worker brood, flat tan cap, day 9-21</td></tr>
+            <tr><td>Cell sprite: capped drone brood (state 5)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Raised bullet-shaped caps, queenless indicator</td></tr>
+            <tr><td>Cell sprite: nectar uncured (state 6)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Thin watery nectar, &gt;18.6% moisture</td></tr>
+            <tr><td>Cell sprite: curing honey (state 7)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Thickening amber nectar, transition state</td></tr>
+            <tr><td>Cell sprite: capped honey (state 8)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">White wax cap, standard grade, ready for extraction</td></tr>
+            <tr><td>Cell sprite: premium honey (state 9)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Golden glow under cap, &le;17% moisture, higher value</td></tr>
+            <tr><td>Cell sprite: varroa infested (state 10)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Visible red-brown mites on larva</td></tr>
+            <tr><td>Cell sprite: AFB diseased (state 11)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Sunken perforated caps, American Foulbrood</td></tr>
+            <tr><td>Cell sprite: queen cell (state 12)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Peanut-shaped vertical cell, swarming indicator</td></tr>
+            <tr><td>Cell sprite: vacated (state 13)</td><td>Hive / Cell States</td><td>26&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Empty after emergence, darker comb</td></tr>
+            <tr><td>Cell atlas (all 14 states)</td><td>Hive / Cell States</td><td>364&times;20px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Combined sprite sheet for frame inspection</td></tr>
+            <tr><td>Frame border - inspection view</td><td>Hive / Inspection UI</td><td>1920&times;1080px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-placeholder">PLACEHOLDER (AI)</span></td><td style="font-size:12px;color:var(--text-faint);">Wooden Langstroth frame border, core gameplay screen</td></tr>
+            <tr><td>Player base body sheets (3 builds)</td><td>Character / Generator</td><td>16&times;32px x 12 fr ea</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Layered tileset system: 3 build options, walk cycle all 4 dirs each. Sprites are composited at runtime.</td></tr>
+            <tr><td>Player skin tone layers (6 options)</td><td>Character / Generator</td><td>16&times;32px x 12 fr ea</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">6 skin tone color layers applied over base body. Must match all 3 builds.</td></tr>
+            <tr><td>Player hair style layers (8 styles)</td><td>Character / Generator</td><td>16&times;32px x 12 fr ea</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">8 hair style sprite sheets, layered on top of body. Must work with all builds.</td></tr>
+            <tr><td>Player hair color palette (10 colors)</td><td>Character / Generator</td><td>palette file</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">10 hair color palettes for shader/palette-swap across all 8 hair styles.</td></tr>
+            <tr><td>Beekeeper gear overlay layer</td><td>Character / Generator</td><td>16&times;32px x 12 fr</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Worn during gameplay over character layers. Veil, suit, gloves composite.</td></tr>
+            <tr><td>Player idle animations (3 builds)</td><td>Character / Generator</td><td>16&times;32px ea</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Standing idle with breathing animation, one per build option.</td></tr>
+            <tr><td>Character creator preview sprites</td><td>Character / Generator</td><td>64&times;64px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Larger preview shown in character creation screen. Composited from layers.</td></tr>
+            <tr><td>Player portrait (journal/title/cutscene)</td><td>Character / Generator</td><td>64&times;64px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Layered portrait for Knowledge Log header, title card, and cutscene frames.</td></tr>
+            <tr><td>Uncle Bob NPC - overworld sprite</td><td>Character / NPC</td><td>16&times;32px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Tutorial mentor, key story NPC</td></tr>
+            <tr><td>Uncle Bob NPC - dialogue portrait</td><td>Character / NPC Portrait</td><td>64&times;64px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Close-up for dialogue box</td></tr>
+            <tr><td>Player farmhouse - summer</td><td>World / Building</td><td>~80&times;64px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Single-story white clapboard, front porch, screen door</td></tr>
+            <tr><td>Player farmhouse - spring</td><td>World / Building</td><td>~80&times;64px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Mud on steps, spring details</td></tr>
+            <tr><td>Player farmhouse - fall</td><td>World / Building</td><td>~80&times;64px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Fall color details</td></tr>
+            <tr><td>Player farmhouse - winter</td><td>World / Building</td><td>~80&times;64px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Snow on roof, chimney smoke, frosted windows</td></tr>
+            <tr><td>Honey House (dilapidated)</td><td>World / Building</td><td>~80&times;64px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Broken windows, sagging roof, visible from start</td></tr>
+            <tr><td>Shed (basic)</td><td>World / Building</td><td>~60&times;50px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Equipment storage, home property</td></tr>
+            <tr><td>Grass tile - mowed (summer base)</td><td>World / Tile</td><td>16&times;16px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Short grass base tile</td></tr>
+            <tr><td>Grass tile - unmowed (spring/fall)</td><td>World / Tile</td><td>16&times;16px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Long grass, dandelion scatter</td></tr>
+            <tr><td>Grass tile - edge/transition (4 variants)</td><td>World / Tile</td><td>16&times;16px ea</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Grass-to-dirt, grass-to-water transitions</td></tr>
+            <tr><td>Dirt path tile</td><td>World / Tile</td><td>16&times;16px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Sandy tan color, walkable path</td></tr>
+            <tr><td>Mud patches (spring)</td><td>World / Tile</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Spring ground moisture</td></tr>
+            <tr><td>Puddle tile (spring)</td><td>World / Tile</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Standing water, spring thaw</td></tr>
+            <tr><td>Gravel road - summer</td><td>World / Tile</td><td>tileable</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Dry pale grey, dusty</td></tr>
+            <tr><td>Gravel road - spring (wet)</td><td>World / Tile</td><td>tileable</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Wet dark gravel, ruts, puddles</td></tr>
+            <tr><td>Gravel road - fall (leaves)</td><td>World / Tile</td><td>tileable</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Scattered leaves on road</td></tr>
+            <tr><td>Gravel road - winter (snow)</td><td>World / Tile</td><td>tileable</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Packed snow, central plowed strip</td></tr>
+            <tr><td>Picket fence + gate</td><td>World / Prop</td><td>~40-50px tall</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">White painted, 3 sides, gate opens during inspection</td></tr>
+            <tr><td>Garden bed frame</td><td>World / Prop</td><td>32&times;32px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Tilled soil beds for planting forage</td></tr>
+            <tr><td>Worktable (home)</td><td>World / Prop</td><td>40&times;30px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Player places tools during inspection</td></tr>
+            <tr><td>Creek/water tiles - base</td><td>World / Tile</td><td>16&times;16px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Blue-green with ripple variants</td></tr>
+            <tr><td>Hive stand (wooden)</td><td>World / Prop</td><td>24&times;12px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Simple two-post stand, weathered brown</td></tr>
+            <tr><td>Water trough</td><td>World / Prop</td><td>32&times;20px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Bee water source, Timber location</td></tr>
+            <tr><td>Dandelion - Mature (blooming)</td><td>World / Forage Tile</td><td>16&times;16px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Yellow dots, early spring primary forage</td></tr>
+            <tr><td>Dandelion - Seed/Sprout/Growing/Withered (4 sprites)</td><td>World / Forage Tile</td><td>16&times;16px ea</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">4 additional lifecycle phases</td></tr>
+            <tr><td>Clover - Mature (blooming)</td><td>World / Forage Tile</td><td>16&times;16px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">White clover, primary summer forage</td></tr>
+            <tr><td>Clover - Seed/Sprout/Growing/Withered (4 sprites)</td><td>World / Forage Tile</td><td>16&times;16px ea</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">4 additional lifecycle phases</td></tr>
+            <tr><td>Goldenrod - Mature (blooming)</td><td>World / Forage Tile</td><td>16&times;16px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Tall yellow clusters, fall forage</td></tr>
+            <tr><td>Goldenrod - Seed/Sprout/Growing/Withered (4 sprites)</td><td>World / Forage Tile</td><td>16&times;16px ea</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">4 additional lifecycle phases</td></tr>
+            <tr><td>Sunflower - Mature (blooming)</td><td>World / Forage Tile</td><td>16&times;16px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Tall yellow, summer forage</td></tr>
+            <tr><td>Sunflower - Seed/Sprout/Growing/Withered (4 sprites)</td><td>World / Forage Tile</td><td>16&times;16px ea</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">4 additional lifecycle phases</td></tr>
+            <tr><td>Linden overlay tile</td><td>World / Forage Tile</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Premium linden/basswood honey source</td></tr>
+            <tr><td>Wildflower generic overlay</td><td>World / Forage Tile</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Multi-species mix for background forage</td></tr>
+          </tbody>
+        </table>
+      </div>      <!-- PHASE 2 -->
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);margin:0 0 12px;display:flex;align-items:center;gap:12px;">
+        <span style="background:var(--amber-dark);color:var(--honey-pale);font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:1px;">PHASE 2</span>
+        Gameplay Loop - 72 Assets
+      </h3>
+      <div class="asset-table-wrap" style="margin-bottom:36px;">
+        <table>
+          <thead><tr><th>Asset</th><th>Category</th><th>Size</th><th>Priority</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Frank Fischbach - overworld sprite</td><td>Character / NPC</td><td>16&times;32px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Hardware store owner, sells building supplies</td></tr>
+            <tr><td>Frank Fischbach - dialogue portrait</td><td>Character / NPC Portrait</td><td>64&times;64px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Friendly, stocky build, work apron</td></tr>
+            <tr><td>Dr. Ellen Harwick - overworld sprite</td><td>Character / NPC</td><td>16&times;32px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Veterinarian, consults on hive health</td></tr>
+            <tr><td>Dr. Ellen Harwick - dialogue portrait</td><td>Character / NPC Portrait</td><td>64&times;64px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Professional, knowledgeable expression</td></tr>
+            <tr><td>Walt Harmon - overworld sprite</td><td>Character / NPC</td><td>16&times;32px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Retired farmer, elder mentor</td></tr>
+            <tr><td>Walt Harmon - dialogue portrait</td><td>Character / NPC Portrait</td><td>64&times;64px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Heavyset late 50s, denim, cap</td></tr>
+            <tr><td>Kacey Harmon - overworld sprite</td><td>Character / NPC</td><td>16&times;32px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Walt's daughter, family quest chain</td></tr>
+            <tr><td>Kacey Harmon - dialogue portrait</td><td>Character / NPC Portrait</td><td>64&times;64px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Energetic, practical expression</td></tr>
+            <tr><td>Rose (Diner waitress) - overworld sprite</td><td>Character / NPC</td><td>16&times;32px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Runs the Diner, main social hub</td></tr>
+            <tr><td>Rose - dialogue portrait</td><td>Character / NPC Portrait</td><td>64&times;64px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Warm, welcoming expression</td></tr>
+            <tr><td>Carl Tanner - overworld sprite</td><td>Character / NPC</td><td>16&times;32px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Feed &amp; Supply owner, sells equipment</td></tr>
+            <tr><td>Carl Tanner - dialogue portrait</td><td>Character / NPC Portrait</td><td>64&times;64px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Practical, helpful shopkeeper</td></tr>
+            <tr><td>June (Postmaster) - overworld sprite</td><td>Character / NPC</td><td>16&times;32px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Runs Post Office, package deliveries</td></tr>
+            <tr><td>June - dialogue portrait</td><td>Character / NPC Portrait</td><td>64&times;64px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Efficient, organized expression</td></tr>
+            <tr><td>Darlene Kowalski - overworld sprite</td><td>Character / NPC</td><td>16&times;32px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Established beekeeper, safety net NPC, 6 quest chains</td></tr>
+            <tr><td>Darlene Kowalski - dialogue portrait</td><td>Character / NPC Portrait</td><td>64&times;64px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Confident, kind, late 60s</td></tr>
+            <tr><td>Cedar Bend Feed &amp; Supply</td><td>World / Building</td><td>~80&times;64px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Carl Tanner's shop, sells forage seeds and equipment</td></tr>
+            <tr><td>Crossroads Diner</td><td>World / Building</td><td>~80&times;64px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Rose's diner, main social hub, glass block windows, neon sign</td></tr>
+            <tr><td>Cedar Bend Grange Hall</td><td>World / Building</td><td>~96&times;72px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Hosts Honey Show, seasonal fairs, town meetings</td></tr>
+            <tr><td>Saturday Market stall</td><td>World / Prop</td><td>32&times;48px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Player's market booth for selling honey and goods</td></tr>
+            <tr><td>Honey House (restored)</td><td>World / Building</td><td>~80&times;64px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Weathertight, extraction equipment visible, Silas quest unlock</td></tr>
+            <tr><td>Post Office</td><td>World / Building</td><td>~70&times;60px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">June's workplace, package delivery mechanic</td></tr>
+            <tr><td>Barn (Harmon farm)</td><td>World / Building</td><td>~100&times;80px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Red metal siding, Harmon Farm backdrop</td></tr>
+            <tr><td>Machine shed (Harmon farm)</td><td>World / Building</td><td>~90&times;70px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Roll-up door, sprayer states signal pesticide event</td></tr>
+            <tr><td>Cedar Bend Hardware Store (facade)</td><td>World / Building</td><td>~60&times;50px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Silas Crenshaw's workshop location</td></tr>
+            <tr><td>Honey House (upgraded - curing room)</td><td>World / Building</td><td>~80&times;64px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Temperature-controlled addition, Level 2+ unlock</td></tr>
+            <tr><td>Honey jar - standard</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Standard-grade, 17-18.6% moisture</td></tr>
+            <tr><td>Honey jar - premium</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Premium grade &le;17% moisture, golden label</td></tr>
+            <tr><td>Honey jar - economy</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Economy grade &gt;18.6% moisture</td></tr>
+            <tr><td>Smoker tool</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Bellows-style bee smoker, essential tool</td></tr>
+            <tr><td>Hive tool</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Flat metal pry bar for frame separation</td></tr>
+            <tr><td>Veil / protective gear</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Beekeeper mesh veil and hat</td></tr>
+            <tr><td>Uncapping knife</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Heated serrated blade for wax cap removal</td></tr>
+            <tr><td>Refractometer</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Measures honey moisture %, Level 2 unlock</td></tr>
+            <tr><td>Sugar syrup jar</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Supplemental feed for weak colonies</td></tr>
+            <tr><td>Beeswax block</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Rendered wax from cappings, crafting ingredient</td></tr>
+            <tr><td>Bee suit icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Protective gear, reduces sting chance 80%</td></tr>
+            <tr><td>Gloves icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Beekeeping protective gloves</td></tr>
+            <tr><td>Package bees icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Screened box with bee cluster</td></tr>
+            <tr><td>Marking pen icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Queen marking tool, 5 colors</td></tr>
+            <tr><td>Hive stand icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Wooden two-post stand</td></tr>
+            <tr><td>Deep body icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">White-painted wooden hive box</td></tr>
+            <tr><td>Honey super icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Shallower box for honey storage</td></tr>
+            <tr><td>Frames (10-frame set) icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Bundle of wooden frames</td></tr>
+            <tr><td>Queen excluder icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Grid-patterned separator</td></tr>
+            <tr><td>Hive lid icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Peaked roof hive cover</td></tr>
+            <tr><td>Foundation (wax) icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Textured wax sheet for frames</td></tr>
+            <tr><td>Coneflower (purple) - Mature (blooming)</td><td>World / Forage Tile</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Native meadow, 4 nectar / 3 pollen per tile</td></tr>
+            <tr><td>Coneflower (purple) - Seed/Sprout/Growing/Withered (4 sprites)</td><td>World / Forage Tile</td><td>16&times;16px ea</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">4 additional lifecycle phases</td></tr>
+            <tr><td>Wild bergamot - Mature (blooming)</td><td>World / Forage Tile</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Cluster blooms, 3 nectar / 4 pollen per tile</td></tr>
+            <tr><td>Wild bergamot - Seed/Sprout/Growing/Withered (4 sprites)</td><td>World / Forage Tile</td><td>16&times;16px ea</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">4 additional lifecycle phases</td></tr>
+            <tr><td>Black-eyed Susan - Mature (blooming)</td><td>World / Forage Tile</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Part of native wildflower meadow</td></tr>
+            <tr><td>Black-eyed Susan - Seed/Sprout/Growing/Withered (4 sprites)</td><td>World / Forage Tile</td><td>16&times;16px ea</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">4 additional lifecycle phases</td></tr>
+            <tr><td>Aster - Mature (blooming)</td><td>World / Forage Tile</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Late-season fall bloomer, edge-biased spawn</td></tr>
+            <tr><td>Aster - Seed/Sprout/Growing/Withered (4 sprites)</td><td>World / Forage Tile</td><td>16&times;16px ea</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">4 additional lifecycle phases</td></tr>
+            <tr><td>Anise hyssop - Mature (blooming)</td><td>World / Forage Tile</td><td>16&times;16px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Garden bed species, Year 1 unlock</td></tr>
+            <tr><td>Anise hyssop - Seed/Sprout/Growing/Withered (4 sprites)</td><td>World / Forage Tile</td><td>16&times;16px ea</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">4 additional lifecycle phases</td></tr>
+            <tr><td>Silver maple - 4 growth stages</td><td>World / Tree</td><td>varies</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Medium crown, winged samaras in spring</td></tr>
+            <tr><td>Apple tree - bloom/leaf/fall/bare variants</td><td>World / Tree</td><td>varies</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Harmon Orchard, white-pink bloom</td></tr>
+            <tr><td>Cherry tree - bloom/leaf/fall/bare variants</td><td>World / Tree</td><td>varies</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Harmon Orchard, pink-white bloom</td></tr>
+            <tr><td>Willow - 4 growth stages</td><td>World / Tree</td><td>varies</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Early spring catkins, River Bottom</td></tr>
+            <tr><td>Linden/Basswood - 4 growth stages</td><td>World / Tree</td><td>varies</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Premium honey tree, wide crown</td></tr>
+            <tr><td>Cottonwood - 4 growth stages + seed release</td><td>World / Tree</td><td>varies</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Tall narrow, cottony seeds in summer</td></tr>
+            <tr><td>Wild plum - 4 growth stages</td><td>World / Tree</td><td>varies</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Shrub-scale, white spring blossoms</td></tr>
+            <tr><td>Pear tree - bloom/leaf/fall/bare variants</td><td>World / Tree</td><td>varies</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Harmon Orchard</td></tr>
+            <tr><td>Diseased elm (dead)</td><td>World / Tree</td><td>varies</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Dead gray tree, fungi, Timber Lot</td></tr>
+            <tr><td>Generic forest tree (3 variants)</td><td>World / Tree</td><td>varies</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Background fill, rounded canopies</td></tr>
+            <tr><td>Darlene's fence (post-and-board)</td><td>World / Prop</td><td>varies</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Property boundary, left edge of home scene</td></tr>
+            <tr><td>Orchard layout (12-15 trees in 3 rows)</td><td>World / Prop</td><td>scene-level</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Harmon Orchard apiary location</td></tr>
+            <tr><td>Grain bins (2-3, full/empty states)</td><td>World / Prop</td><td>~60&times;60px ea</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Corrugated metal, Harmon Farm</td></tr>
+            <tr><td>Elevated hive stand (River Bottom)</td><td>World / Prop</td><td>24&times;15px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Raised 50cm to prevent flood damage</td></tr>
+            <tr><td>Worktable - river stone variant</td><td>World / Prop</td><td>40&times;30px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Alternative inspection surface, River Bottom</td></tr>
+          </tbody>
+        </table>
+      </div>      <!-- PHASE 3 -->
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);margin:0 0 12px;display:flex;align-items:center;gap:12px;">
+        <span style="background:var(--amber-dark);color:var(--honey-pale);font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:1px;">PHASE 3</span>
+        Depth - 40 Assets
+      </h3>
+      <div class="asset-table-wrap" style="margin-bottom:36px;">
+        <table>
+          <thead><tr><th>Asset</th><th>Category</th><th>Size</th><th>Priority</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Bee swarm particle - single bee</td><td>FX / Particle</td><td>8&times;8px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">2-frame wing flap animation</td></tr>
+            <tr><td>Forager bee returning</td><td>FX / Particle</td><td>6&times;6px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Tiny bee with pollen baskets visible</td></tr>
+            <tr><td>Smoke puff FX (4-frame animation)</td><td>FX / Particle</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Wispy smoke from smoker tool during inspection</td></tr>
+            <tr><td>Firefly sprites</td><td>FX / Particle</td><td>4&times;4px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Yellow dots, summer only, dusk ambient</td></tr>
+            <tr><td>Cottonwood seed drift</td><td>FX / Particle</td><td>4&times;4px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Summer particle, floating cottony seeds</td></tr>
+            <tr><td>Pollen drift particles</td><td>FX / Particle</td><td>4&times;4px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Ambient pollen in air near flowers</td></tr>
+            <tr><td>Chimney smoke (winter)</td><td>FX / Particle</td><td>varies</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Rises from farmhouse in winter</td></tr>
+            <tr><td>Dust trail (vehicle arrival)</td><td>FX / Particle</td><td>varies</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Ground-hugging particle when truck arrives</td></tr>
+            <tr><td>Queen marker - white (years 1/6)</td><td>Hive / Inspection UI</td><td>8&times;8px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">International queen marking color system</td></tr>
+            <tr><td>Queen marker - yellow (years 2/7)</td><td>Hive / Inspection UI</td><td>8&times;8px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Tracks queen age and lineage</td></tr>
+            <tr><td>Queen marker - red (years 3/8)</td><td>Hive / Inspection UI</td><td>8&times;8px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Real-world beekeeping convention</td></tr>
+            <tr><td>Queen marker - green (years 4/9)</td><td>Hive / Inspection UI</td><td>8&times;8px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Queen genetics across generations</td></tr>
+            <tr><td>Queen marker - blue (years 5/0)</td><td>Hive / Inspection UI</td><td>8&times;8px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Completes 5-year color rotation</td></tr>
+            <tr><td>Butterfly</td><td>FX / Ambient</td><td>10&times;10px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Near garden in summer</td></tr>
+            <tr><td>Dragonfly sprites</td><td>FX / Ambient</td><td>12&times;8px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Over meadow, River Bottom location</td></tr>
+            <tr><td>Robin sprite</td><td>FX / Ambient</td><td>12-16px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Occasional ambient on fence</td></tr>
+            <tr><td>Starling sprite</td><td>FX / Ambient</td><td>12-16px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Occasional ambient on fence</td></tr>
+            <tr><td>Sparrow sprite</td><td>FX / Ambient</td><td>12-16px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Occasional ambient on fence</td></tr>
+            <tr><td>Red-winged blackbird</td><td>FX / Ambient</td><td>14&times;12px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">On willow stems at River Bottom</td></tr>
+            <tr><td>Kingfisher</td><td>FX / Ambient</td><td>16&times;14px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Over river water, motion animation</td></tr>
+            <tr><td>Heron</td><td>FX / Ambient</td><td>60-80px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Standing in river shallows, rare atmospheric</td></tr>
+            <tr><td>Silas Crenshaw - overworld sprite</td><td>Character / NPC</td><td>16&times;32px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Semi-retired carpenter, restores Honey House, 4 quests</td></tr>
+            <tr><td>Silas Crenshaw - dialogue portrait</td><td>Character / NPC Portrait</td><td>64&times;64px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Weathered, thoughtful expression</td></tr>
+            <tr><td>Lloyd Petersen - overworld sprite</td><td>Character / NPC</td><td>16&times;32px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Elderly timber lot NPC, unique idle animations</td></tr>
+            <tr><td>Terri Vogel - overworld sprite</td><td>Character / NPC</td><td>16&times;32px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Experienced beekeeper, River Bottom</td></tr>
+            <tr><td>Ambient townspeople (4-6 unique sprites)</td><td>Character / Pedestrian</td><td>16&times;32px ea</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Generic walk animations for Cedar Bend town</td></tr>
+            <tr><td>Crossroads Diner - interior scene</td><td>World / Interior</td><td>scene-level</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Counter, 8 stools, 4 booths, pie case, chalkboard menu</td></tr>
+            <tr><td>Tanner's Supply - interior (spring stock)</td><td>World / Interior</td><td>scene-level</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Package bee flats, seed displays, seasonal shelving</td></tr>
+            <tr><td>Tanner's Supply - interior (winter stock)</td><td>World / Interior</td><td>scene-level</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Reduced stock, winter prep supplies</td></tr>
+            <tr><td>Post Office - interior</td><td>World / Interior</td><td>scene-level</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Pigeonholes, counter, package collection area</td></tr>
+            <tr><td>House interior</td><td>World / Interior</td><td>scene-level</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Kitchen, bedroom, bed (sleep action), coffee station</td></tr>
+            <tr><td>Snow overlay (winter ground)</td><td>World / Overlay</td><td>CanvasLayer</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Uniform snow covering, plowed road strips</td></tr>
+            <tr><td>Leaf litter overlay (fall)</td><td>World / Overlay</td><td>layer</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Golden/brown debris scattered on ground</td></tr>
+            <tr><td>Frost overlay (winter morning)</td><td>World / Overlay</td><td>layer</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Frost crystals visible before 10am</td></tr>
+            <tr><td>Dew sparkle (spring morning)</td><td>World / Overlay</td><td>particle</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Sparkle on grass, fades as temperature rises</td></tr>
+            <tr><td>Flooded road overlay (spring)</td><td>World / Overlay</td><td>sprite</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Standing water blocking Timber access weeks 1-2</td></tr>
+            <tr><td>Creek/water - spring (turbid brown)</td><td>World / Tile</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">High water level, muddy</td></tr>
+            <tr><td>Creek/water - winter (partial ice)</td><td>World / Tile</td><td>16&times;16px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Ice overlay on water surface</td></tr>
+            <tr><td>Lilac bloom (windbreak)</td><td>World / Prop</td><td>varies</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Home property windbreak, Greening season</td></tr>
+            <tr><td>Town background facades (Library, Bank, Bar)</td><td>World / Building</td><td>~60&times;50px ea</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Non-interactive background buildings</td></tr>
+          </tbody>
+        </table>
+      </div>      <!-- PHASE 4 -->
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);margin:0 0 12px;display:flex;align-items:center;gap:12px;">
+        <span style="background:var(--amber-dark);color:var(--honey-pale);font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:1px;">PHASE 4</span>
+        Polish - 30 Assets
+      </h3>
+      <div class="asset-table-wrap" style="margin-bottom:12px;">
+        <table>
+          <thead><tr><th>Asset</th><th>Category</th><th>Size</th><th>Priority</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>UI frame / panel texture</td><td>UI / Chrome</td><td>tileable</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Warm wood-grain for dialogue boxes, menus, popups</td></tr>
+            <tr><td>Inventory slot background (empty/filled)</td><td>UI / Chrome</td><td>18&times;18px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Honeycomb-cell-shaped slot</td></tr>
+            <tr><td>Knowledge Log page texture</td><td>UI / Chrome</td><td>tileable</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Aged paper/journal with ruled lines</td></tr>
+            <tr><td>Map background texture</td><td>UI / Chrome</td><td>~400&times;300px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Parchment interior, wood border, faint grid overlay</td></tr>
+            <tr><td>Dialogue box panel</td><td>UI / Chrome</td><td>~320&times;100px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Wood borders, WAX_CREAM interior, portrait inset area</td></tr>
+            <tr><td>Speech bubble sprite</td><td>UI / Chrome</td><td>~100&times;50px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Wooden frame with triangular tail, honeycomb overlay</td></tr>
+            <tr><td>Toast notification background</td><td>UI / Chrome</td><td>~200&times;40px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Sticky note pinned to frame, torn left edge</td></tr>
+            <tr><td>Interact prompt tag</td><td>UI / Chrome</td><td>~80&times;30px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Wooden tag with punch-hole, Press [E] prompts</td></tr>
+            <tr><td>HUD top bar</td><td>UI / HUD</td><td>viewport width</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Horizontal thick rail, grain lines, amber resin spots</td></tr>
+            <tr><td>HUD bottom bar</td><td>UI / HUD</td><td>viewport width</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Lighter face on top, shadow bottom</td></tr>
+            <tr><td>XP bar texture (fill + background)</td><td>UI / HUD</td><td>tileable</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Honey-amber gradient fill, 5 mastery levels</td></tr>
+            <tr><td>Energy bar texture (fill + background)</td><td>UI / HUD</td><td>tileable</td><td><span class="priority-badge p1">P1</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Green-to-red gradient, critical gameplay feedback</td></tr>
+            <tr><td>Level badge (hexagonal)</td><td>UI / HUD</td><td>32&times;32px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Wood outer ring, amber interior, level number</td></tr>
+            <tr><td>Weather icons (6-8 states)</td><td>UI / HUD</td><td>16&times;16px ea</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Sunny, cloudy, rainy, snowy forecast</td></tr>
+            <tr><td>Button states - normal</td><td>UI / HUD</td><td>~40&times;20px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Honeycomb cell metaphor, CELL_EMPTY color</td></tr>
+            <tr><td>Button states - hover/pressed</td><td>UI / HUD</td><td>~40&times;20px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Hover=HONEY_PALE (filling), Pressed=CELL_HONEY (capped)</td></tr>
+            <tr><td>Season transition overlay - spring</td><td>UI / FX</td><td>1920&times;1080px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Full-screen transition animation</td></tr>
+            <tr><td>Season transition overlay - summer</td><td>UI / FX</td><td>1920&times;1080px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Full-screen transition animation</td></tr>
+            <tr><td>Season transition overlay - fall</td><td>UI / FX</td><td>1920&times;1080px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Full-screen transition animation</td></tr>
+            <tr><td>Season transition overlay - winter</td><td>UI / FX</td><td>1920&times;1080px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Full-screen transition animation</td></tr>
+            <tr><td>County Fairgrounds gate (locked/open)</td><td>World / Building</td><td>~120&times;80px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Wooden arch, colored banners during fair season</td></tr>
+            <tr><td>Fairgrounds interior layout</td><td>World / Building</td><td>scene-level</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Sub-scene accessed through gate, fair content</td></tr>
+            <tr><td>Player house interior</td><td>World / Interior</td><td>scene-level</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Kitchen, bedroom, living areas</td></tr>
+            <tr><td>Cleared timber area (before/after quest)</td><td>World / Environment</td><td>large bg</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Diseased elm section -&gt; cleared with young plantings</td></tr>
+            <tr><td>Pollen substitute icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Winter feed supplement patty</td></tr>
+            <tr><td>Sugar (treatment) icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p3">P3</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Powdered sugar for varroa treatment</td></tr>
+            <tr><td>Wax (processed) icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Candle or block for crafting</td></tr>
+            <tr><td>Foundation (wax sheet) icon</td><td>Items / Inventory</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Textured wax sheet for frames</td></tr>
+            <tr><td>Disease indicator sprites</td><td>Hive / Inspection</td><td>16&times;16px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Visual warnings for AFB, EFB, DWV, etc</td></tr>
+            <tr><td>Queen indicator sprite</td><td>Hive / Inspection</td><td>32&times;32px</td><td><span class="priority-badge p2">P2</span></td><td><span class="status-needed">NEEDED</span></td><td style="font-size:12px;color:var(--text-faint);">Displayed when queen spotted during inspection</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="section-body" style="margin-top:28px;font-size:14px;">
+        <strong style="color:var(--cream);">Upon application, you'll receive the full 90+ page Game Design Document (GDD)</strong>
+        with complete specs, file paths, system dependencies, and gameplay context for every asset listed above.
+        We'll work closely with you to understand the design intent behind each piece.
+        <strong style="color:var(--gold);">There will be zero AI-generated art in the shipped game.</strong>
+        Every placeholder above gets replaced by your original work - that's the whole point of this role.
+        We want real artists making real art for real money.
+      </p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- APPLY -->
+  <section id="apply" class="apply-section fade-in">
+    <div class="apply-inner">
+      <p class="section-eyebrow" style="text-align:center;">Ready to Apply?</p>
+      <h2 class="section-title" style="text-align:center;">Send Us Your Portfolio</h2>
+      <p class="section-body" style="margin: 0 auto 28px; text-align:center;">
+        Fill out the form below with your info and portfolio link, and we'll &#x1F41D; in touch.
+        We respond to every applicant personally.
+      </p>
+
+      <div class="apply-details">
+        <div class="apply-detail">&#x1F3A8; <span>Portfolio required</span></div>
+        <div class="apply-detail">&#x1F4C4; <span>Contract + full GDD provided</span></div>
+        <div class="apply-detail">&#x1F36F; <span>$18K + exclusive 2% bonus (Option A)</span></div>
+      </div>
+
+      <!-- Pixel Artist Application Form (Formspree: mzdkgveo) -->
+      <div class="apply-form">
+        <h3>Pixel Artist Application</h3>
+        <p class="apply-form-sub">We'll review your work and respond within a few days.</p>
+        <form action="https://formspree.io/f/mzdkgveo" method="POST" id="artistForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="portfolio">Portfolio Link</label>
+            <input type="url" id="portfolio" name="portfolio" placeholder="https://your-portfolio.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell us a bit about yourself (optional)</label>
+            <textarea id="message" name="message" placeholder="Your experience with farming sims or top-down pixel art, why Smoke &amp; Honey resonates with you, etc."></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="Pixel Artist Application - Smoke &amp; Honey">
+          <button type="submit">Submit Application</button>
+        </form>
+      </div>
+
+      <div class="apply-or">or email us directly</div>
+
+      <a href="mailto:nathan@5catsgamestudios.com?subject=Pixel Artist Application - Smoke %26 Honey&body=Hi Nathan,%0A%0AHere is a link to my portfolio: [URL]%0A%0AA little about my experience with farming sims / top-down pixel art:%0A%0ALooking forward to hearing more about the project.%0A%0AThanks,"
+         class="apply-email-link">
+        nathan@5catsgamestudios.com
+      </a>
+      <p class="apply-email-note">Include a portfolio link and a few words about your experience</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">Five Cats Studios LLC</span>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="smoke-and-honey.html">Smoke &amp; Honey</a></li>
+        <li><a href="changelog.html">Dev Changelog</a></li>
+        <li><a href="https://github.com/qLu-jML/SmokeAndHoney" target="_blank">GitHub</a></li>
+        <li><a href="https://x.com/fiveCatsStudios" target="_blank">Twitter / X</a></li>
+        <li><a href="mailto:nathan@5catsgamestudios.com">Contact</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">&copy; 2026 Five Cats Studios LLC - Grundy County, Iowa - EIN 41-5191825</p>
+  </footer>
+
+  <script>
+    // Scroll fade-in animations
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.01, rootMargin: '0px 0px 200px 0px' });
+    fadeEls.forEach(el => obs.observe(el));
+
+    // Artist application form (Formspree)
+    const artistForm = document.getElementById('artistForm');
+    if (artistForm) {
+      artistForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = artistForm.querySelector('button[type="submit"]');
+        const origText = btn.textContent;
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        try {
+          const resp = await fetch(artistForm.action, {
+            method: 'POST',
+            body: new FormData(artistForm),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (resp.ok) {
+            artistForm.innerHTML = '<p style="color:#F4CC6E; font-size:17px; text-align:center; padding:24px 0;">Application received! We\'ll <span style="font-size:150%;vertical-align:middle;">&#x1F41D;</span> in touch soon.</p>';
+          } else {
+            btn.textContent = 'Error - Try Again';
+            btn.disabled = false;
+            setTimeout(() => { btn.textContent = origText; }, 3000);
+          }
+        } catch (err) {
+          btn.textContent = 'Error - Try Again';
+          btn.disabled = false;
+          setTimeout(() => { btn.textContent = origText; }, 3000);
+        }
+      });
+    }
+
+    // Mailing list form (Buttondown) - iframe submit (avoids CORS)
+    const updateForm = document.getElementById('updateForm');
+    if (updateForm) {
+      updateForm.addEventListener('submit', function() {
+        const btn = updateForm.querySelector('button[type="submit"]');
+        btn.textContent = 'Subscribing...';
+        btn.disabled = true;
+        setTimeout(function() {
+          updateForm.innerHTML = '<p style="color:#F4CC6E; font-size:17px; text-align:center; padding:16px 0;">You\'re in! Check your email to confirm your subscription.</p>';
+        }, 1500);
+      });
+    }
+  </script>
+
+</body>
+</html>

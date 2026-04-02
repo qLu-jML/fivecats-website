@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Development Plan &mdash; Smoke &amp; Honey</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo_32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --amber-mid:     #C8820C;
+      --amber-light:   #E6A220;
+      --honey-pale:    #F4CC6E;
+      --wax-cream:     #F2E4B2;
+      --wax-white:     #FCF5D7;
+      --bg:            #0B0703;
+      --bg-warm:       #140E06;
+      --text:          #F2E4B2;
+      --text-dim:      rgba(242,228,178,0.62);
+      --text-faint:    rgba(242,228,178,0.32);
+      --border:        rgba(108,64,22,0.35);
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 36px;
+      height: 56px;
+      background: rgba(11,7,3,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-dim);
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-back svg { opacity: 0.55; transition: transform 0.2s; }
+    .nav-back:hover { color: var(--amber-light); }
+    .nav-back:hover svg { transform: translateX(-3px); }
+
+    .nav-sep {
+      width: 1px;
+      height: 18px;
+      background: var(--border);
+    }
+
+    .nav-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--honey-pale);
+    }
+
+    .nav-subtitle {
+      font-size: 12px;
+      color: var(--text-faint);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-phase-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(108,64,22,0.2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 11px;
+      color: var(--amber-light);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .phase-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--amber-light);
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-faint);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--amber-light); }
+
+    /* FRAME WRAPPER */
+    .frame-wrapper {
+      position: fixed;
+      top: 56px;
+      left: 0; right: 0; bottom: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 680px) {
+      nav { padding: 0 16px; }
+      .nav-phase-badge { display: none; }
+      .nav-links { display: none; }
+      .nav-subtitle { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a class="nav-back" href="smoke-and-honey.html">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Smoke &amp; Honey
+      </a>
+      <div class="nav-sep"></div>
+      <div>
+        <div class="nav-title">Development Plan</div>
+        <div class="nav-subtitle">Phases 1&ndash;5 &middot; Active Roadmap</div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-phase-badge">
+        <span class="phase-dot"></span>
+        Phase 3 &mdash; Art Pass &amp; World Building
+      </div>
+      <ul class="nav-links">
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="index.html">Studio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="frame-wrapper">
+    <iframe
+      src="devplan-doc.html"
+      title="Smoke &amp; Honey Development Plan"
+      id="devplanFrame">
+    </iframe>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal — Five Cats Studios</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="images/logo_64.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-deep:    #0F0D1A;
+      --bg-main:    #1A1A2E;
+      --bg-card:    rgba(255,255,255,0.04);
+      --border:     rgba(232,104,63,0.18);
+      --orange:     #E8683F;
+      --gold:       #F5CC5B;
+      --amber:      #E8A83E;
+      --pink:       #D4547A;
+      --cream:      #FCF5D7;
+      --text:       #FCF5D7;
+      --text-dim:   rgba(252,245,215,0.65);
+      --text-faint: rgba(252,245,215,0.35);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg-deep);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== LOCK SCREEN ===== */
+    #lock-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg-deep);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+
+    #lock-screen::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(232,104,63,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .lock-icon {
+      font-size: 56px;
+      margin-bottom: 20px;
+      animation: lockFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes lockFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .lock-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .lock-subtitle {
+      font-size: 0.875rem;
+      color: var(--text-faint);
+      margin-bottom: 36px;
+      letter-spacing: 0.5px;
+    }
+
+    .lock-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      max-width: 340px;
+      padding: 0 24px;
+    }
+
+    .lock-input {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .lock-input:focus {
+      border-color: rgba(232,104,63,0.5);
+      box-shadow: 0 0 0 3px rgba(232,104,63,0.1);
+    }
+
+    .lock-input.shake {
+      animation: shake 0.4s ease;
+      border-color: var(--pink);
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+    }
+
+    .lock-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--orange);
+      color: var(--bg-deep);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.5px;
+    }
+
+    .lock-btn:hover { background: #d95a34; transform: translateY(-1px); }
+    .lock-btn:active { transform: translateY(0); }
+
+    .lock-error {
+      font-size: 0.8rem;
+      color: var(--pink);
+      height: 18px;
+      transition: opacity 0.2s;
+      opacity: 0;
+    }
+
+    .lock-error.visible { opacity: 1; }
+
+    .lock-attempts {
+      font-size: 0.75rem;
+      color: var(--text-faint);
+      margin-top: 4px;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      background: rgba(15,13,26,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      border: 1px solid rgba(232,104,63,0.3);
+    }
+
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .nav-back {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--gold); }
+
+    /* ===== MAIN CONTENT ===== */
+    #main-content {
+      display: none;
+      padding: 120px 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    #main-content.visible { display: block; }
+
+    .page-header {
+      margin-bottom: 56px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--cream);
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .page-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-faint);
+    }
+
+    /* ===== SECTION HEADERS ===== */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      margin-top: 48px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .section-count {
+      font-size: 12px;
+      color: var(--text-faint);
+    }
+
+    /* ===== DOCUMENT CARDS ===== */
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .doc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .doc-card:hover {
+      border-color: rgba(232,104,63,0.45);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+    }
+
+    .doc-preview {
+      height: 160px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .doc-preview-icon {
+      font-size: 48px;
+      opacity: 0.6;
+    }
+
+    .doc-preview-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(232,104,63,0.06) 0%, rgba(245,204,91,0.04) 100%);
+    }
+
+    .doc-preview.pdf-type { background: rgba(244,67,54,0.05); }
+    .doc-preview.html-type { background: rgba(33,150,243,0.05); }
+
+    .doc-type-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .badge-pdf {
+      background: rgba(244,67,54,0.2);
+      color: #ff6b6b;
+      border: 1px solid rgba(244,67,54,0.3);
+    }
+
+    .badge-html {
+      background: rgba(33,150,243,0.2);
+      color: #64b5f6;
+      border: 1px solid rgba(33,150,243,0.3);
+    }
+
+    .doc-body {
+      padding: 18px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .doc-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.35;
+    }
+
+    .doc-meta {
+      font-size: 0.78rem;
+      color: var(--text-faint);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .doc-date { color: var(--amber); }
+    .doc-desc {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    .doc-open-btn {
+      margin-top: 12px;
+      padding: 8px 14px;
+      background: rgba(232,104,63,0.12);
+      border: 1px solid rgba(232,104,63,0.25);
+      border-radius: 6px;
+      color: var(--orange);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      transition: background 0.2s, border-color 0.2s;
+      align-self: flex-start;
+    }
+
+    .doc-card:hover .doc-open-btn {
+      background: rgba(232,104,63,0.22);
+      border-color: rgba(232,104,63,0.5);
+    }
+
+    /* ===== ADD REPORT BUTTON ===== */
+    .add-report-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px dashed rgba(232,104,63,0.4);
+      border-radius: 8px;
+      color: var(--text-faint);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: default;
+      margin-top: 32px;
+    }
+
+    /* ===== INSTRUCTIONS ===== */
+    .instructions {
+      margin-top: 56px;
+      padding: 28px 32px;
+      background: rgba(245,204,91,0.04);
+      border: 1px solid rgba(245,204,91,0.12);
+      border-radius: 12px;
+    }
+
+    .instructions h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .instructions ol {
+      padding-left: 20px;
+      color: var(--text-dim);
+      font-size: 0.875rem;
+      line-height: 2;
+    }
+
+    .instructions code {
+      background: rgba(255,255,255,0.08);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      color: var(--amber);
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy { font-size: 12px; color: var(--text-faint); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      #main-content { padding: 100px 20px 60px; }
+      .page-title { font-size: 2rem; }
+      .docs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== LOCK SCREEN ===== -->
+  <div id="lock-screen">
+    <div class="lock-icon">🔒</div>
+    <h1 class="lock-title">Private Area</h1>
+    <p class="lock-subtitle">Five Cats Studios — Personal</p>
+    <div class="lock-form">
+      <input
+        class="lock-input"
+        id="pw-input"
+        type="password"
+        placeholder="Enter password"
+        autocomplete="off"
+        autofocus
+      >
+      <p class="lock-error" id="lock-error">Incorrect password. Try again.</p>
+      <button class="lock-btn" id="unlock-btn" onclick="tryUnlock()">Unlock</button>
+      <p class="lock-attempts" id="attempt-msg"></p>
+    </div>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo_64.png" alt="Five Cats Studios">
+      <span class="nav-logo-text">Five Cats Studios</span>
+    </a>
+    <a href="index.html" class="nav-back">← Back to Studio</a>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div id="main-content">
+
+    <div class="page-header">
+      <p class="page-eyebrow">Private — Nathan Barkley</p>
+      <h1 class="page-title">Health Reports</h1>
+      <p class="page-subtitle">Personal health project documents. Accessible from anywhere, secured with a password.</p>
+    </div>
+
+    <!-- Reports Grid -->
+    <div class="section-header">
+      <span class="section-label">Reports &amp; Documents</span>
+      <span class="section-count" id="doc-count">0 documents</span>
+    </div>
+
+    <div class="docs-grid" id="docs-grid">
+      <!-- Cards injected by JS from DOCUMENTS array below -->
+    </div>
+
+    <div style="margin-top: 32px;">
+      <span class="add-report-btn">📎 To add a report: upload the file to Firebase hosting and add an entry to the DOCUMENTS array in the page source.</span>
+    </div>
+
+    <!-- How to add reports -->
+    <div class="instructions">
+      <h3>📋 How to Add a New Report</h3>
+      <ol>
+        <li>Upload your HTML or PDF file to Firebase (e.g. <code>reports/my-report.html</code>)</li>
+        <li>Open <code>personal.html</code> in a text editor</li>
+        <li>Find the <code>DOCUMENTS</code> array near the bottom of the <code>&lt;script&gt;</code> tag</li>
+        <li>Add a new entry following the same format as the examples</li>
+        <li>Run <code>firebase deploy</code> to push the updated page</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 Five Cats Studios LLC. All rights reserved.</p>
+      <a href="index.html" style="font-size:12px; color:var(--text-faint); text-decoration:none;">← Back to fivecatstudios.web.app</a>
+    </div>
+  </footer>
+
+  <script>
+    // =====================================================================
+    // PASSWORD VERIFICATION
+    // Uses PBKDF2-SHA256 (200,000 iterations) — same algo as server-side
+    // Salt: "fivecats2026"   Hash below is for "MyPasswordSoCool"
+    // To change password: run the gen_hash.py script and replace STORED_HASH
+    // =====================================================================
+    const STORED_HASH = "1966447dbf8d46b1bb24fa7530768a803c1ba1b6087742e191d1af5e897c29bc";
+    const SALT        = "fivecats2026";
+    const ITERATIONS  = 200000;
+
+    let attempts = 0;
+    const MAX_ATTEMPTS = 8;
+    let locked = false;
+    let lockTimer = null;
+
+    async function pbkdf2Hash(password, salt, iterations) {
+      const enc = new TextEncoder();
+      const keyMaterial = await crypto.subtle.importKey(
+        "raw", enc.encode(password), "PBKDF2", false, ["deriveBits"]
+      );
+      const bits = await crypto.subtle.deriveBits(
+        { name: "PBKDF2", salt: enc.encode(salt), iterations, hash: "SHA-256" },
+        keyMaterial, 256
+      );
+      return Array.from(new Uint8Array(bits)).map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    async function tryUnlock() {
+      if (locked) return;
+
+      const input = document.getElementById("pw-input");
+      const error = document.getElementById("lock-error");
+      const btn   = document.getElementById("unlock-btn");
+      const msg   = document.getElementById("attempt-msg");
+
+      const pw = input.value;
+      if (!pw) return;
+
+      btn.textContent = "Checking...";
+      btn.disabled = true;
+
+      try {
+        const hash = await pbkdf2Hash(pw, SALT, ITERATIONS);
+
+        if (hash === STORED_HASH) {
+          // Correct — unlock
+          document.getElementById("lock-screen").style.display = "none";
+          document.getElementById("main-content").classList.add("visible");
+          sessionStorage.setItem("fcs_unlocked", "1");
+        } else {
+          // Wrong password
+          attempts++;
+          input.value = "";
+          input.classList.add("shake");
+          setTimeout(() => input.classList.remove("shake"), 500);
+          error.classList.add("visible");
+
+          if (attempts >= MAX_ATTEMPTS) {
+            locked = true;
+            let secs = 30;
+            btn.disabled = true;
+            const countdown = setInterval(() => {
+              msg.textContent = "Too many attempts. Wait " + secs + "s...";
+              secs--;
+              if (secs < 0) {
+                clearInterval(countdown);
+                locked = false;
+                attempts = 0;
+                btn.disabled = false;
+                btn.textContent = "Unlock";
+                msg.textContent = "";
+                error.classList.remove("visible");
+              }
+            }, 1000);
+          } else {
+            btn.disabled = false;
+            btn.textContent = "Unlock";
+            if (attempts > 3) {
+              msg.textContent = (MAX_ATTEMPTS - attempts) + " attempts remaining";
+            }
+          }
+        }
+      } catch (e) {
+        error.textContent = "Error during verification. Try again.";
+        error.classList.add("visible");
+        btn.disabled = false;
+        btn.textContent = "Unlock";
+      }
+
+      input.focus();
+    }
+
+    // Allow Enter key to submit
+    document.getElementById("pw-input").addEventListener("keydown", e => {
+      if (e.key === "Enter") tryUnlock();
+    });
+
+    // Persist unlock for the session (so page refresh doesn't re-lock)
+    if (sessionStorage.getItem("fcs_unlocked") === "1") {
+      document.getElementById("lock-screen").style.display = "none";
+      document.getElementById("main-content").classList.add("visible");
+    }
+
+    // =====================================================================
+    // DOCUMENTS ARRAY
+    // Add new reports here. Fields:
+    //   title    — display name
+    //   date     — e.g. "April 1, 2026"
+    //   desc     — short description
+    //   type     — "html" or "pdf"
+    //   url      — path relative to site root, e.g. "reports/my-report.html"
+    //   icon     — any emoji that fits the report
+    // =====================================================================
+    const DOCUMENTS = [
+      // Example entries — replace or remove these:
+      {
+        title: "Example: Monthly Health Summary — March 2026",
+        date: "March 31, 2026",
+        desc: "Sample entry. Replace this with your real report by editing the DOCUMENTS array.",
+        type: "html",
+        url: "#",
+        icon: "📊"
+      },
+      {
+        title: "Example: Lab Results — Q1 2026",
+        date: "March 15, 2026",
+        desc: "Sample PDF entry. Upload your file and update the url field.",
+        type: "pdf",
+        url: "#",
+        icon: "🧪"
+      }
+    ];
+
+    // =====================================================================
+    // RENDER DOCUMENT CARDS
+    // =====================================================================
+    function renderDocs() {
+      const grid  = document.getElementById("docs-grid");
+      const count = document.getElementById("doc-count");
+      count.textContent = DOCUMENTS.length + " document" + (DOCUMENTS.length !== 1 ? "s" : "");
+
+      grid.innerHTML = DOCUMENTS.map((doc, i) => `
+        <a
+          class="doc-card"
+          href="${doc.url}"
+          target="${doc.url === '#' ? '_self' : '_blank'}"
+          rel="noopener noreferrer"
+          title="Open ${doc.title}"
+        >
+          <div class="doc-preview ${doc.type === 'pdf' ? 'pdf-type' : 'html-type'}">
+            <div class="doc-preview-bg"></div>
+            <span class="doc-preview-icon">${doc.icon}</span>
+            <span class="doc-type-badge ${doc.type === 'pdf' ? 'badge-pdf' : 'badge-html'}">${doc.type.toUpperCase()}</span>
+          </div>
+          <div class="doc-body">
+            <div class="doc-title">${doc.title}</div>
+            <div class="doc-meta">
+              <span class="doc-date">${doc.date}</span>
+            </div>
+            <div class="doc-desc">${doc.desc}</div>
+            <div class="doc-open-btn">Open ${doc.type.toUpperCase()} →</div>
+          </div>
+        </a>
+      `).join("");
+    }
+
+    renderDocs();
+  </script>
+
+</body>
+</html>
