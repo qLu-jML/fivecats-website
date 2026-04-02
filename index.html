@@ -336,29 +336,29 @@ footer { border-top: 1px solid var(--border); padding: 48px 24px; }
         <div class="devlog-grid">
             <div class="devlog-today">
                 <div class="devlog-date-badge">
-                    <span class="devlog-date-label">April 2, 2026</span>
-                    <span class="devlog-today-pill">TODAY</span>
+                    <span class="devlog-date-label">April 1, 2026</span>
+                    <span class="devlog-today-pill">LATEST</span>
                 </div>
                 <div class="devlog-entries">
                     <div class="devlog-entry">
-                        <span class="devlog-tag devlog-tag-redesign">Overhaul</span>
-                        <div class="devlog-entry-text"><strong>Full codebase documentation and cleanup pass</strong> &mdash; Ran godot-forge analysis on all 81 scripts. Added doc-comments to 300+ functions, explicit type annotations throughout, signal disconnects in 38+ scripts, and verified ASCII compliance across the entire codebase.</div>
+                        <span class="devlog-tag devlog-tag-fix">Fix</span>
+                        <div class="devlog-entry-text"><strong>HUD/toolbar persistence fixed across all scenes</strong> &mdash; Toolbar was non-functional on County Road and disappeared after minigames. Converted HUD to an autoload singleton at layer 10 that persists across all scene transitions, replacing fragile per-scene CanvasLayer nodes.</div>
                     </div>
                     <div class="devlog-entry">
-                        <span class="devlog-tag devlog-tag-redesign">Redesign</span>
-                        <div class="devlog-entry-text"><strong>Workbench UI rebuilt as clickable interface</strong> &mdash; Replaced keyboard-only crafting menu with mouse-driven clickable buttons. Each recipe has a Craft button that auto-disables when requirements aren't met. Improved error messages show exact amounts needed.</div>
-                    </div>
-                    <div class="devlog-entry">
-                        <span class="devlog-tag devlog-tag-redesign">Redesign</span>
-                        <div class="devlog-entry-text"><strong>Starting inventory simplified to essentials</strong> &mdash; Player now starts with only axe, hammer, and 40 logs. All beekeeping equipment must be crafted or earned from scratch, creating a clearer early-game progression loop.</div>
+                        <span class="devlog-tag devlog-tag-feature">Feature</span>
+                        <div class="devlog-entry-text"><strong>30 harvestable trees added to County Road</strong> &mdash; Eight Iowa species (Oak, Maple, Ash, Walnut, Elm, Hickory, Pine, Birch) placed as editor-draggable scene nodes with pixel art textures. Script is now @tool for live editor preview.</div>
                     </div>
                     <div class="devlog-entry">
                         <span class="devlog-tag devlog-tag-fix">Fix</span>
-                        <div class="devlog-entry-text"><strong>HUD converted to autoload singleton</strong> &mdash; Fixed HUD/toolbar disappearing after scene transitions and minigames. HUD is now a persistent autoload at layer 10, surviving all scene changes instead of being destroyed with each scene.</div>
+                        <div class="devlog-entry-text"><strong>Scene transition overhaul -- 5 bugs squashed</strong> &mdash; Fixed exit bounce-back loops, player spawning offscreen, camera limits not adapting per-scene, boundary colliders triggering instant scene skips, and spawn positioning ignoring source exit.</div>
+                    </div>
+                    <div class="devlog-entry">
+                        <span class="devlog-tag devlog-tag-redesign">Redesign</span>
+                        <div class="devlog-entry-text"><strong>County Road stripped to editor-only layout</strong> &mdash; Removed all dynamic spawning (120 trees, 60 bushes, weather, mailbox). Exits are now physical draggable ZoneExit nodes. What you see in the editor is what you get at runtime.</div>
                     </div>
                     <div class="devlog-entry">
                         <span class="devlog-tag devlog-tag-redesign">Overhaul</span>
-                        <div class="devlog-entry-text"><strong>Pause menu UI rebuilt from scratch</strong> &mdash; Removed texture overlay causing visual artifacts, compacted panel from 160x156 to 120x100, moved volume controls into Settings sub-panel. Clean 4-button layout with custom pixel-perfect controls.</div>
+                        <div class="devlog-entry-text"><strong>Pause menu UI rebuilt with custom pixel-perfect controls</strong> &mdash; Replaced Godot Button nodes with hand-built Control+ColorRect+Label composites for 100% pixel control. Removed texture overlay artifacts, compacted panel, moved volume to Settings sub-panel.</div>
                     </div>
                 </div>
                 <a href="https://fivecatstudios.web.app/changelog.html" class="devlog-full-link">
