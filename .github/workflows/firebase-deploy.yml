@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Firebase CLI
-        run: npm install -g firebase-tools
+      - name: Install Firebase CLI v13
+        run: npm install -g firebase-tools@13
 
       - name: Deploy to Firebase Hosting
         run: firebase deploy --only hosting --project five-cats-studios-3d236 --non-interactive
