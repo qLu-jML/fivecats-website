@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Conversation - Nathan</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo_32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-deep:       #0F0D1A;
+      --bg-main:       #1A1A2E;
+      --bg-card:       rgba(255,255,255,0.04);
+      --border:        rgba(232,104,63,0.18);
+      --orange:        #E8683F;
+      --gold:          #F5CC5B;
+      --amber:         #E8A83E;
+      --pink:          #D4547A;
+      --green:         #4A7A3D;
+      --cream:         #FCF5D7;
+      --text:          #FCF5D7;
+      --text-dim:      rgba(252,245,215,0.65);
+      --text-faint:    rgba(252,245,215,0.35);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg-deep);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* ===== LOCK SCREEN ===== */
+    .lock-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .lock-screen.unlocked {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .lock-icon { font-size: 2.5rem; margin-bottom: 8px; opacity: 0.7; }
+    .lock-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+    .lock-form { display: flex; gap: 12px; align-items: center; }
+    .lock-input {
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      outline: none;
+      width: 260px;
+      transition: border-color 0.3s;
+    }
+    .lock-input:focus { border-color: var(--gold); }
+    .lock-input::placeholder { color: var(--text-faint); }
+    .lock-btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      background: var(--orange);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .lock-btn:hover { background: #d05a35; transform: translateY(-1px); }
+    .lock-error { color: var(--pink); font-size: 0.85rem; min-height: 1.2em; }
+
+    /* ===== CONTENT ===== */
+    .content { display: none; }
+    .content.visible {
+      display: block;
+      animation: fadeUp 0.8s ease;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-wrapper {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 60px 24px 120px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .page-header .subtitle {
+      font-size: 1rem;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    section { margin-bottom: 48px; }
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      color: var(--amber);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(232,104,63,0.1);
+    }
+    section p {
+      margin-bottom: 16px;
+      color: var(--text-dim);
+      font-size: 0.98rem;
+    }
+    section p.emphasis {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 24px;
+      font-size: 0.92rem;
+    }
+    .spec-table th {
+      text-align: left;
+      padding: 10px 16px;
+      background: rgba(245,204,91,0.08);
+      color: var(--gold);
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+    }
+    .spec-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--text-dim);
+    }
+    .spec-table .total-row td {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1rem;
+      border-top: 2px solid var(--border);
+      padding-top: 14px;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin: 24px 0;
+    }
+    .option-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color 0.3s;
+    }
+    .option-card:hover { border-color: var(--gold); }
+    .option-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .option-card .price-tag {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .option-card p {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+    .option-card .highlight {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .grant-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+    .grant-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: rgba(74,122,61,0.12);
+      color: var(--green);
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+    }
+    .grant-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--text-dim);
+    }
+
+    .callout {
+      background: rgba(245,204,91,0.06);
+      border-left: 3px solid var(--gold);
+      padding: 24px 28px;
+      border-radius: 0 10px 10px 0;
+      margin: 28px 0;
+    }
+    .callout p {
+      color: var(--text);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .callout p + p { margin-top: 12px; }
+    .callout-green {
+      background: rgba(74,122,61,0.08);
+      border-left-color: var(--green);
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 48px 0;
+    }
+
+    .page-footer {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      color: var(--text-faint);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 600px) {
+      .page-wrapper { padding: 40px 16px 80px; }
+      .page-header h1 { font-size: 1.7rem; }
+      section h2 { font-size: 1.2rem; }
+      .lock-form { flex-direction: column; }
+      .lock-input { width: 220px; }
+      .spec-table, .grant-table { font-size: 0.82rem; }
+      .spec-table th, .spec-table td,
+      .grant-table th, .grant-table td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOCK SCREEN -->
+  <div class="lock-screen" id="lockScreen">
+    <div class="lock-icon">&#128274;</div>
+    <div class="lock-title">This page is private</div>
+    <div class="lock-form">
+      <input type="password" class="lock-input" id="lockInput" placeholder="Enter password" autocomplete="off">
+      <button class="lock-btn" onclick="tryUnlock()">Unlock</button>
+    </div>
+    <div class="lock-error" id="lockError"></div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="content" id="pageContent">
+    <div class="page-wrapper">
+
+      <header class="page-header">
+        <h1>Mom &amp; Dad, I Have Something Honest to Ask You</h1>
+        <div class="subtitle">From Nathan, with love and zero pretense &mdash; April 2026</div>
+      </header>
+
+      <!-- THE HONEST TRUTH -->
+      <section>
+        <h2>The Straight Truth</h2>
+        <p class="emphasis">
+          I'm not going to bury the ask at the bottom or dress this up as something it isn't. You raised me to be honest, so here it is.
+        </p>
+        <p>
+          As you know, I recently received a palliative care referral. That word changes the math on a lot of things. I'm still here, I'm still building my game, I'm still fighting &mdash; but I'm also being realistic about what my road looks like.
+        </p>
+        <p>
+          I have a bucket list item. It's a Tesla Cybertruck. I've wanted one since the day they were announced. And I'm asking you &mdash; honestly and directly &mdash; <strong>will you buy me one as a gift?</strong>
+        </p>
+        <p>
+          That's the ask. Not a co-sign. Not a loan. A gift, from my parents, to their son, during a time when the things that bring joy matter more than they ever have.
+        </p>
+        <p>
+          I know this is a big thing to ask. I wouldn't ask if the circumstances were different. But they aren't, and I'd rather have this honest conversation with you than wonder what if.
+        </p>
+      </section>
+
+      <!-- WHY THIS MATTERS -->
+      <section>
+        <h2>Why This Matters</h2>
+        <p>
+          I know it's a truck. I know it's expensive. But this isn't really about a vehicle &mdash; it's about getting to experience something I've genuinely dreamed about while I still can. Driving it around Waterloo in October. Pulling up to the house with it. The look on people's faces. The feeling of the future sitting in my driveway while I'm still here to enjoy it.
+        </p>
+        <p>
+          And then there's the part that matters just as much: <strong>Kari</strong>.
+        </p>
+        <p>
+          After I'm gone, this truck is hers. She's a hospice nurse driving Iowa roads in every kind of weather &mdash; ice, snow, gravel, floods. The Cybertruck is all-wheel drive, stainless steel, and needs almost zero maintenance. No oil changes, no transmission, no gas station stops in a blizzard. Plug it in at home and go.
+        </p>
+        <p>
+          It would be my way of making sure she has something dependable when I can't be there to help anymore. Something that says: <em>I was still thinking about you.</em>
+        </p>
+      </section>
+
+      <!-- THE VEHICLE -->
+      <section>
+        <h2>Exactly What I'm Asking For</h2>
+        <p>No surprises, no hidden costs. Here's the full picture:</p>
+
+        <table class="spec-table">
+          <thead>
+            <tr><th>Item</th><th style="text-align:right;">Cost</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026 Tesla Cybertruck &mdash; Premium All-Wheel Drive</td>
+              <td style="text-align:right;">$79,990</td>
+            </tr>
+            <tr>
+              <td>Full Self-Driving (FSD) &mdash; monthly subscription</td>
+              <td style="text-align:right;">$99/mo</td>
+            </tr>
+            <tr>
+              <td>20" Core Wheels (included on Premium)</td>
+              <td style="text-align:right;">Included</td>
+            </tr>
+            <tr>
+              <td>Tactical Grey Decor (included on Premium)</td>
+              <td style="text-align:right;">Included</td>
+            </tr>
+            <tr>
+              <td>Universal Wall Connector (Home Charger)</td>
+              <td style="text-align:right;">$600</td>
+            </tr>
+            <tr>
+              <td>Mobile Connector</td>
+              <td style="text-align:right;">$300</td>
+            </tr>
+            <tr>
+              <td>All-Weather Interior Liners</td>
+              <td style="text-align:right;">~$300</td>
+            </tr>
+            <tr>
+              <td>Destination &amp; Doc Fees (est.)</td>
+              <td style="text-align:right;">~$2,245</td>
+            </tr>
+            <tr class="total-row">
+              <td>Estimated Total (one-time purchase)</td>
+              <td style="text-align:right;">~$83,435</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          The Premium AWD includes adaptive air suspension, 11,000 lb towing, powered tonneau bed cover, 15-speaker audio, heated &amp; ventilated seats, the rear display, and 325 miles of range. FSD is $99/month and totally optional &mdash; it can be turned on or off anytime.
+        </p>
+      </section>
+
+      <!-- HOW TO DO IT -->
+      <section>
+        <h2>Three Ways This Could Work</h2>
+        <p>I want to make this as flexible as possible. Pick whichever feels right:</p>
+
+        <div class="options-grid">
+
+          <div class="option-card">
+            <h3>Option 1: Purchase</h3>
+            <div class="price-tag">~$83,435 one-time</div>
+            <p>Buy it outright. It's mine, and when I'm gone, it's Kari's &mdash; free and clear. No monthly payments, no strings attached. The simplest path.</p>
+          </div>
+
+          <div class="option-card">
+            <h3>Option 2: Finance</h3>
+            <div class="price-tag">~$1,200 - $1,500/mo</div>
+            <p>Put a down payment and finance the rest. After I pass, Kari can continue payments, refinance, or sell it and pay off the balance. Cybertrucks hold strong resale value.</p>
+          </div>
+
+          <div class="option-card">
+            <h3>Option 3: Lease</h3>
+            <div class="price-tag">~$850 - $1,100/mo</div>
+            <p>A 36-month lease keeps the commitment shorter and the cost lower. <span class="highlight">This is the most flexible and lowest-risk option.</span></p>
+            <p>After I'm gone, you have two clean choices: <strong>return the truck to Tesla and walk away</strong> &mdash; lease over, done, zero remaining obligation. Or, if Kari wants it, she can keep driving it or you can let her take over the lease. Completely your call, zero pressure either way.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- BUSINESS & PAYBACK -->
+      <section>
+        <h2>My Business &amp; My Payback Commitment</h2>
+        <p>
+          I want to be clear: I'm asking for this as a gift, not disguising it as an investment. But I also want you to know I'm not idle &mdash; I'm building something real, and if it generates money, I intend to pay you back.
+        </p>
+        <p>
+          <strong>Five Cats Studios</strong> is my indie game company, developing <strong>Smoke &amp; Honey</strong>, a cozy beekeeping sim in Godot 4. Core systems are complete. All 8 NPCs are designed and approved. The art pass is underway. Target: alpha by Q4 2026, full launch by late 2027 on Steam.
+        </p>
+        <p>
+          I have a Kickstarter campaign planned around a $30,000 goal with six reward tiers. The business plan, campaign mockups, and LLC formation documents are all built and ready.
+        </p>
+
+        <div class="callout callout-green">
+          <p><strong>My commitment:</strong> If I receive grant funding or meaningful game revenue, I will put that money toward paying you back &mdash; partially or in full. That's a real promise, not a pitch.</p>
+        </div>
+
+        <p>Grants I'm actively pursuing:</p>
+
+        <table class="grant-table">
+          <thead>
+            <tr><th>Grant</th><th>Amount</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Iowa Arts Council Project Grant</td><td>Up to $10,000</td><td>Preparing</td></tr>
+            <tr><td>Iowa Economic Development (IEDA)</td><td>Varies</td><td>Researching</td></tr>
+            <tr><td>Epic MegaGrants</td><td>$5K - $500K</td><td>In progress</td></tr>
+            <tr><td>Indie Fund</td><td>$20K - $150K</td><td>Post-alpha</td></tr>
+            <tr><td>NEA Arts in Digital Media</td><td>Up to $25,000</td><td>Preparing</td></tr>
+          </tbody>
+        </table>
+
+        <p>
+          Year 1 revenue projections range from $8K (conservative) to $125K (optimistic), with a moderate estimate around $35K. Even partial success with grants or the Kickstarter would let me start paying you back.
+        </p>
+      </section>
+
+      <!-- AFTER I'M GONE -->
+      <section>
+        <h2>What Happens After</h2>
+        <p>I've thought about this carefully. I don't want anyone left holding a bag.</p>
+
+        <div class="callout">
+          <p><strong>If purchased outright:</strong> Kari inherits a fully paid-off truck. No payments, no obligations. She drives it or sells it &mdash; her choice.</p>
+          <p><strong>If financed:</strong> The truck can be sold to cover the remaining balance, or Kari can continue or refinance payments if she wants to keep it.</p>
+          <p><strong>If leased:</strong> You return the truck to Tesla. Lease over. Done. No remaining cost. Or let Kari keep it if she wants. Either way, you walk away clean.</p>
+        </div>
+
+        <p>
+          Kari drives Iowa back roads at all hours, in every season, caring for people at the end of their lives. She deserves a vehicle that won't fail her on a gravel road at 11pm in January after a 14-hour shift. The Cybertruck is that vehicle.
+        </p>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- THE CLOSE -->
+      <section>
+        <h2>That's the Whole Ask</h2>
+        <p class="emphasis">
+          I'm not trying to be clever about this. I'm your son. I'm sick. And I want to drive a Cybertruck while I still can. I'm asking you to help me do that.
+        </p>
+        <p>
+          If the answer is yes &mdash; in any form, any of the three options &mdash; it would mean the world to me. If the answer is no, or not right now, or "let's talk about it," that's completely okay too. I love you regardless, and I know this is a big ask.
+        </p>
+        <p>
+          Thank you for reading this. Thank you for everything you've always done for me.
+        </p>
+        <p style="margin-top: 32px; color: var(--text); font-family: 'Playfair Display', serif; font-size: 1.15rem;">
+          Love,<br>Nathan
+        </p>
+      </section>
+
+      <footer class="page-footer">
+        <p>Five Cats Studios &mdash; Bones, Tesla, Oi, Baron &amp; Odin</p>
+      </footer>
+
+    </div>
+  </div>
+
+  <script>
+    // PBKDF2-SHA256 password hashing
+    const ITERATIONS = 200000;
+    const SALT = "fivecats-pitch-2026";
+    let failCount = 0;
+    let lockedUntil = 0;
+
+    async function hashPassword(pw) {
+      const enc = new TextEncoder();
+      const keyMaterial = await crypto.subtle.importKey(
+        "raw", enc.encode(pw), "PBKDF2", false, ["deriveBits"]
+      );
+      const bits = await crypto.subtle.deriveBits(
+        { name: "PBKDF2", salt: enc.encode(SALT), iterations: ITERATIONS, hash: "SHA-256" },
+        keyMaterial, 256
+      );
+      return Array.from(new Uint8Array(bits)).map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    // Will be replaced with actual hash
+    const HASH_TARGET = "7e129525bebfde04a7c95ad44ae1501946c7ddc57c1f9b041d96b6ff01fa28d7";
+
+    async function tryUnlock() {
+      const now = Date.now();
+      if (now < lockedUntil) {
+        const secs = Math.ceil((lockedUntil - now) / 1000);
+        document.getElementById("lockError").textContent = "Too many attempts. Wait " + secs + "s.";
+        return;
+      }
+      const pw = document.getElementById("lockInput").value;
+      if (!pw) return;
+      const hash = await hashPassword(pw);
+      if (hash === HASH_TARGET) {
+        document.getElementById("lockScreen").classList.add("unlocked");
+        document.getElementById("pageContent").classList.add("visible");
+        sessionStorage.setItem("pitch_unlocked", "1");
+      } else {
+        failCount++;
+        if (failCount >= 5) {
+          lockedUntil = Date.now() + 30000;
+          document.getElementById("lockError").textContent = "Too many attempts. Locked for 30s.";
+        } else {
+          document.getElementById("lockError").textContent = "Incorrect password.";
+        }
+        document.getElementById("lockInput").value = "";
+      }
+    }
+
+    document.getElementById("lockInput").addEventListener("keydown", function(e) {
+      if (e.key === "Enter") tryUnlock();
+    });
+
+    if (sessionStorage.getItem("pitch_unlocked") === "1") {
+      document.getElementById("lockScreen").classList.add("unlocked");
+      document.getElementById("pageContent").classList.add("visible");
+    }
+  </script>
+
+</body>
+</html>

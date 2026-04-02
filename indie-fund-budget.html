@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Five Cats Studios - Indie Fund Budget Overview</title>
+  <style>
+    :root {
+      --amber-light: #E8A020;
+      --amber-mid:   #C87010;
+      --honey-pale:  #F4CC6E;
+      --wax-white:   #FDF6E3;
+      --ink:         #2C1A0A;
+      --muted:       #7A5C3A;
+      --section-bg:  #FFF8EC;
+      --border:      #D4A050;
+      --green:       #27AE60;
+      --green-bg:    #EAF4EA;
+      --green-border:#5A9E5A;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--wax-white);
+      color: var(--ink);
+      line-height: 1.7;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* --- Header --- */
+    .title-block {
+      text-align: center;
+      padding: 2rem 0 1.5rem;
+      border-bottom: 3px solid var(--amber-light);
+      margin-bottom: 2rem;
+    }
+    .title-block h1 {
+      font-size: 2.2rem;
+      color: var(--amber-mid);
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.05em;
+    }
+    .title-block .subtitle {
+      font-size: 1.3rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 0.25rem;
+    }
+    .title-block .game-title {
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .cats-divider {
+      font-size: 1.4rem;
+      letter-spacing: 0.4rem;
+      color: var(--amber-light);
+      margin: 0.5rem 0;
+    }
+    .title-block .date {
+      font-size: 0.85rem;
+      color: #888;
+      margin-top: 0.5rem;
+    }
+
+    /* --- Sections --- */
+    h2 {
+      font-size: 1.5rem;
+      color: var(--amber-mid);
+      margin: 2.5rem 0 0.75rem;
+      padding-left: 0.5rem;
+      border-left: 4px solid var(--amber-light);
+    }
+    h3 {
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin: 1.5rem 0 0.5rem;
+    }
+    p {
+      margin-bottom: 0.9rem;
+      font-size: 0.97rem;
+    }
+
+    /* --- Budget Table --- */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.92rem;
+    }
+    th {
+      background: var(--amber-mid);
+      color: #FFF;
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+    }
+    td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+    tr:nth-child(even) td { background: var(--section-bg); }
+    tr:hover td { background: var(--honey-pale); transition: background 0.2s; }
+    .total-row td {
+      font-weight: bold;
+      background: var(--section-bg);
+      border-top: 2px solid var(--amber-mid);
+      font-size: 1rem;
+    }
+    .total-row:hover td { background: var(--honey-pale); }
+    td.amount, th.amount { text-align: right; font-family: 'Courier New', monospace; }
+
+    /* --- Cards --- */
+    .card {
+      background: var(--section-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      color: var(--amber-mid);
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--honey-pale);
+    }
+
+    /* --- Timeline --- */
+    .timeline {
+      position: relative;
+      margin: 1.5rem 0 2rem 1.5rem;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--amber-light);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.85rem;
+      top: 0.35rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--amber-light);
+      border: 2px solid var(--wax-white);
+    }
+    .timeline-item .phase {
+      font-weight: bold;
+      color: var(--amber-mid);
+      font-size: 0.95rem;
+    }
+    .timeline-item .detail {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+    .timeline-item .payment {
+      display: inline-block;
+      margin-top: 0.3rem;
+      background: var(--green-bg);
+      color: var(--green);
+      border: 1px solid var(--green-border);
+      padding: 0.15rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+    }
+
+    /* --- Info grid --- */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 1.5rem;
+      margin: 0.75rem 0 1rem;
+      font-size: 0.95rem;
+    }
+    .info-grid .label {
+      font-weight: bold;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .info-grid .value { margin-bottom: 0.4rem; }
+
+    /* --- Footer --- */
+    .footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 2px solid var(--border);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .footer a { color: var(--amber-mid); text-decoration: none; border-bottom: 1px dotted var(--amber-light); }
+    .footer a:hover { color: var(--amber-light); border-bottom-style: solid; }
+
+    a { color: var(--amber-mid); text-decoration: none; border-bottom: 1px dotted var(--amber-light); }
+    a:hover { color: var(--amber-light); border-bottom-style: solid; }
+  </style>
+</head>
+<body>
+
+  <div class="title-block">
+    <h1>Five Cats Studios</h1>
+    <div class="cats-divider">&#x1f43e; &#x1f43e; &#x1f43e; &#x1f43e; &#x1f43e;</div>
+    <div class="subtitle">Indie Fund Budget Overview</div>
+    <div class="game-title">Smoke &amp; Honey -- Beekeeping Farm Sim</div>
+    <div class="date">Prepared April 2026</div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <h2>Funding Request</h2>
+  <div class="card">
+    <h3>At a Glance</h3>
+    <div class="info-grid">
+      <div class="label">Total Ask</div>
+      <div class="value">$18,000</div>
+      <div class="label">Studio</div>
+      <div class="value">Five Cats Studios LLC (Iowa)</div>
+      <div class="label">Project</div>
+      <div class="value">Smoke &amp; Honey</div>
+      <div class="label">Engine</div>
+      <div class="value">Godot 4 (GDScript)</div>
+      <div class="label">Target Platform</div>
+      <div class="value">Steam (PC / Mac)</div>
+      <div class="label">Target Alpha</div>
+      <div class="value">Q4 2026</div>
+      <div class="label">Target Release</div>
+      <div class="value">Q3-Q4 2027</div>
+      <div class="label">Developer</div>
+      <div class="value">Nathan Barkley (sole proprietor)</div>
+    </div>
+  </div>
+
+  <!-- BUDGET BREAKDOWN -->
+  <h2>Budget Breakdown</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Description</th>
+        <th class="amount">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Art Direction</td>
+        <td>Pixel art assets, tileset production, character sprites, UI elements (4 increments)</td>
+        <td class="amount">$4,500</td>
+      </tr>
+      <tr>
+        <td>Art Direction</td>
+        <td>Environment art, seasonal variants, building sprites, forage/flora tileset</td>
+        <td class="amount">$4,500</td>
+      </tr>
+      <tr>
+        <td>Art Direction</td>
+        <td>Animation passes, bee behavior sprites, hive interiors, weather overlays</td>
+        <td class="amount">$4,500</td>
+      </tr>
+      <tr>
+        <td>Art Direction</td>
+        <td>Final polish, UI/UX art, menu screens, promotional art, Steam capsule assets</td>
+        <td class="amount">$4,500</td>
+      </tr>
+      <tr class="total-row">
+        <td colspan="2">Total</td>
+        <td class="amount">$18,000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- DISBURSEMENT TIMELINE -->
+  <h2>Disbursement Schedule</h2>
+  <p>Funds are structured as four equal payments of $4,500, each tied to a milestone in the art production pipeline. This keeps spending accountable and progress measurable.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="phase">Phase 1 -- Core Assets (Q2 2026)</div>
+      <div class="detail">Player character, NPC sprites, core tileset (grass, dirt, paths), basic building exteriors, hive sprites, initial UI elements.</div>
+      <div class="payment">$4,500</div>
+    </div>
+    <div class="timeline-item">
+      <div class="phase">Phase 2 -- World Building (Q3 2026)</div>
+      <div class="detail">Environment expansion: seasonal tile variants (spring/summer/fall/winter), trees, flowers, forage flora, fencing, farm structures, town buildings.</div>
+      <div class="payment">$4,500</div>
+    </div>
+    <div class="timeline-item">
+      <div class="phase">Phase 3 -- Animation &amp; Polish (Q4 2026)</div>
+      <div class="detail">Character animation passes, bee flight/swarm behavior sprites, hive interior views, weather overlay effects, day/night transitions.</div>
+      <div class="payment">$4,500</div>
+    </div>
+    <div class="timeline-item">
+      <div class="phase">Phase 4 -- Ship-Ready Art (Q1 2027)</div>
+      <div class="detail">Final UI/UX polish, menu and title screens, crafting interface art, Steam store capsule images, promotional screenshots, marketing materials.</div>
+      <div class="payment">$4,500</div>
+    </div>
+  </div>
+
+  <!-- WHY ART -->
+  <h2>Why Art Direction</h2>
+  <div class="card">
+    <p>Smoke &amp; Honey's core systems (hive management, seasonal cycles, queen breeding, NPC relationships) are built and functional. The game plays. What it needs now is a cohesive visual identity that matches the depth of its mechanics.</p>
+    <p>This funding goes entirely toward art production because that is the single biggest gap between a working prototype and a game people want to play. The engine, design, and writing are handled by the developer. Art is the bottleneck.</p>
+    <p>Every dollar of this ask goes directly into the screen. No overhead, no office rent, no salaries. Just pixels.</p>
+  </div>
+
+  <!-- REPAYMENT -->
+  <h2>Return Structure</h2>
+  <div class="card">
+    <p>Per Indie Fund's standard terms, Five Cats Studios will repay the investment from revenue generated by Smoke &amp; Honey upon release. We are comfortable with a revenue-share arrangement and are open to discussing specific terms that work for both sides.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Five Cats Studios LLC -- Grundy Center, Iowa</p>
+    <p><a href="mailto:nathan@5catsgamestudios.com">nathan@5catsgamestudios.com</a></p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #AAA;">This page is not indexed and is intended for grant application review only.</p>
+  </div>
+
+</body>
+</html>

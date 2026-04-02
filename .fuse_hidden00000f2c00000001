@@ -1,0 +1,24 @@
+[debug] [2026-04-01T00:49:52.642Z] ----------------------------------------------------------------------
+[debug] [2026-04-01T00:49:52.643Z] Command:       /usr/bin/node /sessions/elegant-sharp-dirac/mnt/Five Cats studios/website/node_modules/.bin/firebase deploy --only hosting
+[debug] [2026-04-01T00:49:52.643Z] CLI Version:   15.12.0
+[debug] [2026-04-01T00:49:52.643Z] Platform:      linux
+[debug] [2026-04-01T00:49:52.643Z] Node Version:  v22.22.0
+[debug] [2026-04-01T00:49:52.643Z] Time:          Tue Mar 31 2026 19:49:52 GMT-0500 (Central Daylight Time)
+[debug] [2026-04-01T00:49:52.643Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-04-01T00:49:52.644Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2026-04-01T00:50:15.198Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-01T00:50:15.203Z] Error: Could not load the default credentials. Browse to https://cloud.google.com/docs/authentication/getting-started for more information.
+    at GoogleAuth.getApplicationDefaultAsync (/sessions/elegant-sharp-dirac/mnt/Five Cats studios/website/node_modules/google-auth-library/build/src/auth/googleauth.js:287:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async GoogleAuth._GoogleAuth_determineClient (/sessions/elegant-sharp-dirac/mnt/Five Cats studios/website/node_modules/google-auth-library/build/src/auth/googleauth.js:834:32)
+    at async GoogleAuth.getClient (/sessions/elegant-sharp-dirac/mnt/Five Cats studios/website/node_modules/google-auth-library/build/src/auth/googleauth.js:698:20)
+    at async GoogleAuth.getAccessToken (/sessions/elegant-sharp-dirac/mnt/Five Cats studios/website/node_modules/google-auth-library/build/src/auth/googleauth.js:722:24)
+    at async autoAuth (/sessions/elegant-sharp-dirac/mnt/Five Cats studios/website/node_modules/firebase-tools/lib/requireAuth.js:28:19)
+    at async requireAuth (/sessions/elegant-sharp-dirac/mnt/Five Cats studios/website/node_modules/firebase-tools/lib/requireAuth.js:90:20)
+    at async requirePermissions (/sessions/elegant-sharp-dirac/mnt/Five Cats studios/website/node_modules/firebase-tools/lib/requirePermissions.js:17:5)
+    at async /sessions/elegant-sharp-dirac/mnt/Five Cats studios/website/node_modules/firebase-tools/lib/command.js:264:17
+[error] 
+[error] Error: Failed to authenticate, have you run firebase login?
+[debug] [2026-04-01T00:50:15.340Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2026-04-01T00:50:15.340Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}

@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance Evaluation — Five Cats Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-deep:    #0F0D1A;
+      --bg-main:    #1A1A2E;
+      --bg-card:    rgba(255,255,255,0.04);
+      --border:     rgba(232,104,63,0.18);
+      --orange:     #E8683F;
+      --gold:       #F5CC5B;
+      --amber:      #E8A83E;
+      --pink:       #D4547A;
+      --steel:      #8AABB8;
+      --green:      #4CAF50;
+      --cream:      #FCF5D7;
+      --text:       #FCF5D7;
+      --text-dim:   rgba(252,245,215,0.7);
+      --text-faint: rgba(252,245,215,0.38);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text);
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15,13,26,0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+    .nav-tag {
+      font-size: 12px;
+      color: var(--text-faint);
+      letter-spacing: 1px;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: var(--amber);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .nav-back:hover { opacity: 1; }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(232,104,63,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+    .hero-sub {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      color: var(--text-dim);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* SECTIONS */
+    .section {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 60px 28px;
+    }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+    .section-title em { color: var(--gold); font-style: italic; }
+    .section-body p {
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+    .section-body p strong { color: var(--text); }
+
+    /* DIVIDER */
+    .divider {
+      max-width: 100px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--amber), transparent);
+      margin: 0 auto;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px 28px;
+      margin-bottom: 24px;
+    }
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      color: var(--gold);
+    }
+
+    /* TABLES */
+    .cost-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+    .cost-table thead th {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--amber);
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .cost-table thead th:nth-child(n+2) { text-align: right; }
+    .cost-table tbody td {
+      font-family: 'Lora', serif;
+      font-size: 14px;
+      padding: 12px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--text-dim);
+    }
+    .cost-table tbody td:nth-child(n+2) {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      color: var(--text);
+    }
+    .cost-table tbody tr:last-child td { border-bottom: none; }
+    .cost-table tbody tr.total-row td {
+      border-top: 2px solid var(--amber);
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 15px;
+      padding-top: 16px;
+    }
+    .cost-table .note-cell {
+      font-size: 12px;
+      color: var(--text-faint);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* CALLOUT */
+    .callout {
+      background: linear-gradient(135deg, rgba(232,104,63,0.08), rgba(245,204,91,0.06));
+      border-left: 3px solid var(--gold);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin: 24px 0;
+    }
+    .callout p {
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .callout strong { color: var(--gold); }
+
+    /* SUMMARY BOX */
+    .summary-box {
+      background: linear-gradient(135deg, rgba(245,204,91,0.1), rgba(232,104,63,0.06));
+      border: 2px solid var(--gold);
+      border-radius: 16px;
+      padding: 36px 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .summary-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .summary-line:last-of-type { border-bottom: none; }
+    .summary-line .label {
+      font-family: 'Lora', serif;
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+    .summary-line .value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+    .summary-total {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 2px solid var(--amber);
+    }
+    .summary-total .label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+    .summary-total .value {
+      font-size: 1.3rem;
+      color: var(--gold);
+      font-weight: 800;
+    }
+    .summary-note {
+      font-size: 12px;
+      color: var(--text-faint);
+      margin-top: 16px;
+      font-style: italic;
+    }
+
+    /* DECISION FRAMEWORK */
+    .decision-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 24px 0;
+    }
+    .decision-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .decision-card.keep { border-color: rgba(76,175,80,0.3); }
+    .decision-card.sell { border-color: rgba(232,104,63,0.3); }
+    .decision-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 14px;
+    }
+    .decision-card.keep h4 { color: var(--green); }
+    .decision-card.sell h4 { color: var(--orange); }
+    .decision-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .decision-card li {
+      font-family: 'Lora', serif;
+      font-size: 13px;
+      color: var(--text-dim);
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .decision-card.keep li::before {
+      content: '+';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+    .decision-card.sell li::before {
+      content: '-';
+      position: absolute;
+      left: 2px;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .footer-cats {
+      font-size: 1.4rem;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text-faint);
+    }
+    .footer-copy a {
+      color: var(--amber);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+    .footer-copy a:hover { opacity: 1; }
+
+    /* ANIMATION */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 680px) {
+      nav { padding: 0 20px; }
+      .section { padding: 40px 18px; }
+      .decision-grid { grid-template-columns: 1fr; }
+      .cost-table { font-size: 13px; }
+      .cost-table thead th { font-size: 10px; }
+      .cost-table tbody td { padding: 10px 8px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="cybertruck_pitch.html" class="nav-back">&larr; Back to Proposal</a>
+    <div class="nav-brand">Five Cats Studios</div>
+    <div class="nav-tag">Maintenance Evaluation</div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Cybertruck Ownership &middot; Reference Document</p>
+    <h1>Maintenance <em>Evaluation</em></h1>
+    <p class="hero-sub">
+      Annual costs Kari should anticipate for the Tesla Cybertruck Premium AWD &mdash;
+      so she can decide whether to keep it or sell it.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 1: ANNUAL SUMMARY -->
+  <section class="section fade-in">
+    <p class="section-label">The Big Picture</p>
+    <h2 class="section-title">Annual Cost <em>Summary</em></h2>
+
+    <div class="section-body">
+      <p>
+        The table below shows estimated annual ownership costs assuming 12,000&ndash;15,000 miles
+        driven per year with primarily home charging. Some costs like tires are lumpy &mdash; nothing
+        for 2&ndash;3 years, then a large amount all at once. These figures are annualized averages.
+      </p>
+    </div>
+
+    <div class="summary-box">
+      <h3>Estimated Annual Ownership</h3>
+      <div class="summary-line">
+        <span class="label">Routine Maintenance</span>
+        <span class="value">$300 &ndash; $625</span>
+      </div>
+      <div class="summary-line">
+        <span class="label">Tires (annualized)</span>
+        <span class="value">$400 &ndash; $800</span>
+      </div>
+      <div class="summary-line">
+        <span class="label">Insurance (full coverage)</span>
+        <span class="value">$2,800 &ndash; $5,000</span>
+      </div>
+      <div class="summary-line">
+        <span class="label">Charging (home, 12&ndash;15K mi)</span>
+        <span class="value">$700 &ndash; $1,050</span>
+      </div>
+      <div class="summary-line">
+        <span class="label">Registration &amp; Iowa EV Fee</span>
+        <span class="value">$150 &ndash; $300</span>
+      </div>
+      <div class="summary-line summary-total">
+        <span class="label">Total Annual Cost (before compute)</span>
+        <span class="value">$4,400 &ndash; $7,800</span>
+      </div>
+      <div class="summary-line" style="border-bottom:none; margin-top:8px;">
+        <span class="label" style="color:var(--green);">Potential Compute Income (Digital Optimus)</span>
+        <span class="value" style="color:var(--green);">- $360 &ndash; $1,800</span>
+      </div>
+      <div class="summary-line summary-total">
+        <span class="label">Net Annual Cost</span>
+        <span class="value">$2,600 &ndash; $7,400</span>
+      </div>
+      <p class="summary-note">
+        Approximately $220 &ndash; $620 per month &middot; Assumes vehicle is paid off &middot;
+        Does not include any loan or lease payments<br>
+        <span style="color:var(--green); font-style:normal;">Compute income is estimated &mdash;
+        Tesla has not announced specific rates yet. Range assumes $30&ndash;$150/mo
+        depending on participation hours and compensation structure.</span>
+      </p>
+    </div>
+
+    <div class="callout">
+      <p>
+        <strong>For comparison:</strong> A typical full-size gas pickup (F-150, Silverado) costs
+        roughly $3,500&ndash;$5,500/year in fuel, maintenance, and repairs &mdash; but insurance
+        is significantly cheaper ($1,500&ndash;$2,500/year). The Cybertruck saves on fuel and
+        maintenance but costs more for insurance and tires. With distributed compute income
+        factored in, <strong>the Cybertruck's net annual cost could drop to within range of
+        &mdash; or even below &mdash; a comparable gas truck.</strong>
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 2: ROUTINE MAINTENANCE -->
+  <section class="section fade-in">
+    <p class="section-label">The Easy Part</p>
+    <h2 class="section-title">Routine <em>Maintenance</em></h2>
+
+    <div class="section-body">
+      <p>
+        The Cybertruck requires dramatically less routine maintenance than a gas truck. No oil
+        changes, no transmission fluid, no spark plugs, no exhaust system, no emissions testing.
+        Regenerative braking extends brake pad life significantly. Tesla's official position is that
+        the Cybertruck does not require annual maintenance.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Tesla's Recommended Schedule</h3>
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Interval</th>
+            <th>Est. Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tire Rotation</td>
+            <td>Every 6,250 mi</td>
+            <td>$50&ndash;$75</td>
+          </tr>
+          <tr>
+            <td>HEPA Filter Replacement</td>
+            <td>Every 2 years</td>
+            <td>$100&ndash;$150</td>
+          </tr>
+          <tr>
+            <td>Brake Caliper Lubrication</td>
+            <td>Annually (Iowa!)</td>
+            <td>$100&ndash;$200</td>
+          </tr>
+          <tr>
+            <td>Brake Fluid Test</td>
+            <td>Every 4 years</td>
+            <td>$50&ndash;$100</td>
+          </tr>
+          <tr>
+            <td>Windshield Wiper Blades</td>
+            <td>As needed</td>
+            <td>$75/blade</td>
+          </tr>
+          <tr>
+            <td>A/C Desiccant Bag</td>
+            <td>Every 4&ndash;6 years</td>
+            <td>$75&ndash;$150</td>
+          </tr>
+          <tr>
+            <td>12V Auxiliary Battery</td>
+            <td>Every 3&ndash;5 years</td>
+            <td>$75&ndash;$150</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <p>
+        <strong>Iowa-specific note:</strong> Iowa winters with road salt make brake caliper
+        lubrication especially important. The stainless steel body won't rust, but undercarriage
+        components benefit from regular washing during winter. Cold weather also reduces battery
+        range by 15&ndash;30%, so winter range will be lower than the rated 325 miles.
+      </p>
+    </div>
+
+    <div class="section-body">
+      <p>
+        <strong>Bottom line: expect roughly $600/year in maintenance for the first five years.</strong>
+        Third-party estimates from CarEdge put total maintenance at roughly $1,961 over
+        the first five years (~$392/year), while Kelley Blue Book estimates approximately $623/year.
+        The difference depends on what each source includes &mdash; but averaging across both,
+        <strong>~$50/month</strong> is a reasonable budget for routine upkeep. That's a fraction
+        of what a gas truck costs in oil changes, transmission service, and exhaust repairs alone.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 3: TIRES -->
+  <section class="section fade-in">
+    <p class="section-label">The Biggest Expense</p>
+    <h2 class="section-title">Tires &mdash; <em>The Real Cost</em></h2>
+
+    <div class="section-body">
+      <p>
+        Tires are the single biggest recurring maintenance expense. The truck weighs nearly 7,000
+        pounds and produces over 500 lb-ft of instant torque, which accelerates tire wear. Factory
+        tire size is 285/65R20 (approximately 35 inches tall).
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Tire Replacement Options</h3>
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Per Tire</th>
+            <th>Set of 4</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>OEM Goodyear Wrangler RT<br><span class="note-cell">Required if keeping aero wheel covers</span></td>
+            <td>~$500</td>
+            <td>$2,200&ndash;$2,400</td>
+          </tr>
+          <tr>
+            <td>Aftermarket (BFG KO2, Michelin, etc.)<br><span class="note-cell">Without aero covers; wider selection</span></td>
+            <td>$400&ndash;$500</td>
+            <td>$1,800&ndash;$2,400</td>
+          </tr>
+          <tr>
+            <td>Budget aftermarket<br><span class="note-cell">Available but less recommended for heavy EV</span></td>
+            <td>$200&ndash;$350</td>
+            <td>$1,000&ndash;$1,600</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-body">
+      <p>
+        With normal driving (no aggressive acceleration, mostly highway), expect to replace tires
+        every <strong>25,000&ndash;40,000 miles</strong>. At 12,000&ndash;15,000 miles/year, that
+        means a new set roughly <strong>every 2&ndash;3 years</strong>.
+      </p>
+      <p>
+        <strong>Annualized tire cost:</strong> $400&ndash;$800/year depending on tire choice and
+        driving style. Over 100,000 miles, total tire costs could reach $4,000&ndash;$6,000.
+      </p>
+    </div>
+
+    <div class="callout">
+      <p>
+        <strong>Tip for Kari:</strong> The 20" Core Wheels on this truck look great without aero
+        covers. Ditching the covers opens up a much larger selection of more affordable tires. Range
+        loss without covers is minimal &mdash; about 5&ndash;10 miles.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 4: INSURANCE -->
+  <section class="section fade-in">
+    <p class="section-label">The Biggest Variable</p>
+    <h2 class="section-title">Insurance <em>Costs</em></h2>
+
+    <div class="section-body">
+      <p>
+        Insurance is likely the largest single annual cost. The truck's high value, specialized
+        repair requirements, and limited body shop availability all push premiums higher than a
+        typical pickup.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Insurance Ranges</h3>
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Coverage Type</th>
+            <th>Monthly</th>
+            <th>Annual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Full coverage (national avg)</td>
+            <td>$280&ndash;$435</td>
+            <td>$3,400&ndash;$5,000</td>
+          </tr>
+          <tr>
+            <td>Full coverage (cheapest carriers)<br><span class="note-cell">GEICO, Progressive typically lowest</span></td>
+            <td>$120&ndash;$190</td>
+            <td>$1,450&ndash;$2,300</td>
+          </tr>
+          <tr>
+            <td>State minimum only<br><span class="note-cell">Not recommended for $80K+ vehicle</span></td>
+            <td>$55&ndash;$120</td>
+            <td>$660&ndash;$1,440</td>
+          </tr>
+          <tr>
+            <td>Tesla Insurance (if available in IA)<br><span class="note-cell">Based on real-time Safety Score</span></td>
+            <td>Varies</td>
+            <td>Varies</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Ways to Lower Insurance</h3>
+      <div class="section-body">
+        <p><strong>Shop around aggressively.</strong> Quotes vary 50&ndash;80% between carriers for the same coverage.</p>
+        <p><strong>Raise the deductible</strong> to $1,000&ndash;$1,500 to significantly reduce premiums.</p>
+        <p><strong>Check Tesla Insurance</strong> availability in Iowa &mdash; it uses a driving Safety Score.</p>
+        <p><strong>Bundle with homeowner's</strong> insurance for multi-policy discounts.</p>
+        <p><strong>If the truck is paid off,</strong> weigh whether full coverage is still worth the premium cost.</p>
+        <p><strong>Remove duplicate coverages</strong> like roadside assistance if covered elsewhere.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 5: CHARGING -->
+  <section class="section fade-in">
+    <p class="section-label">Fuel Costs, Reimagined</p>
+    <h2 class="section-title">Charging &amp; <em>Electricity</em></h2>
+
+    <div class="section-body">
+      <p>
+        The Cybertruck has a 123 kWh battery and uses approximately 41 kWh per 100 miles. Charging
+        at home is dramatically cheaper than fueling a gas truck. The truck comes with the $600
+        Universal Home Charger and $300 Mobile Charger already included.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Charging Cost Comparison</h3>
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Per 100 mi</th>
+            <th>12K mi/yr</th>
+            <th>15K mi/yr</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Home (Iowa avg ~$0.14/kWh)</td>
+            <td>$5.74</td>
+            <td>$689</td>
+            <td>$861</td>
+          </tr>
+          <tr>
+            <td>Home (national avg ~$0.17/kWh)</td>
+            <td>$6.97</td>
+            <td>$836</td>
+            <td>$1,046</td>
+          </tr>
+          <tr>
+            <td>Supercharger (avg $0.40/kWh)</td>
+            <td>$16.40</td>
+            <td>$1,968</td>
+            <td>$2,460</td>
+          </tr>
+          <tr>
+            <td>Gas truck comparison (23 mpg)<br><span class="note-cell">For reference &mdash; what a comparable gas truck costs</span></td>
+            <td>$13.40</td>
+            <td>$1,609</td>
+            <td>$2,011</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <p>
+        <strong>Bottom line:</strong> Home charging costs roughly $700&ndash;$1,050/year &mdash;
+        about half what Kari would spend on gas for a comparable truck. The home charger plugs
+        into a 240V outlet (like a dryer outlet) and adds 30&ndash;40 miles of range per hour.
+        Overnight charging fully replenishes the battery.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 6: WARRANTY -->
+  <section class="section fade-in">
+    <p class="section-label">Peace of Mind</p>
+    <h2 class="section-title">Warranty &amp; <em>Coverage</em></h2>
+
+    <div class="card">
+      <h3>What's Covered</h3>
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Coverage</th>
+            <th>Duration</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Basic Vehicle</td>
+            <td>4 yr / 50K mi</td>
+            <td class="note-cell">Most components; whichever comes first</td>
+          </tr>
+          <tr>
+            <td>Battery &amp; Drive Unit</td>
+            <td>8 yr / 120K mi</td>
+            <td class="note-cell">Battery retains min 70% capacity</td>
+          </tr>
+          <tr>
+            <td>Body / Corrosion</td>
+            <td>12 yr / unlimited</td>
+            <td class="note-cell">Stainless steel; excellent rust resistance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-body">
+      <p>
+        The 8-year / 120,000-mile battery warranty is the most important one. A battery replacement
+        outside warranty could cost <strong>$10,000&ndash;$20,000</strong>, though failures are
+        uncommon. The warranty transfers with the vehicle &mdash; Kari inherits whatever coverage
+        remains.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 7: DEPRECIATION -->
+  <section class="section fade-in">
+    <p class="section-label">If She Decides to Sell</p>
+    <h2 class="section-title">Depreciation &amp; <em>Resale Value</em></h2>
+
+    <div class="section-body">
+      <p>
+        Depreciation is the largest cost of vehicle ownership but only matters when you sell.
+        Kelley Blue Book estimates roughly $8,283/year over five years, with the steepest drop
+        in years 1&ndash;3.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Estimated Value Over Time</h3>
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Vehicle Age</th>
+            <th>Value Remaining</th>
+            <th>Approx. Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>New</td>
+            <td>100%</td>
+            <td>~$80,000+</td>
+          </tr>
+          <tr>
+            <td>Year 1</td>
+            <td>~80&ndash;85%</td>
+            <td>~$64K&ndash;$68K</td>
+          </tr>
+          <tr>
+            <td>Year 2</td>
+            <td>~70&ndash;75%</td>
+            <td>~$56K&ndash;$60K</td>
+          </tr>
+          <tr>
+            <td>Year 3</td>
+            <td>~60&ndash;68%</td>
+            <td>~$48K&ndash;$54K</td>
+          </tr>
+          <tr>
+            <td>Year 5</td>
+            <td>~48&ndash;55%</td>
+            <td>~$38K&ndash;$44K</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <p>
+        <strong>If Kari decides to sell:</strong> The sooner she sells, the more value is retained.
+        The Cybertruck's unique position in the EV truck market (limited competition) may help it
+        hold value better than these averages suggest. Used Cybertruck demand has been strong.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 8: KEEP VS SELL -->
+  <section class="section fade-in">
+    <p class="section-label">The Decision</p>
+    <h2 class="section-title">Keep It or <em>Sell It?</em></h2>
+
+    <div class="section-body">
+      <p>
+        There's no wrong answer. It depends on Kari's situation, comfort level, and financial
+        picture at the time. Here's a simple framework.
+      </p>
+    </div>
+
+    <div class="decision-grid">
+      <div class="decision-card keep">
+        <h4>Reasons to Keep</h4>
+        <ul>
+          <li>Insurance is manageable (under $300/month)</li>
+          <li>Home charging is set up and convenient</li>
+          <li>Safety features are valuable for Iowa winters</li>
+          <li>Maintenance costs are low and predictable</li>
+          <li>The truck is still under warranty</li>
+          <li>She enjoys driving it</li>
+          <li>It has sentimental value</li>
+          <li>Distributed compute could offset costs (Digital Optimus)</li>
+        </ul>
+      </div>
+      <div class="decision-card sell">
+        <h4>Reasons to Sell</h4>
+        <ul>
+          <li>Insurance exceeds $400/month</li>
+          <li>No convenient home charging access</li>
+          <li>The truck feels too large for daily driving</li>
+          <li>She'd rather have $40K&ndash;$65K+ in cash</li>
+          <li>Tire costs feel burdensome</li>
+          <li>She'd prefer a smaller, cheaper vehicle</li>
+          <li>Warranty is expiring and battery risk is a concern</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 9: DISTRIBUTED COMPUTE -->
+  <section class="section fade-in">
+    <p class="section-label">New Revenue Opportunity</p>
+    <h2 class="section-title">Earn Money While <em>Parked</em></h2>
+
+    <div class="section-body">
+      <p>
+        In March 2026, Tesla confirmed a new program that could change the economics of ownership:
+        <strong>AI4-equipped Teslas can now lease out their computing power</strong> while parked.
+        The Cybertruck's onboard AI4 chip &mdash; the same hardware that runs Full Self-Driving &mdash;
+        sits idle most of the day. Tesla is putting that dormant power to work.
+      </p>
+      <p>
+        The initiative, called <strong>Digital Optimus</strong>, is a joint project between Tesla and
+        xAI. When the Cybertruck is parked (ideally plugged in), its AI4 processor can handle
+        AI inference tasks &mdash; pattern recognition, generative AI workloads, and other
+        compute-heavy operations &mdash; as part of a massive distributed network.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>How It Works</h3>
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Detail</th>
+            <th>Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Eligible Hardware</td>
+            <td>AI4 (Hardware 4) &mdash; included in the Cybertruck</td>
+          </tr>
+          <tr>
+            <td>AI4 Performance</td>
+            <td>~100&ndash;150 TOPS (AI operations per second)</td>
+          </tr>
+          <tr>
+            <td>What It Processes</td>
+            <td>AI inference tasks for the xAI / Digital Optimus network</td>
+          </tr>
+          <tr>
+            <td>When It Runs</td>
+            <td>While parked &mdash; best when plugged in at home</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td>Deployment underway as of March 2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-body">
+      <p>
+        Tesla is also deploying dedicated Digital Optimus compute units at Supercharger stations,
+        backed by roughly <strong>7 gigawatts</strong> of available power across the network. The
+        fleet of parked Teslas plus Supercharger hubs creates a distributed supercomputer that
+        rivals traditional data centers.
+      </p>
+      <p>
+        Looking ahead, Tesla's next-gen <strong>AI5 chip</strong> (expected mid-2027) will deliver
+        10x more compute and 9x more memory than AI4 &mdash; meaning the earning potential of each
+        vehicle could grow substantially over time.
+      </p>
+    </div>
+
+    <div class="callout">
+      <p>
+        <strong>What this means for Kari:</strong> The Cybertruck could eventually earn money while
+        sitting in the driveway. Tesla hasn't announced specific compensation rates yet, but owner
+        opt-in and payment details are expected as the program rolls out. This is a
+        <strong>new reason to keep the truck</strong> &mdash; it may partially offset ownership costs
+        like insurance and charging. Worth watching as details emerge.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Open Questions</h3>
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Concern</th>
+            <th>What We Know</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Owner Compensation</td>
+            <td>Not yet announced &mdash; program is actively rolling out</td>
+          </tr>
+          <tr>
+            <td>Opt-In / Opt-Out</td>
+            <td>Expected to be voluntary; details TBD</td>
+          </tr>
+          <tr>
+            <td>Battery Impact</td>
+            <td>Computing uses some power; best when plugged in</td>
+          </tr>
+          <tr>
+            <td>Data Privacy</td>
+            <td>Tesla says tasks are AI inference only, not personal data</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Official Sources &amp; Coverage</h3>
+      <div class="section-body">
+        <p style="margin-bottom:10px;">
+          <a href="https://x.com/elonmusk/status/1899544049138475378" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:underline;text-underline-offset:3px;">Elon Musk's original announcement on X (March 12, 2026)</a>
+        </p>
+        <p style="margin-bottom:10px;">
+          <a href="https://money.usnews.com/investing/news/articles/2026-03-11/musk-unveils-joint-tesla-xai-project-macrohard-eyes-software-disruption" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:underline;text-underline-offset:3px;">Reuters via U.S. News &mdash; Musk Unveils Joint Tesla-xAI Project</a>
+        </p>
+        <p style="margin-bottom:10px;">
+          <a href="https://www.teslarati.com/tesla-xai-digital-optimus-explained/" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:underline;text-underline-offset:3px;">Teslarati &mdash; What is Digital Optimus? The Tesla and xAI Project Explained</a>
+        </p>
+        <p style="margin-bottom:10px;">
+          <a href="https://www.notateslaapp.com/news/3788/digital-optimus-will-run-on-your-ai4-tesla" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:underline;text-underline-offset:3px;">Not a Tesla App &mdash; Digital Optimus Will Run on Your AI4 Tesla</a>
+        </p>
+        <p style="margin-bottom:0;">
+          <a href="https://www.basenor.com/blogs/news/tesla-ai4-cars-can-now-do-office-work-when-parked" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:underline;text-underline-offset:3px;">Basenor &mdash; Tesla AI4 Cars Can Now Do Office Work When Parked</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SOURCES -->
+  <section class="section fade-in" style="padding-bottom:20px;">
+    <p class="section-label">Data Sources</p>
+    <div class="section-body">
+      <p style="font-size:13px; color:var(--text-faint);">
+        Tesla.com &middot; Kelley Blue Book &middot; CarEdge &middot; Insurify &middot;
+        MoneyGeek &middot; U.S. Department of Energy &middot; Jalopnik &middot;
+        NotATeslaApp &middot; Tom's Hardware &middot; Autoblog &middot;
+        Owner reports &middot; All figures as of April 2026
+      </p>
+      <p style="font-size:12px; color:var(--text-faint); font-style:italic;">
+        This document is for personal reference only and does not constitute financial advice.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-cats">&#x1F431;&#x1F431;&#x1F431;&#x1F431;&#x1F431;</div>
+    <div class="footer-copy">
+      Prepared with love by Nathan &nbsp;&middot;&nbsp; Five Cats Studios &nbsp;&middot;&nbsp;
+      Waterloo, Iowa &nbsp;&middot;&nbsp; April 2026<br>
+      <a href="cybertruck_pitch.html">&larr; Back to Proposal</a>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll fade-in
+    const items = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
