@@ -3,184 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dev Changelog — Smoke & Honey | Five Cats Studios</title>
-<link rel="icon" type="image/png" sizes="32x32" href="images/logo_32.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap">
+<title>Dev Changelog — Smoke &amp; Honey</title>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --bg-deep: #0F0D1A; --bg-main: #1A1A2E; --bg-card: rgba(255,255,255,0.04); --border: rgba(232,104,63,0.18); --orange: #E8683F; --gold: #F5CC5B; --amber: #E8A83E; --pink: #D4547A; --green: #4A7A3D; --cream: #FCF5D7; --text: #FCF5D7; --text-dim: rgba(252,245,215,0.65); --text-faint: rgba(252,245,215,0.35); }
-html { scroll-behavior: smooth; }
-body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-deep); color: var(--text); line-height: 1.7; min-height: 100vh; }
-.container { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
-.back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--amber); text-decoration: none; font-size: 14px; font-weight: 500; margin-bottom: 32px; transition: color 0.2s; }
-.back-link:hover { color: var(--gold); }
-h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--cream); margin-bottom: 8px; }
-.subtitle { font-size: 15px; color: var(--text-faint); margin-bottom: 48px; }
-.day-section { margin-bottom: 48px; }
-.day-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-.day-date { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--gold); }
-.day-count { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-faint); background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; }
-.latest-pill { background: var(--orange); color: var(--bg-deep); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
-.entry { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; padding: 12px 16px; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; transition: border-color 0.2s; }
-.entry:hover { border-color: var(--border); }
-.tag { flex-shrink: 0; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; border: 1px solid; margin-top: 2px; white-space: nowrap; }
-.tag-feature { background: rgba(74,122,61,0.15); color: #6FBC5A; border-color: rgba(74,122,61,0.4); }
-.tag-fix { background: rgba(212,84,122,0.12); color: #E8809A; border-color: rgba(212,84,122,0.3); }
-.tag-overhaul { background: rgba(123,104,238,0.12); color: #A090F0; border-color: rgba(123,104,238,0.3); }
-.entry-text { font-size: 14px; line-height: 1.75; color: var(--text-dim); }
-.entry-text strong { color: var(--cream); font-weight: 600; }
-.entry-details { font-size: 12px; color: var(--text-faint); margin-top: 4px; line-height: 1.6; }
-.older-note { text-align: center; padding: 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; margin-top: 48px; }
-.older-note p { color: var(--text-faint); font-size: 14px; }
-.older-note a { color: var(--amber); text-decoration: none; font-weight: 600; }
-.older-note a:hover { color: var(--gold); }
+body { background: #0B0703; color: #F2E4B2; font-family: Inter, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+.msg { text-align: center; }
+h1 { font-family: 'Playfair Display', serif; color: #F4CC6E; margin-bottom: 16px; }
+p { color: rgba(242,228,178,0.62); }
+a { color: #E6A220; }
 </style>
 </head>
 <body>
-<div class="container">
-    <a href="index.html" class="back-link">&larr; Back to Five Cats Studios</a>
-    <h1>Dev Changelog</h1>
-    <p class="subtitle">Full development log for Smoke & Honey. 324 entries and counting.</p>
-
-    <div class="day-section">
-        <div class="day-header">
-            <span class="day-date">April 3, 2026</span>
-            <span class="latest-pill">LATEST</span>
-            <span class="day-count">16 entries</span>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-feature">Feature</span>
-            <div>
-                <div class="entry-text"><strong>WP9: Bee acquisition polish + winter pre-ordering</strong></div>
-                <div class="entry-details">Winter pre-order items added to Feed Supply: Bee Package ($165) and Nuc ($220) with discounted pricing, delivered Quickening 1. Colony installation now emits quest events and unlocks journal entries.</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-feature">Feature</span>
-            <div>
-                <div class="entry-text"><strong>WP8: Winter activities, observation + route override</strong></div>
-                <div class="entry-details">New passive hive observation system for Deepcold/Kindlemonth: weight, sound, and entrance activity readings with color-coded thresholds and contextual advice. Auto-logs to Knowledge Journal and unlocks winter_prep entry. Inspections route to observation panel during winter months.</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-feature">Feature</span>
-            <div>
-                <div class="entry-text"><strong>WP7: Seasonal NPC dialogue</strong></div>
-                <div class="entry-details">Uncle Bob: quest-aware dialogue matching active Year 1 quests with seasonal pools. Ellen Harwick: seasonal health/disease dialogue covering varroa, DWV, and oxalic timing with notebook entry unlocks. Frank Fischbach: seasonal market advice on pricing and product diversification.</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-feature">Feature</span>
-            <div>
-                <div class="entry-text"><strong>WP6: Custom hive naming + Knowledge Journal</strong></div>
-                <div class="entry-details">Hives can now be given custom names via editable field. New two-tab Knowledge Journal: Notebook (16 unlockable entries) and Hive Records (per-hive day/action/details/player_note). Keen Observer tracking (80%+ notes = bonus). J key to open. Full save/load support.</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-feature">Feature</span>
-            <div>
-                <div class="entry-text"><strong>WP5: AFB two-state disease system</strong></div>
-                <div class="entry-details">American Foulbrood now models sub-clinical spores progressing to clinical (visible) infection. Strong colonies (15k+ adults) clear sub-clinical at ~15%/week; weak colonies progress in ~40 days. Rope test diagnosis, foul smell notification, and hive destruction mechanics for clinical cases.</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-feature">Feature</span>
-            <div>
-                <div class="entry-text"><strong>WP4: Disease treatment application (item-based)</strong></div>
-                <div class="entry-details">Oxalic acid (90% mite reduction, best broodless/winter) and formic acid (70% reduction, temperature-dependent) treatment buttons added to inspection overlay. Item-gated: consumes treatment from inventory. Shows before/after mite count and emits quest events.</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-feature">Feature</span>
-            <div>
-                <div class="entry-text"><strong>WP3: Alcohol wash mite monitoring mini-game</strong></div>
-                <div class="entry-details">Five-step interactive process: Select Frame, Queen Check, Scoop, Shake, Count. Scripted first-wash tutorial with queen-on-frame moment and Ellen's warning. Color-coded mite threshold display. Reports to QuestManager for Battening Down check. Wash Kit available at Feed Supply ($15).</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-feature">Feature</span>
-            <div>
-                <div class="entry-text"><strong>WP2: Scene-wide feeder system, feed_stores separation</strong></div>
-                <div class="entry-details">New feed_stores field consumed before honey_stores daily. Barrel feeder injects into feed_stores (not sellable honey). Refill mechanic: player uses sugar syrup on empty feeder. Empty feeder notifications via NotificationManager. Quest event emission on feeder placement.</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-feature">Feature</span>
-            <div>
-                <div class="entry-text"><strong>WP1: Quest engine with Year 1 chain and event hooks</strong></div>
-                <div class="entry-details">Five Year 1 quests: First Light, Sugar Water Days, Girls Are Building, First Pull, Battening Down. Each auto-starts the next on completion. Month-gated deferred starts. notify_event() bus for game systems. Compound winter-ready check (60+ lbs honey + mite wash).</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-fix">Fix</span>
-            <div>
-                <div class="entry-text"><strong>Settings menu layout: Mute checkbox overlapped by Back button</strong></div>
-                <div class="entry-details">Increased SETTINGS_H from 120 to 134 so Mute Music checkbox and Back button no longer overlap.</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-fix">Fix</span>
-            <div>
-                <div class="entry-text"><strong>PauseMenu _exit_tree() wrong variable names</strong></div>
-                <div class="entry-details">Fixed references to nonexistent vars (_slider_music, _slider_sfx, etc.) to correct member names. Promoted local master slider var to member var for proper cleanup.</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-overhaul">Overhaul</span>
-            <div>
-                <div class="entry-text"><strong>Fall harvest start: 2D/2S hive, full honey, inventory rework</strong></div>
-                <div class="entry-details">init_as_fall_harvest() now creates 2 deeps + 2 supers filled with capped honey. Honey stores bumped to 32 lbs, pollen to 220. Fixed integer division bug. Starting inventory reorganized: tools in player inventory, hive parts in chest.</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-overhaul">Overhaul</span>
-            <div>
-                <div class="entry-text"><strong>Starting inventory reorganization</strong></div>
-                <div class="entry-details">Player inventory now holds 5 tools (axe, gloves, hammer, hive tool, bucket grip). Storage chest auto-stocked with 5 deep bodies, 5 supers, 20 frames, 1 queen excluder on fresh games. Guard flag prevents re-stocking on scene changes.</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-feature">Feature</span>
-            <div>
-                <div class="entry-text"><strong>Expanded starting inventory with hive components</strong></div>
-                <div class="entry-details">Added 5 deep bodies, 20 frames, 1 honey bucket, and 1 queen excluder to starting inventory. Both player defaults and dev bypass updated to match.</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-fix">Fix</span>
-            <div>
-                <div class="entry-text"><strong>Honey super stacking gap (v3) + overlay z-index</strong></div>
-                <div class="entry-details">Frame overlay z_index lowered so later-added supers draw correctly over deep frame overlays. Fixed visible artifact/gap between deep and first super caused by z-order bleed-through.</div>
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="tag tag-fix">Fix</span>
-            <div>
-                <div class="entry-text"><strong>Honey super stacking gap (v2)</strong></div>
-                <div class="entry-details">Added BOX_CAVITY constant (11.0 display px = 22 source rows * 0.5 scale). Stacking loop now tracks prev_cavity so each box overlaps into the cavity below, hiding dark interior gaps. Verified math for 1D/3S and 2D/3S configurations.</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="older-note">
-        <p>Older entries (308 prior to April 3) are available in the <a href="https://github.com/qLu-jML/SmokeAndHoney/blob/main/changelog.txt">full changelog on GitHub</a>.</p>
-    </div>
+<div class="msg">
+<h1>Dev Changelog</h1>
+<p>Changelog is being updated with the latest entries. Please check back shortly.</p>
+<p><a href="index.html">&larr; Back to Five Cats Studios</a></p>
 </div>
 </body>
 </html>
