@@ -31,10 +31,17 @@
       overflow: hidden;
     }
 
+    /* ===== KICKSTARTER BANNER ===== */
+    .ks-banner { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 44px; background: linear-gradient(90deg, #05CE78 0%, #00B86A 100%); color: #fff; display: flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 600; text-align: center; letter-spacing: 0.01em; }
+    .ks-banner-badge { background: rgba(0,0,0,0.18); border-radius: 4px; padding: 2px 8px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    .ks-banner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+    .hire-banner { position: fixed; top: 44px; left: 0; right: 0; z-index: 200; height: 44px; background: linear-gradient(90deg, var(--amber-mid) 0%, var(--honey-pale) 100%); color: var(--bg); display: flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 600; text-align: center; letter-spacing: 0.01em; }
+    .hire-banner a { color: var(--bg); text-decoration: underline; text-underline-offset: 2px; font-weight: 700; }
+
     /* NAV */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 88px; left: 0; right: 0;
       z-index: 200;
       display: flex;
       align-items: center;
@@ -138,7 +145,7 @@
     /* FRAME WRAPPER */
     .frame-wrapper {
       position: fixed;
-      top: 56px;
+      top: 144px;
       left: 0; right: 0; bottom: 0;
     }
 
@@ -159,6 +166,18 @@
   </style>
 </head>
 <body>
+
+  <div class="ks-banner">
+    <span class="ks-banner-badge">LIVE</span>
+    <span>Kickstarter is LIVE! &mdash; </span>
+    <a href="https://www.kickstarter.com/projects/5catssmokeandhoney/smoke-and-honey">Back us now!</a>
+  </div>
+
+  <div class="hire-banner">
+    <span class="ks-banner-badge">NEW</span>
+    <span>We're hiring a pixel artist! &mdash; </span>
+    <a href="https://fivecatstudios.web.app/hire-artist.html">See the listing</a>
+  </div>
 
   <nav>
     <div class="nav-left">

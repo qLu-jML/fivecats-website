@@ -1,33 +1,175 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Page Not Found</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Five Cats Studios</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo_32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="images/logo_64.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg-deep: #0F0D1A;
+            --bg-main: #1A1A2E;
+            --bg-card: rgba(255,255,255,0.04);
+            --border: rgba(232,104,63,0.18);
+            --orange: #E8683F;
+            --gold: #F5CC5B;
+            --amber: #E8A83E;
+            --cream: #FCF5D7;
+            --text: #FCF5D7;
+            --text-dim: rgba(252,245,215,0.65);
+            --text-faint: rgba(252,245,215,0.35);
+        }
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px 16px; border-radius: 3px; }
-      #message h3 { color: #888; font-weight: normal; font-size: 16px; margin: 16px 0 12px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        .cats {
+            font-size: 48px;
+            letter-spacing: 8px;
+            margin-bottom: 32px;
+            animation: sway 4s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .error-code {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(72px, 15vw, 140px);
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(160deg, var(--cream) 0%, var(--gold) 35%, var(--amber) 65%, var(--orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        .error-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .error-message {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-dim);
+            max-width: 440px;
+            margin-bottom: 40px;
+        }
+
+        .links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--orange);
+            color: var(--bg-deep);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .btn-home:hover { background: #d45a34; transform: translateY(-1px); }
+
+        .btn-game {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--amber);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 13px 30px;
+            border-radius: 8px;
+            border: 2px solid rgba(232,168,62,0.45);
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s, transform 0.15s;
+        }
+
+        .btn-game:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+
+        .footer-note {
+            position: absolute;
+            bottom: 32px;
+            font-size: 12px;
+            color: var(--text-faint);
+        }
+
+        .footer-note a {
+            color: var(--amber);
+            text-decoration: none;
+        }
+
+        .footer-note a:hover { text-decoration: underline; }
+
+        .bee {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.4;
+            animation: drift 12s ease-in-out infinite;
+        }
+
+        .bee:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; animation-duration: 10s; }
+        .bee:nth-child(2) { top: 25%; right: 12%; animation-delay: -3s; animation-duration: 14s; }
+        .bee:nth-child(3) { bottom: 20%; left: 20%; animation-delay: -6s; animation-duration: 11s; }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, -15px) rotate(5deg); }
+            50% { transform: translate(-10px, 10px) rotate(-3deg); }
+            75% { transform: translate(15px, 5px) rotate(4deg); }
+        }
     </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>404</h2>
-      <h1>Page Not Found</h1>
-      <p>The specified file was not found on this website. Please check the URL for mistakes and try again.</p>
-      <h3>Why am I seeing this?</h3>
-      <p>This page was generated by the Firebase Command-Line Interface. To modify it, edit the <code>404.html</code> file in your project's configured <code>public</code> directory.</p>
+</head>
+<body>
+    <div class="bee">&#x1F41D;</div>
+    <div class="bee">&#x1F41D;</div>
+    <div class="bee">&#x1F41D;</div>
+
+    <div class="cats">&#x1F408;&#x1F408;&#x1F408;&#x1F408;&#x1F408;</div>
+
+    <div class="error-code">404</div>
+    <h1 class="error-title">The bees can't find this page.</h1>
+    <p class="error-message">Looks like this path leads past the apiary and into the tall grass. Let's get you back to Cedar Bend.</p>
+
+    <div class="links">
+        <a href="/" class="btn-home">Five Cats Studios</a>
+        <a href="/smoke-and-honey.html" class="btn-game">Smoke &amp; Honey</a>
     </div>
-  </body>
+
+    <div class="footer-note">
+        <a href="/">Five Cats Studios</a> &mdash; Cozy Games, Crafted with Care
+    </div>
+</body>
 </html>

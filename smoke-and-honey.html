@@ -72,6 +72,10 @@
     .ks-banner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
     .ks-banner a:hover { opacity: 0.85; }
 
+    .hire-banner { position: fixed; top: 44px; left: 0; right: 0; z-index: 200; height: 44px; background: linear-gradient(90deg, var(--amber-mid) 0%, var(--honey-pale) 100%); color: var(--bg); display: flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 600; text-align: center; letter-spacing: 0.01em; }
+    .hire-banner a { color: var(--bg); text-decoration: underline; text-underline-offset: 2px; font-weight: 700; }
+    .hire-banner a:hover { opacity: 0.7; }
+
     .btn-ks {
       display: inline-flex;
       align-items: center;
@@ -137,7 +141,7 @@
     /* ===== NAV ===== */
     nav {
       position: fixed;
-      top: 44px; left: 0; right: 0;
+      top: 88px; left: 0; right: 0;
       z-index: 100;
       display: flex;
       align-items: center;
@@ -214,7 +218,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 174px 24px 100px;
+      padding: 218px 24px 100px;
       position: relative;
       z-index: 1;
     }
@@ -359,6 +363,130 @@
       opacity: 0.12;
       max-width: 800px;
       margin: 0 auto;
+    }
+
+    /* ===== STORY VIGNETTE ===== */
+    .vignette-section {
+      padding: 100px 24px 80px;
+      max-width: 1060px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .vignette-prose {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .vignette-prose p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(16px, 2vw, 19px);
+      font-style: italic;
+      line-height: 1.85;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+    }
+    .vignette-prose p:last-child { margin-bottom: 0; }
+    .vignette-prose .v-accent {
+      color: var(--honey-pale);
+      font-style: normal;
+      font-weight: 600;
+    }
+    .vignette-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 56px;
+    }
+    .vignette-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .vignette-card:hover {
+      border-color: rgba(230,162,32,0.3);
+      box-shadow: 0 6px 24px rgba(152,88,8,0.1);
+    }
+    .vignette-card-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .vignette-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--amber-light);
+      margin-bottom: 8px;
+    }
+    .vignette-card-body {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--text-dim);
+    }
+    @media (max-width: 700px) {
+      .vignette-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== STORY SEASONS STRIP ===== */
+    .seasons-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 48px;
+    }
+    .season-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 18px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+    .season-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 12px 12px 0 0;
+      opacity: 0.8;
+    }
+    .season-card:nth-child(1)::before { background: linear-gradient(90deg, #7ec87e, #b8e6a0); }
+    .season-card:nth-child(2)::before { background: linear-gradient(90deg, var(--amber-light), var(--honey-pale)); }
+    .season-card:nth-child(3)::before { background: linear-gradient(90deg, #c47830, #e6a040); }
+    .season-card:nth-child(4)::before { background: linear-gradient(90deg, #8899aa, #aabbcc); }
+    .season-card:hover { border-color: rgba(230,162,32,0.3); }
+    .season-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+    .season-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--honey-pale);
+      margin-bottom: 6px;
+    }
+    .season-body {
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--text-dim);
+    }
+    @media (max-width: 700px) {
+      .seasons-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ===== NPC FLAVOR TEXT ===== */
+    .npc-flavor {
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      font-style: italic;
+      color: var(--text-faint);
+      line-height: 1.5;
+      margin-top: 6px;
+      min-height: 2.5em;
     }
 
     /* ===== SHARED SECTION ===== */
@@ -583,17 +711,59 @@
 
     .npc-card:hover { border-color: rgba(230,162,32,0.3); }
 
+    /* --- Player "You" card --- */
+    .npc-card--you {
+      grid-column: 1 / -1;
+      max-width: 340px;
+      margin: 0 auto;
+      border: 1.5px dashed var(--amber-mid);
+      background: linear-gradient(135deg, rgba(200,130,12,0.10), rgba(38,18,6,0.75));
+      position: relative;
+    }
+    .npc-card--you:hover { border-color: var(--amber-light); }
+
+    .npc-card--you .npc-avatar {
+      border: 2px dashed var(--amber-mid);
+      background: linear-gradient(135deg, rgba(200,130,12,0.12), rgba(108,64,22,0.08));
+    }
+
+    .you-silhouette {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .you-silhouette svg { width: 56px; height: 56px; opacity: 0.45; }
+
+    .you-badge {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(230,162,32,0.25);
+      background: rgba(200,130,12,0.12);
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--amber-light);
+    }
+
     .npc-avatar {
-      width: 52px;
-      height: 52px;
-      background: linear-gradient(135deg, rgba(152,88,8,0.3), rgba(108,64,22,0.15));
+      width: 96px;
+      height: 96px;
       border-radius: 50%;
-      border: 2px solid rgba(230,162,32,0.2);
-      margin: 0 auto 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
+      border: 2px solid rgba(230,162,32,0.25);
+      margin: 0 auto 14px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(152,88,8,0.2), rgba(108,64,22,0.1));
+    }
+
+    .npc-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
 
     .npc-name {
@@ -924,7 +1094,7 @@
     /* ===== STATS ROW ===== */
     .game-stats {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(7, 1fr);
       gap: 14px;
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -1000,14 +1170,14 @@
       .pillars { grid-template-columns: 1fr; }
       .features-two-col { grid-template-columns: 1fr; gap: 32px; }
       .npc-strip { grid-template-columns: repeat(2, 1fr); }
-      .game-stats { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .game-stats { grid-template-columns: repeat(4, 1fr); gap: 16px; }
       .screenshots { grid-template-columns: 1fr 1fr; }
       .screenshot-box.large { grid-column: span 2; }
     }
 
     @media (max-width: 560px) {
       .npc-strip { grid-template-columns: repeat(2, 1fr); }
-      .game-stats { grid-template-columns: repeat(3, 1fr); }
+      .game-stats { grid-template-columns: repeat(4, 1fr); }
       .screenshots { grid-template-columns: 1fr; }
       .screenshot-box.large { grid-column: span 1; aspect-ratio: 16/10; }
       .wishlist-form { flex-direction: column; }
@@ -1022,6 +1192,12 @@
     &#x1F680; Kickstarter is LIVE! &mdash; <a href="https://www.kickstarter.com/projects/5catssmokeandhoney/smoke-and-honey" target="_blank">&nbsp;Back us now!</a>
   </div>
 
+  <div class="hire-banner">
+    <span class="ks-banner-badge">NEW</span>
+    <span>We're hiring a pixel artist! &mdash; </span>
+    <a href="https://fivecatstudios.web.app/hire-artist.html">See the listing</a>
+  </div>
+
   <!-- NAV -->
   <nav>
     <a class="nav-back" href="index.html">
@@ -1030,7 +1206,6 @@
     </a>
     <span class="nav-game-name">Smoke &amp; Honey</span>
     <ul class="nav-links">
-      <li><a href="#trailer">Trailer</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#world">The World</a></li>
@@ -1083,21 +1258,6 @@
 
   <div class="divider"></div>
 
-  <!-- TRAILER -->
-  <section id="trailer" class="section" style="text-align:center;">
-    <p class="section-label">Watch the Trailer</p>
-    <h2 class="section-title">See Smoke &amp; Honey in action</h2>
-    <p class="section-body" style="max-width:560px;margin:0 auto 40px;">Get a first look at the world of Cedar Bend &mdash; the hives, the town, and the quiet rhythm of a beekeeping life.</p>
-    <div style="max-width:800px;margin:0 auto;border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 8px 40px rgba(0,0,0,0.5);">
-      <video controls playsinline preload="metadata" poster="" style="width:100%;display:block;background:#000;">
-        <source src="smoke-and-honey-trailer.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
   <!-- ABOUT -->
   <section id="about" class="section">
     <p class="section-label">What Is Smoke &amp; Honey?</p>
@@ -1106,12 +1266,17 @@
     <div class="pitch-block">
       <p>You've inherited your uncle's struggling apiary on the edge of Cedar Bend, Iowa. The hives are half-empty, the equipment is worn, and the neighbors are curious. What you do with all of it is entirely up to you.</p>
       <p>Smoke &amp; Honey is a top-down pixel-art farming simulation where realistic beekeeping meets cozy farm life. Manage Langstroth and Warre hives, breed queens, track seasonal forage maps, and craft honey, beeswax candles, and mead. Build relationships with a cast of fully-realized Iowa small-town characters. Take your time. There is no timer. There is no losing.</p>
-      <span class="cite">Built in Godot 4 &mdash; Pixel Art &mdash; Top-Down Perspective</span>
+      <p style="margin-top:14px;">This project has been in development for over five years, originally built in GameMaker Studio where the assets, mechanics, and world were designed from scratch. In 2025, development moved to Godot 4 &mdash; a better engine for the game's scope and ambitions. Five Cats Studios was founded in 2026 to take the project from passion project to full commercial release. The fast-paced devlog you see today reflects years of existing work being converted, reconnected, and expanded in the new engine.</p>
+      <span class="cite">5+ Years in Development &mdash; Originally GameMaker Studio &mdash; Now Godot 4 &mdash; Pixel Art &mdash; Top-Down</span>
     </div>
 
     <div class="game-stats">
       <div>
-        <span class="gstat-num">8</span>
+        <span class="gstat-num">5+</span>
+        <div class="gstat-label">Years in Dev</div>
+      </div>
+      <div>
+        <span class="gstat-num">12</span>
         <div class="gstat-label">NPCs</div>
       </div>
       <div>
@@ -1123,12 +1288,82 @@
         <div class="gstat-label">Seasons</div>
       </div>
       <div>
+        <span class="gstat-num">4</span>
+        <div class="gstat-label">Holidays</div>
+      </div>
+      <div>
         <span class="gstat-num">2</span>
         <div class="gstat-label">Hive Types</div>
       </div>
       <div>
         <span class="gstat-num">0</span>
         <div class="gstat-label">Fail States</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CEDAR BEND STORY VIGNETTE -->
+  <section class="vignette-section">
+    <p class="section-label" style="text-align:center;">Welcome to Cedar Bend</p>
+    <h2 class="section-title" style="text-align:center;">Population 1,847. One stoplight. Zero strangers.</h2>
+
+    <div class="vignette-prose">
+      <p>The gas station closes at 8 PM and nobody thinks that's unusual. The grain elevator is the tallest structure for twelve miles. The water tower says <span class="v-accent">CEDAR BEND</span> in letters that were repainted in 2003 and are already peeling again.</p>
+      <p>This is a town that measures life differently. <span class="v-accent">Did the diner open this morning? Is the post office still running? Did the corn come in?</span> By those measures, Cedar Bend is alive and stubborn and deeply, quietly proud of itself.</p>
+      <p>You've come here because your uncle asked. He keeps bees on the edge of town and he needs help. What you'll find is a place where help arrives before the need is stated, where Tuesday means pecan pie at the counter, and where the people who stayed have stories worth hearing.</p>
+    </div>
+
+    <div class="vignette-grid">
+      <div class="vignette-card">
+        <span class="vignette-card-icon">&#x1F3EA;</span>
+        <div class="vignette-card-title">Main Street</div>
+        <p class="vignette-card-body">Six blocks east to west. A feed store that carries everything a person actually needs. A diner that doubles as the town's living room. A post office run by a woman who knows every address by heart.</p>
+      </div>
+      <div class="vignette-card">
+        <span class="vignette-card-icon">&#x1F33E;</span>
+        <div class="vignette-card-title">The Unwritten Code</div>
+        <p class="vignette-card-body">You wave at every truck on the county road. You bring a covered dish to every gathering of six or more. You mind your own business while knowing everyone else's. These are things nobody teaches because everybody already knows.</p>
+      </div>
+      <div class="vignette-card">
+        <span class="vignette-card-icon">&#x1F56F;&#xFE0F;</span>
+        <div class="vignette-card-title">Four Holidays</div>
+        <p class="vignette-card-body">Cedar Bend marks its own calendar. The Quickening Morn in spring. The Founder's Beam in summer. The Reaping Fire in autumn. The Long Table in winter. Each one a window into who these people are when they stop working and start remembering.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- STORY SEASONS -->
+  <section class="vignette-section">
+    <p class="section-label" style="text-align:center;">Five Years in Cedar Bend</p>
+    <h2 class="section-title" style="text-align:center;">A story told in seasons, not cutscenes</h2>
+    <div class="vignette-prose" style="margin-bottom:12px;">
+      <p>You arrive as a stranger with nothing but an invitation and a hive full of questions. Over five in-game years, Cedar Bend will change you -- slowly, the way an accent settles in. Relationships deepen. Old tensions surface. The apiary grows. And the town that was watching you from behind curtains starts saving you a seat.</p>
+    </div>
+
+    <div class="seasons-strip">
+      <div class="season-card">
+        <span class="season-icon">&#x1F331;</span>
+        <div class="season-name">Spring</div>
+        <p class="season-body">The bees wake. Dandelions carpet the roadsides. Your hands shake the first time you lift a frame. Everything is new and terrifying and alive.</p>
+      </div>
+      <div class="season-card">
+        <span class="season-icon">&#x2600;&#xFE0F;</span>
+        <div class="season-name">Summer</div>
+        <p class="season-body">The honey flows. The Saturday Market fills. You sell something you made with your hands and a stranger asks your name.</p>
+      </div>
+      <div class="season-card">
+        <span class="season-icon">&#x1F342;</span>
+        <div class="season-name">Autumn</div>
+        <p class="season-body">The harvest comes in. Bonfires light the fields. Old wounds between neighbors surface -- and sometimes, quietly, begin to heal.</p>
+      </div>
+      <div class="season-card">
+        <span class="season-icon">&#x2744;&#xFE0F;</span>
+        <div class="season-name">Winter</div>
+        <p class="season-body">The hives go still under snow. Tables are set for whoever will come. Gifts are exchanged. Debts are forgiven. The world outside is cold. Inside, it's warm.</p>
       </div>
     </div>
   </section>
@@ -1155,7 +1390,7 @@
       <div class="pillar">
         <span class="pillar-icon">&#x1F4AC;</span>
         <div class="pillar-title">Rich NPC Relationships</div>
-        <p class="pillar-desc">Eight fully-voiced characters with deep quest arcs &mdash; 60 quest chains, 8,200+ XP, and stories woven through the community of Cedar Bend. Relationships built over seasons, not minutes.</p>
+        <p class="pillar-desc">Twelve characters with histories, grudges, kindnesses, and debts that predate your arrival by generations. Relationships built over seasons, not minutes. Every friendship unlocks quest chains that shape the town.</p>
       </div>
       <div class="pillar">
         <span class="pillar-icon">&#x1F54A;&#xFE0F;</span>
@@ -1243,7 +1478,7 @@
   <section class="section" style="padding-top:80px;">
     <p class="section-label">The World</p>
     <h2 class="section-title">Cedar Bend, Iowa</h2>
-    <p class="section-body" style="max-width:600px;">A fictional small town rooted in Iowa's agricultural identity &mdash; a feed store, a diner, a post office, a vet, and the people who make it home. Pixel art, 32&times;32 tile grid, built frame by frame.</p>
+    <p class="section-body" style="max-width:600px;">Millhaven County. One stoplight that blinks yellow after 10 PM. A grain elevator, a creek, a Saturday Market, and people who have been watching out for each other longer than they can remember. This is their town. You're just the kid who showed up. Pixel art, 32&times;32 tile grid, built frame by frame.</p>
 
     <div class="screenshots">
       <div class="screenshot-box large" style="background:url('images/promo3.png') center/cover no-repeat;">
@@ -1264,49 +1499,97 @@
   <!-- NPCS -->
   <section id="world" class="section" style="padding-top:48px;">
     <p class="section-label">The Residents</p>
-    <h2 class="section-title">Eight characters. Sixty stories.</h2>
-    <p class="section-body" style="max-width:640px;">Every resident of Cedar Bend has a life, a history, and a stake in what happens at your apiary. Build friendships over seasons and unlock quest chains that change the town.</p>
+    <h2 class="section-title">Everybody knows everybody. Soon, they'll know you.</h2>
+    <p class="section-body" style="max-width:660px;">Cedar Bend's people have been in each other's lives for decades. They have histories, grudges, kindnesses, and debts that predate your arrival by generations. When you walk into this town, you're walking into the middle of a story that started long before you. Create your beekeeper, and find out where you fit.</p>
 
     <div class="npc-strip">
-      <div class="npc-card">
-        <div class="npc-avatar">&#x1F9D3;</div>
-        <div class="npc-name">Walt Harmon</div>
-        <div class="npc-role">Retired Farmer</div>
+      <div class="npc-card npc-card--you">
+        <div class="npc-avatar">
+          <div class="you-silhouette">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="20" r="12" fill="currentColor"/>
+              <path d="M10 58c0-12.15 9.85-22 22-22s22 9.85 22 22" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <line x1="32" y1="44" x2="32" y2="52" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <line x1="28" y1="48" x2="36" y2="48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="npc-name">You</div>
+        <div class="npc-role">The New Beekeeper</div>
+        <div class="you-badge">Character Creator</div>
+        <div class="npc-flavor">Someone asked you for something real. You said yes before your brain could talk you out of it.</div>
       </div>
       <div class="npc-card">
-        <div class="npc-avatar">&#x1F469;</div>
-        <div class="npc-name">Kacey Harmon</div>
-        <div class="npc-role">Walt's Daughter</div>
+        <div class="npc-avatar"><img src="NPC_avatars/uncleBob.png" alt="Uncle Bob"></div>
+        <div class="npc-name">Uncle Bob</div>
+        <div class="npc-role">The Man Who Called</div>
+        <div class="npc-flavor">He calls the bees "the girls" and the queen "Her Majesty." He'll teach you everything that matters.</div>
       </div>
       <div class="npc-card">
-        <div class="npc-avatar">&#x1F477;</div>
-        <div class="npc-name">Frank Fischbach</div>
-        <div class="npc-role">Hardware Store</div>
+        <div class="npc-avatar"><img src="NPC_avatars/darlene.png" alt="Darlene Kowalski"></div>
+        <div class="npc-name">Darlene</div>
+        <div class="npc-role">Third-Generation Beekeeper</div>
+        <div class="npc-flavor">Her queen line traces back to stock her grandmother brought from Poland in 1928. Six hives. No more, no less.</div>
       </div>
       <div class="npc-card">
-        <div class="npc-avatar">&#x1F469;&#x200D;&#x2695;&#xFE0F;</div>
-        <div class="npc-name">Dr. Ellen Harwick</div>
-        <div class="npc-role">Veterinarian</div>
-      </div>
-      <div class="npc-card">
-        <div class="npc-avatar">&#x1F37D;&#xFE0F;</div>
+        <div class="npc-avatar"><img src="NPC_avatars/Rose.png" alt="Rose Delacroix"></div>
         <div class="npc-name">Rose</div>
-        <div class="npc-role">Diner Owner</div>
+        <div class="npc-role">The Crossroads Diner</div>
+        <div class="npc-flavor">The social switchboard of Cedar Bend. Everything passes through her counter. She calls everyone "honey."</div>
       </div>
       <div class="npc-card">
-        <div class="npc-avatar">&#x1F69A;</div>
+        <div class="npc-avatar"><img src="NPC_avatars/carlTanner.png" alt="Carl Tanner"></div>
         <div class="npc-name">Carl Tanner</div>
         <div class="npc-role">Feed &amp; Seed</div>
+        <div class="npc-flavor">Third-generation store owner. Knows every farmer by name and what they ordered last spring. His bulletin board is the town's nervous system.</div>
       </div>
       <div class="npc-card">
-        <div class="npc-avatar">&#x2709;&#xFE0F;</div>
+        <div class="npc-avatar"><img src="NPC_avatars/frankFischbach.png" alt="Frank Fischbach"></div>
+        <div class="npc-name">Frank Fischbach</div>
+        <div class="npc-role">Saturday Market</div>
+        <div class="npc-flavor">He'll tell you your first labels look "like a school project." He means it as actionable feedback. His approval means something because he doesn't give it cheaply.</div>
+      </div>
+      <div class="npc-card">
+        <div class="npc-avatar"><img src="NPC_avatars/drEllenHarwick.png" alt="Dr. Ellen Harwick"></div>
+        <div class="npc-name">Dr. Ellen Harwick</div>
+        <div class="npc-role">Extension Agent</div>
+        <div class="npc-flavor">Moved here five years ago and still gets called "the new girl." She doesn't mind. Trust in a small town is earned in decades, not diplomas.</div>
+      </div>
+      <div class="npc-card">
+        <div class="npc-avatar"><img src="NPC_avatars/juneWellman.png" alt="June Wellman"></div>
         <div class="npc-name">June</div>
         <div class="npc-role">Postmaster</div>
+        <div class="npc-flavor">Knows every address in the county by heart. Quiet. Observant. Unexpectedly dry-humored. Holding something at her desk that isn't yours yet.</div>
       </div>
       <div class="npc-card">
-        <div class="npc-avatar">&#x1F477;&#x200D;&#x2642;&#xFE0F;</div>
-        <div class="npc-name">Uncle Bob</div>
-        <div class="npc-role">Your Predecessor</div>
+        <div class="npc-avatar"><img src="NPC_avatars/waltHarmon.png" alt="Paul Rowland"></div>
+        <div class="npc-name">Paul Rowland</div>
+        <div class="npc-role">The Farm</div>
+        <div class="npc-flavor">800 acres of corn and soy. Doesn't trust what he can't see working. A man whose language of reconciliation isn't words.</div>
+      </div>
+      <div class="npc-card">
+        <div class="npc-avatar"><img src="NPC_avatars/kaceyHarmon.png" alt="Kacey Rowland"></div>
+        <div class="npc-name">Kacey Rowland</div>
+        <div class="npc-role">The Next Generation</div>
+        <div class="npc-flavor">Carries the weight of legacy and the guilt of occasionally wanting something different. Your strongest ally.</div>
+      </div>
+      <div class="npc-card">
+        <div class="npc-avatar"><img src="NPC_avatars/silasCrenshaw.png" alt="Silas Crenshaw"></div>
+        <div class="npc-name">Silas Crenshaw</div>
+        <div class="npc-role">The Builder</div>
+        <div class="npc-flavor">Built half the barns in Millhaven County. Quiet, precise, opinionated about lumber quality the way other people are about politics.</div>
+      </div>
+      <div class="npc-card">
+        <div class="npc-avatar"><img src="NPC_avatars/lloydPtersen.png" alt="Lloyd Petersen"></div>
+        <div class="npc-name">Lloyd Petersen</div>
+        <div class="npc-role">The Land</div>
+        <div class="npc-flavor">Protective of his trees the way parents are protective of children. His timber holds a secret worth earning.</div>
+      </div>
+      <div class="npc-card">
+        <div class="npc-avatar"><img src="NPC_avatars/agnes.png" alt="Agnes Pfeiffer"></div>
+        <div class="npc-name">Agnes</div>
+        <div class="npc-role">Diner Waitress</div>
+        <div class="npc-flavor">Brings your coffee without being asked. Sees more than she lets on.</div>
       </div>
     </div>
   </section>
@@ -1320,7 +1603,7 @@
       <div class="devplan-card-left">
         <p class="section-label">Behind the Scenes</p>
         <h2 class="devplan-card-title">Active Development Plan</h2>
-        <p class="devplan-card-body">Five phases from prototype to ship. Every task, system, and milestone is tracked openly &mdash; from the core simulation loop already running in-game to the crafting, NPC, and world-building systems coming in Phase 3 and beyond.</p>
+        <p class="devplan-card-body">Five phases from prototype to ship, building on five years of prior development in GameMaker Studio. Every task, system, and milestone is tracked openly &mdash; from the core simulation loop already running in-game to the crafting, NPC, and world-building systems coming in Phase 3 and beyond. The rapid pace of progress reflects years of assets and design being converted into Godot 4.</p>
         <div class="devplan-phase-list">
           <div class="devplan-phase-item devplan-phase-done">
             <span class="devplan-phase-dot"></span>
