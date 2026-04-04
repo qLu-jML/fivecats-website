@@ -18,505 +18,139 @@ html { scroll-behavior: smooth; }
 body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-deep); color: var(--text); line-height: 1.7; min-height: 100vh; overflow-x: hidden; }
 .ks-banner { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 44px; background: linear-gradient(90deg, #05CE78 0%, #00B86A 100%); color: #fff; display: flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 600; text-align: center; letter-spacing: 0.01em; }
 .ks-banner-badge { background: rgba(0,0,0,0.18); border-radius: 4px; padding: 2px 8px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
-.ks-banner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
-.ks-banner a:hover { opacity: 0.85; }
-.btn-ks { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; background: #05CE78; color: #fff; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 700; text-decoration: none; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; animation: ksPulse 2.5s ease-in-out infinite; }
-.btn-ks:hover { background: #00A85F; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(5,206,120,0.35); }
-@keyframes ksPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(5,206,120,0.45); } 50% { box-shadow: 0 0 0 14px rgba(5,206,120,0); } }
-nav { position: fixed; top: 88px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 72px; background: rgba(15,13,26,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.nav-logo img { width: 44px; height: 44px; border-radius: 8px; border: 1px solid rgba(232,104,63,0.3); }
-.nav-logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--gold); }
-.nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-.nav-links a { font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; transition: color 0.2s; letter-spacing: 0.3px; }
-.nav-links a:hover { color: var(--gold); }
-.nav-cta { background: var(--orange); color: var(--bg-deep) !important; font-weight: 600 !important; padding: 9px 22px; border-radius: 6px; transition: background 0.2s !important; }
-.nav-cta:hover { background: #d95a34 !important; }
-.nav-cta-honey { background: var(--gold); color: var(--bg-deep) !important; font-weight: 600 !important; padding: 9px 22px; border-radius: 6px; transition: background 0.2s !important; }
-.nav-cta-honey:hover { background: var(--amber) !important; }
-.hire-banner { position: fixed; top: 44px; left: 0; right: 0; z-index: 200; height: 44px; background: linear-gradient(90deg, var(--amber) 0%, var(--gold) 100%); color: var(--bg-deep); display: flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 600; text-align: center; letter-spacing: 0.01em; }
-.hire-banner a { color: var(--bg-deep); text-decoration: underline; text-underline-offset: 2px; font-weight: 700; }
-.hire-banner a:hover { opacity: 0.7; }
-@keyframes hirePulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(200,130,12,0.5); } 50% { box-shadow: 0 0 0 8px rgba(200,130,12,0); } }
-.hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 208px 24px 80px; position: relative; overflow: hidden; }
-.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(232,104,63,0.08) 0%, transparent 70%); pointer-events: none; }
-.hero-logo { width: 160px; height: 160px; border-radius: 24px; border: 2px solid rgba(232,104,63,0.35); box-shadow: 0 20px 60px rgba(232,104,63,0.2), 0 0 0 1px rgba(255,255,255,0.05); margin-bottom: 36px; animation: floatLogo 6s ease-in-out infinite; }
-@keyframes floatLogo { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-.hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; }
-.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 7vw, 80px); font-weight: 800; line-height: 1.05; background: linear-gradient(160deg, var(--cream) 0%, var(--gold) 35%, var(--amber) 65%, var(--orange) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; }
-.hero-tagline { font-family: 'Playfair Display', serif; font-size: clamp(17px, 2.5vw, 22px); font-style: italic; color: var(--text-dim); margin-bottom: 16px; }
-.hero-sub { font-size: 15px; color: var(--text-faint); margin-bottom: 48px; max-width: 460px; }
-.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-.btn-primary { background: var(--orange); color: var(--bg-deep); font-weight: 700; font-size: 15px; padding: 14px 32px; border-radius: 8px; text-decoration: none; transition: background 0.2s, transform 0.15s; letter-spacing: 0.3px; }
-.btn-primary:hover { background: #d95a34; transform: translateY(-2px); }
-.btn-secondary { background: transparent; color: var(--amber); font-weight: 600; font-size: 15px; padding: 13px 30px; border-radius: 8px; border: 2px solid rgba(232,168,62,0.45); text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.15s; letter-spacing: 0.3px; }
-.btn-secondary:hover { border-color: var(--amber); color: var(--gold); transform: translateY(-2px); }
-.scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--text-faint); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; animation: bounce 2.5s ease-in-out infinite; }
-.scroll-hint svg { opacity: 0.4; }
-@keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
-.section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
-.section-label { font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
-.section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--cream); margin-bottom: 20px; line-height: 1.2; }
-.section-body { font-size: 16px; line-height: 1.85; color: var(--text-dim); max-width: 680px; }
-.divider { height: 1px; background: linear-gradient(90deg, transparent, var(--orange), transparent); opacity: 0.15; max-width: 800px; margin: 0 auto; }
-#about { background: linear-gradient(180deg, var(--bg-deep) 0%, rgba(26,26,46,0.6) 50%, var(--bg-deep) 100%); padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 56px; }
-.about-text p { font-size: 16px; line-height: 1.9; color: var(--text-dim); margin-bottom: 18px; }
-.about-text p strong { color: var(--gold); font-weight: 600; }
-.cats-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 36px; position: relative; }
-.cats-card::before { content: ''; position: absolute; top: 0; left: 32px; right: 32px; height: 2px; background: linear-gradient(90deg, transparent, var(--orange), transparent); opacity: 0.5; border-radius: 0 0 2px 2px; }
-.cats-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--gold); margin-bottom: 20px; }
-.cat-list { display: flex; flex-direction: column; gap: 10px; list-style: none; }
-.cat-item { display: flex; align-items: center; gap: 14px; padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); transition: border-color 0.2s; }
-.cat-item:hover { border-color: rgba(232,104,63,0.3); }
-.cat-paw { font-size: 18px; flex-shrink: 0; }
-.cat-name { font-weight: 600; font-size: 14px; color: var(--amber); }
-.cat-desc { font-size: 13px; color: var(--text-faint); margin-top: 1px; }
-.studio-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
-.stat-box { text-align: center; padding: 20px 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; }
-.stat-num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--gold); display: block; }
-.stat-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-faint); margin-top: 4px; }
-#games { padding-top: 80px; padding-bottom: 120px; }
-.games-header { max-width: 1100px; margin: 0 auto 56px; padding: 0 24px; }
-.game-card { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-.game-card-inner { background: linear-gradient(135deg, rgba(26,18,8,0.8) 0%, rgba(15,13,26,0.95) 100%); border: 1px solid rgba(232,168,62,0.2); border-radius: 20px; padding: 60px; display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: center; position: relative; overflow: hidden; transition: border-color 0.3s, box-shadow 0.3s; }
-.game-card-inner:hover { border-color: rgba(232,168,62,0.4); box-shadow: 0 20px 60px rgba(232,104,63,0.08); }
-.game-card-inner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), var(--gold), var(--amber)); border-radius: 20px 20px 0 0; }
-.game-card-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(230,162,32,0.04) 0%, transparent 70%); pointer-events: none; }
-.game-badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(232,104,63,0.12); border: 1px solid rgba(232,104,63,0.3); border-radius: 20px; padding: 5px 14px; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; }
-.game-badge-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
-@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
-.game-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 800; line-height: 1.05; background: linear-gradient(135deg, #FCF5D7 0%, #F4CC6E 30%, #E6A220 65%, #C8820C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
-.game-subtitle { font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; color: var(--text-faint); margin-bottom: 24px; }
-.game-desc { font-size: 16px; line-height: 1.85; color: var(--text-dim); margin-bottom: 32px; }
-.game-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
-.tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 4px 12px; font-size: 12px; color: var(--text-dim); letter-spacing: 0.3px; }
-.game-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-.game-visual { display: flex; flex-direction: column; gap: 16px; }
-.game-preview-main { background: linear-gradient(135deg, rgba(152,88,8,0.15) 0%, rgba(108,64,22,0.08) 100%); border: 1px solid rgba(230,162,32,0.15); border-radius: 14px; aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-.game-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.game-stat { background: rgba(255,255,255,0.03); border: 1px solid rgba(230,162,32,0.12); border-radius: 8px; padding: 12px; text-align: center; }
-.game-stat-num { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--gold); display: block; }
-.game-stat-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-faint); margin-top: 2px; }
-.values-strip { background: rgba(232,104,63,0.04); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 64px 24px; }
-.values-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
-.value-item { text-align: center; }
-.value-icon { font-size: 32px; display: block; margin-bottom: 14px; }
-.value-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
-.value-text { font-size: 13px; line-height: 1.7; color: var(--text-faint); }
-.devlog-grid { display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start; }
-.devlog-today { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
-.devlog-date-badge { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-.devlog-date-label { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--gold); }
-.devlog-today-pill { background: var(--orange); color: var(--bg-deep); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
-.devlog-entries { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
-.devlog-entry { display: flex; gap: 12px; align-items: flex-start; }
-.devlog-tag { flex-shrink: 0; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; border: 1px solid; margin-top: 2px; }
-.devlog-tag-feature { background: rgba(74,122,61,0.15); color: #6FBC5A; border-color: rgba(74,122,61,0.4); }
-.devlog-tag-fix { background: rgba(212,84,122,0.12); color: #E8809A; border-color: rgba(212,84,122,0.3); }
-.devlog-tag-redesign { background: rgba(123,104,238,0.12); color: #A090F0; border-color: rgba(123,104,238,0.3); }
-.devlog-tag-audio { background: rgba(232,168,62,0.12); color: var(--amber); border-color: rgba(232,168,62,0.3); }
-.devlog-tag-business { background: rgba(245,204,91,0.12); color: var(--gold); border-color: rgba(245,204,91,0.3); }
-.devlog-entry-text { font-size: 14px; line-height: 1.75; color: var(--text-dim); }
-.devlog-entry-text strong { color: var(--cream); font-weight: 600; }
-.devlog-full-link { display: flex; align-items: center; justify-content: space-between; background: rgba(232,104,63,0.08); border: 1px solid rgba(232,104,63,0.25); border-radius: 10px; padding: 14px 20px; text-decoration: none; color: var(--amber); font-size: 14px; font-weight: 600; transition: background 0.2s, border-color 0.2s; }
-.devlog-full-link:hover { background: rgba(232,104,63,0.14); border-color: rgba(232,104,63,0.45); color: var(--gold); }
-.devlog-full-count { font-size: 12px; color: var(--text-faint); font-weight: 400; }
-.devlog-stats { position: sticky; top: 88px; }
-.devlog-stats-title { font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--text-faint); margin-bottom: 14px; }
-.devlog-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-.devlog-stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 12px; text-align: center; }
-.devlog-stat-num { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--gold); display: block; line-height: 1.1; }
-.devlog-stat-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-faint); margin-top: 3px; }
-.devlog-phase-badge { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 18px 16px; }
-.devlog-phase-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-faint); margin-bottom: 6px; }
-.devlog-phase-name { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
-.devlog-phase-bar { background: rgba(255,255,255,0.06); border-radius: 4px; height: 6px; margin-bottom: 8px; overflow: hidden; }
-.devlog-phase-fill { height: 100%; background: linear-gradient(90deg, var(--orange), var(--gold)); border-radius: 4px; }
-.devlog-phase-sub { font-size: 12px; color: var(--text-faint); }
-@media (max-width: 900px) { .devlog-grid { grid-template-columns: 1fr; } .devlog-stats { position: static; } }
-#newsletter { padding: 100px 24px; text-align: center; }
-.newsletter-inner { max-width: 540px; margin: 0 auto; }
-.newsletter-inner .section-title { margin-bottom: 12px; }
-.newsletter-inner .section-body { margin: 0 auto 36px; text-align: center; }
-.newsletter-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto; }
-.newsletter-form input { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; padding: 13px 18px; font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color 0.2s; }
-.newsletter-form input::placeholder { color: var(--text-faint); }
-.newsletter-form input:focus { border-color: var(--orange); }
-.newsletter-form button { background: var(--orange); color: var(--bg-deep); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; padding: 13px 24px; border: none; border-radius: 8px; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
-.newsletter-form button:hover { background: #d95a34; }
-.newsletter-note { font-size: 12px; color: var(--text-faint); margin-top: 14px; }
-footer { border-top: 1px solid var(--border); padding: 48px 24px; }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
-.footer-brand { display: flex; align-items: center; gap: 12px; }
-.footer-brand img { width: 40px; height: 40px; border-radius: 8px; border: 1px solid rgba(232,104,63,0.25); }
-.footer-brand-text { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--gold); }
-.footer-tagline { font-size: 12px; color: var(--text-faint); margin-top: 2px; }
-.footer-links { display: flex; gap: 28px; list-style: none; flex-wrap: wrap; }
-.footer-links a { font-size: 13px; color: var(--text-faint); text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: var(--amber); }
-.footer-copy { font-size: 12px; color: var(--text-faint); }
-@media (max-width: 900px) { nav { padding: 0 24px; } .nav-links { display: none; } .about-grid { grid-template-columns: 1fr; gap: 48px; } .game-card-inner { grid-template-columns: 1fr; padding: 40px 32px; gap: 40px; } .values-inner { grid-template-columns: repeat(2, 1fr); } .footer-inner { flex-direction: column; align-items: flex-start; } }
-@media (max-width: 560px) { .values-inner { grid-template-columns: 1fr 1fr; } .newsletter-form { flex-direction: column; } }
+.ks-banner a { color: inherit; text-decoration: none; font-weight: 700; }
+.ks-banner a:hover { opacity: 0.9; }
+.container { max-width: 1000px; margin: 0 auto; padding: 44px 24px 80px; }
+header { margin-bottom: 48px; }
+.header-content { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.logo-section { display: flex; align-items: center; gap: 16px; }
+.logo { width: 56px; height: 56px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.logo img { width: 100%; height: 100%; object-fit: contain; }
+.studio-name h1 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: var(--cream); margin: 0; }
+.studio-name p { margin: 4px 0 0 0; color: var(--text-dim); font-size: 14px; }
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a { color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-links a.active { color: var(--gold); }
+@media (max-width: 640px) {
+  .header-content { flex-direction: column; align-items: flex-start; }
+  .nav-links { flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+.hero-section { margin-bottom: 48px; }
+.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(36px, 6vw, 56px); font-weight: 700; color: var(--cream); margin-bottom: 16px; }
+.hero-subtitle { font-size: 18px; color: var(--text-dim); max-width: 700px; margin-bottom: 32px; }
+.cta-button { display: inline-block; padding: 12px 24px; background: var(--orange); color: var(--bg-deep); text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px; transition: background 0.2s; }
+.cta-button:hover { background: var(--gold); }
+.cta-button:active { transform: scale(0.98); }
+.featured-content { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px; }
+.content-card { padding: 28px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; transition: border-color 0.2s; }
+.content-card:hover { border-color: rgba(232,104,63,0.4); }
+.content-card h2 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
+.content-card p { font-size: 14px; color: var(--text-dim); line-height: 1.75; margin-bottom: 20px; }
+.content-card-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.meta-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-faint); }
+.game-devlog-section { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px; }
+.game-devlog-section > div { display: flex; flex-direction: column; }
+.recent-updates { padding: 28px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; }
+.recent-updates h3 { font-size: 18px; font-weight: 600; color: var(--gold); margin-bottom: 16px; }
+.update-item { padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: var(--text-dim); }
+.update-item:last-child { border-bottom: none; margin-bottom: 0; }
+.update-item strong { color: var(--text); display: block; margin-bottom: 4px; }
+.devlog-link { display: inline-block; margin-top: 16px; }
+.view-all-link { color: var(--amber); text-decoration: none; font-weight: 600; font-size: 14px; transition: color 0.2s; }
+.view-all-link:hover { color: var(--gold); }
+.featured-story { padding: 28px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; }
+.featured-story h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
+.featured-story p { font-size: 14px; color: var(--text-dim); line-height: 1.75; margin-bottom: 16px; }
+.featured-story .story-meta { font-size: 12px; color: var(--text-faint); }
+.footer-divider { height: 1px; background: var(--border); margin: 48px 0; }
+.footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); }
+.footer p { font-size: 13px; color: var(--text-faint); margin: 8px 0; }
+.footer a { color: var(--amber); text-decoration: none; }
+.footer a:hover { color: var(--gold); }
     </style>
 </head>
 <body>
     <div class="ks-banner">
-        <span class="ks-banner-badge">LIVE &#x1F680;</span>
-        <span>Kickstarter is LIVE! &mdash; </span>
-        <a href="https://www.kickstarter.com/projects/5catssmokeandhoney/smoke-and-honey">Back us now!</a>
+        <span class="ks-banner-badge">Beta</span>
+        Five Cats Studios demo is now live at <a href="https://fivecatsgamestudios.itch.io/smoke-and-honey" target="_blank">itch.io</a>
     </div>
-
-    <div class="hire-banner">
-        <span class="ks-banner-badge">NEW</span>
-        <span>We're hiring a pixel artist! &mdash; </span>
-        <a href="https://fivecatstudios.web.app/hire-artist.html">See the listing</a>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <img src="images/logo_32.png" alt="Five Cats Studios">
+                    </div>
+                    <div class="studio-name">
+                        <h1>Five Cats Studios</h1>
+                        <p>Cozy Games, Crafted with Care</p>
+                    </div>
+                </div>
+                <nav class="nav-links">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="changelog.html">Devlog</a>
+                    <a href="https://fivecatsgamestudios.itch.io/smoke-and-honey" target="_blank">Play Demo</a>
+                </nav>
+            </div>
+        </header>
+        <section class="hero-section">
+            <h2 class="hero-title">Welcome to Five Cats Studios</h2>
+            <p class="hero-subtitle">We make systems-rich cozy games crafted with care. Currently developing <strong>Smoke & Honey</strong>, a beekeeping farm simulator blending peaceful gameplay with deep ecological systems.</p>
+            <a href="https://fivecatsgamestudios.itch.io/smoke-and-honey" target="_blank" class="cta-button">Play the Demo</a>
+        </section>
+        <section class="featured-content">
+            <div class="content-card">
+                <h2>About Smoke & Honey</h2>
+                <p>Step into the role of a beekeeper nurturing a thriving colony through seasons of growth, discovery, and challenge. Every decision shapes your hive's fate as you balance production, health, and conservation in a deeply simulated ecosystem.</p>
+                <div class="content-card-meta">
+                    <span class="meta-badge">Farm Sim</span>
+                    <span class="meta-badge">Cozy</span>
+                    <span class="meta-badge">Strategic</span>
+                </div>
+                <a href="https://fivecatsgamestudios.itch.io/smoke-and-honey" target="_blank" class="cta-button">Learn More</a>
+            </div>
+            <div class="content-card">
+                <h2>Our Studio</h2>
+                <p>Five Cats Studios was founded by Nathan Taber, a hospice chaplain turned game developer. Inspired by personal reflection and a love for systems-rich gameplay, we craft cozy games that feel meaningful and lived-in. Every game tells a story through mechanics.</p>
+                <div class="content-card-meta">
+                    <span class="meta-badge">Indie</span>
+                    <span class="meta-badge">Iowa-Based</span>
+                    <span class="meta-badge">Heart-Driven</span>
+                </div>
+            </div>
+        </section>
+        <section class="game-devlog-section">
+            <div class="recent-updates">
+                <h3>Latest Updates</h3>
+                <div class="update-item">
+                    <strong>April 3, 2026</strong>
+                    16 entries: Quest Engine, Knowledge Journal, Disease Systems
+                </div>
+                <div class="update-item">
+                    <strong>March 29, 2026</strong>
+                    5 entries: Feeder System, Mite Monitoring
+                </div>
+                <div class="update-item">
+                    <strong>March 22, 2026</strong>
+                    8 entries: Wildlife events, narrative polish
+                </div>
+                <div class="devlog-link">
+                    <a href="changelog.html" class="view-all-link">View Full Devlog →</a>
+                </div>
+            </div>
+            <div class="featured-story">
+                <h3>Why We Build Games</h3>
+                <p>Games have the power to let us experience other lives, make decisions, and live with their consequences. They're spaces where we can explore systems, build mastery, and find peace. At Five Cats Studios, we're building games that matter. Games you'll remember. Games crafted with care.</p>
+                <div class="story-meta">
+                    Est. 2024. Based in Grundy Center, Iowa. Two cats, infinite inspiration.
+                </div>
+            </div>
+        </section>
     </div>
-
-    <nav>
-        <a class="nav-logo" href="#">
-            <img src="images/logo_64.png" alt="Five Cats Studios">
-            <span class="nav-logo-text">Five Cats Studios</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#games">Games</a></li>
-            <li><a href="#devlog">Dev Log</a></li>
-            <li><a href="https://fivecatstudios.web.app/devplan.html">Dev Plan</a></li>
-            <li><a href="https://github.com/qLu-jML/SmokeAndHoney">GitHub</a></li>
-            <li><a href="#newsletter">Stay Updated</a></li>
-            <li><a href="https://fivecatstudios.web.app/hire-artist.html" class="nav-cta">&#x1F41D; We're Hiring</a></li>
-            <li><a href="https://fivecatstudios.web.app/smoke-and-honey.html" class="nav-cta-honey">Smoke &amp; Honey</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero">
-        <img src="images/logo_256.png" alt="Five Cats Studios Logo" class="hero-logo">
-        <div class="hero-eyebrow">An Independent Game Studio &mdash; Grundy County, Iowa</div>
-        <h1>Five Cats Studios</h1>
-        <p class="hero-tagline">Cozy Games, Crafted with Care</p>
-        <p class="hero-sub">We make slow, systems-rich games for players who want to breathe, explore, and discover.</p>
-        <div class="hero-actions">
-            <a href="https://www.kickstarter.com/projects/5catssmokeandhoney/smoke-and-honey" class="btn-primary">&#x1F680; Kickstarter &mdash; LIVE NOW</a>
-            <a href="#games" class="btn-secondary">See Our Games</a>
-            <a href="#about" class="btn-secondary">About the Studio</a>
-        </div>
-        <div class="scroll-hint">Scroll</div>
-    </section>
-
-    <section id="about">
-        <div class="section-label">About the Studio</div>
-        <h2 class="section-title">A one-person studio with five furry co-founders</h2>
-        <div class="about-grid">
-            <div class="about-text">
-                <p>Five Cats Studios is an independent game development studio founded in 2026 by <strong>Nathan Barkley</strong> in Grundy County, Iowa. We build cozy, systems-rich games that give players room to breathe, discover, and settle in for the long haul.</p>
-                <p>Our flagship title, <strong>Smoke &amp; Honey</strong>, is a beekeeping farm simulation built in Godot 4 with handcrafted pixel art. It blends realistic apiary management with warm NPC relationships, seasonal rhythms, and a peaceful Iowa small-town setting.</p>
-                <p>We believe games can be both deep and gentle. Our work is rooted in <strong>Iowa's agricultural heritage</strong>, a love of living systems, and the conviction that the best games teach through wonder, not punishment.</p>
-            </div>
-            <div class="cats-card">
-                <h3>The Co-Founders</h3>
-                <ul class="cat-list">
-                    <li class="cat-item">
-                        <span class="cat-paw">&#x1F43E;</span>
-                        <div>
-                            <div class="cat-name">Bones</div>
-                            <div class="cat-desc">Chief of Debugging &amp; General Chaos</div>
-                        </div>
-                    </li>
-                    <li class="cat-item">
-                        <span class="cat-paw">&#x26A1;</span>
-                        <div>
-                            <div class="cat-name">Tesla</div>
-                            <div class="cat-desc">Head of Electrical &amp; Keyboard Interference</div>
-                        </div>
-                    </li>
-                    <li class="cat-item">
-                        <span class="cat-paw">&#x1F415;</span>
-                        <div>
-                            <div class="cat-name">Oi</div>
-                            <div class="cat-desc">Director of Demanding Attention Mid-Deadline</div>
-                        </div>
-                    </li>
-                    <li class="cat-item">
-                        <span class="cat-paw">&#x1F451;</span>
-                        <div>
-                            <div class="cat-name">Baron</div>
-                            <div class="cat-desc">VP of Looking Regal While Doing Nothing</div>
-                        </div>
-                    </li>
-                    <li class="cat-item">
-                        <span class="cat-paw">&#x1F5E1;&#xFE0F;</span>
-                        <div>
-                            <div class="cat-name">Odin</div>
-                            <div class="cat-desc">Chief Strategy Officer &amp; Window Watcher</div>
-                        </div>
-                    </li>
-                </ul>
-                <div class="studio-stats">
-                    <div class="stat-box">
-                        <span class="stat-num">2026</span>
-                        <span class="stat-label">Founded</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-num">1</span>
-                        <span class="stat-label">Developer</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-num">5</span>
-                        <span class="stat-label">Cats</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="games" style="padding-top: 80px; padding-bottom: 120px;">
-        <div class="games-header">
-            <div class="section-label">Current Projects</div>
-            <h2 class="section-title">Our Games</h2>
-            <p class="section-body">We're currently in active development on our debut title. Exploration, management, and narrative in a world that rewards slowing down.</p>
-        </div>
-        <div class="game-card">
-            <div class="game-card-inner">
-                <div class="game-card-bg"></div>
-                <div>
-                    <div class="game-badge">
-                        <span class="game-badge-dot"></span>
-                        In Development &mdash; Godot 4 &middot; Steam PC/Mac
-                    </div>
-                    <h3 class="game-title">Smoke &amp; Honey</h3>
-                    <p class="game-subtitle">A Cozy Beekeeping Farm Sim</p>
-                    <p class="game-desc">Your uncle keeps bees on the edge of Cedar Bend, Iowa &mdash; population 1,847, one stoplight, zero strangers &mdash; and he needs your help. Manage Langstroth and Warre hives, breed queens, craft honey and mead, and become part of a small town where everyone has a history and help arrives before the need is stated. Twelve characters. Five years. No fail states. Only time, patience, and the slow hum of a healthy hive.</p>
-                    <div class="game-tags">
-                        <span class="tag">Farming Sim</span>
-                        <span class="tag">Cozy</span>
-                        <span class="tag">Beekeeping</span>
-                        <span class="tag">Pixel Art</span>
-                        <span class="tag">Story-Rich</span>
-                        <span class="tag">Godot 4</span>
-                        <span class="tag">Steam</span>
-                    </div>
-                    <div class="game-actions">
-                        <a href="https://www.kickstarter.com/projects/5catssmokeandhoney/smoke-and-honey" class="btn-primary">&#x1F680; Kickstarter &mdash; LIVE NOW</a>
-                        <a href="https://fivecatstudios.web.app/smoke-and-honey.html" class="btn-secondary">Learn More</a>
-                        <a href="https://fivecatstudios.web.app/smoke-and-honey.html#wishlist" class="btn-secondary">Join the Mailing List</a>
-                    </div>
-                </div>
-                <div class="game-visual">
-                    <div class="game-preview-main">
-                        <video style="width: 100%; height: 100%; object-fit: cover;" controls autoplay muted loop playsinline>
-                            <source src="smoke-and-honey-trailer.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="game-stats-row">
-                        <div class="game-stat">
-                            <span class="game-stat-num">12</span>
-                            <span class="game-stat-label">NPCs</span>
-                        </div>
-                        <div class="game-stat">
-                            <span class="game-stat-num">60</span>
-                            <span class="game-stat-label">Quests</span>
-                        </div>
-                        <div class="game-stat">
-                            <span class="game-stat-num">Q4 '26</span>
-                            <span class="game-stat-label">Alpha</span>
-                        </div>
-                    </div>
-                    <div class="game-stats-row">
-                        <div class="game-stat">
-                            <span class="game-stat-num">31</span>
-                            <span class="game-stat-label">Scenes</span>
-                        </div>
-                        <div class="game-stat">
-                            <span class="game-stat-num">81</span>
-                            <span class="game-stat-label">Scripts</span>
-                        </div>
-                        <div class="game-stat">
-                            <span class="game-stat-num">25.8K</span>
-                            <span class="game-stat-label">Lines of Code</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="devlog" class="section">
-        <div class="section-label">Development Log</div>
-        <h2 class="section-title">Latest Updates</h2>
-        <div class="devlog-grid">
-            <div class="devlog-today">
-                <div class="devlog-date-badge">
-                    <span class="devlog-date-label">April 2, 2026</span>
-                    <span class="devlog-today-pill">LATEST</span>
-                </div>
-                <div class="devlog-entries">
-                    <div class="devlog-entry">
-                        <span class="devlog-tag devlog-tag-feature">Story</span>
-                        <div class="devlog-entry-text"><strong>Story Bible finalized &mdash; Cedar Bend comes alive on the website</strong> &mdash; Complete narrative for all 12 NPCs, five-year story arc, four Cedar Bend holidays, and the town's relationship web. Smoke &amp; Honey page updated with new "Welcome to Cedar Bend" and "Five Years" story sections, character flavor text, and seasonal vignettes. Zero spoilers.</div>
-                    </div>
-                    <div class="devlog-entry">
-                        <span class="devlog-tag devlog-tag-redesign">Redesign</span>
-                        <div class="devlog-entry-text"><strong>NPC section overhauled with story bible character teases</strong> &mdash; Every NPC card now has an italic flavor line drawn from the definitive narrative reference. Reordered to lead with core emotional characters (Uncle Bob, Darlene, Rose). Added roles from story bible.</div>
-                    </div>
-                    <div class="devlog-entry">
-                        <span class="devlog-tag devlog-tag-fix">Fix</span>
-                        <div class="devlog-entry-text"><strong>HUD/toolbar persistence fixed across all scenes</strong> &mdash; Toolbar was non-functional on County Road and disappeared after minigames. Converted HUD to an autoload singleton at layer 10 that persists across all scene transitions.</div>
-                    </div>
-                    <div class="devlog-entry">
-                        <span class="devlog-tag devlog-tag-feature">Feature</span>
-                        <div class="devlog-entry-text"><strong>30 harvestable trees added to County Road</strong> &mdash; Eight Iowa species placed as editor-draggable scene nodes with pixel art textures. Script is now @tool for live editor preview.</div>
-                    </div>
-                    <div class="devlog-entry">
-                        <span class="devlog-tag devlog-tag-fix">Fix</span>
-                        <div class="devlog-entry-text"><strong>Scene transition overhaul -- 5 bugs squashed</strong> &mdash; Fixed exit bounce-back loops, player spawning offscreen, camera limits not adapting per-scene, boundary colliders triggering instant scene skips, and spawn positioning ignoring source exit.</div>
-                    </div>
-                </div>
-                <a href="https://fivecatstudios.web.app/changelog.html" class="devlog-full-link">
-                    See full devlog for more
-                    <span class="devlog-full-count">308+ entries total</span>
-                </a>
-            </div>
-            <div class="devlog-stats">
-                <div class="devlog-stats-title">Development Stats</div>
-                <div class="devlog-stat-grid">
-                    <div class="devlog-stat-card">
-                        <span class="devlog-stat-num">31</span>
-                        <span class="devlog-stat-label">Scenes</span>
-                    </div>
-                    <div class="devlog-stat-card">
-                        <span class="devlog-stat-num">81</span>
-                        <span class="devlog-stat-label">Scripts</span>
-                    </div>
-                    <div class="devlog-stat-card">
-                        <span class="devlog-stat-num">426</span>
-                        <span class="devlog-stat-label">Scene Nodes</span>
-                    </div>
-                    <div class="devlog-stat-card">
-                        <span class="devlog-stat-num">25.8K</span>
-                        <span class="devlog-stat-label">Lines of Code</span>
-                    </div>
-                    <div class="devlog-stat-card">
-                        <span class="devlog-stat-num">1,859</span>
-                        <span class="devlog-stat-label">Asset Files</span>
-                    </div>
-                    <div class="devlog-stat-card">
-                        <span class="devlog-stat-num">308</span>
-                        <span class="devlog-stat-label">Changelog Entries</span>
-                    </div>
-                </div>
-                <div class="devlog-phase-badge">
-                    <div class="devlog-phase-label">Project Phase</div>
-                    <div class="devlog-phase-name">Active Development</div>
-                    <div class="devlog-phase-bar">
-                        <div class="devlog-phase-fill" style="width: 65%;"></div>
-                    </div>
-                    <div class="devlog-phase-sub">
-                        <strong>12</strong> NPCs &middot; <strong>60</strong> Quest Chains
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="newsletter">
-        <div class="newsletter-inner">
-            <div class="section-label">Stay in the Loop</div>
-            <h2 class="section-title">Follow the Journey</h2>
-            <p class="section-body">Development updates, devlogs, and early access news &mdash; straight to your inbox. No spam, just bees.</p>
-            <form class="newsletter-form" id="updateForm">
-                <input type="email" name="email" placeholder="Your email" required>
-                <button type="submit">Subscribe</button>
-            </form>
-            <p class="newsletter-note">You can also follow us on <a href="https://x.com/fiveCatsStudios">X/Twitter @fiveCatsStudios</a></p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <img src="images/logo_64.png" alt="Five Cats Studios">
-                <div>
-                    <div class="footer-brand-text">Five Cats Studios</div>
-                    <div class="footer-tagline">Grundy County, Iowa &mdash; Est. 2026</div>
-                </div>
-            </div>
-            <ul class="footer-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="https://fivecatstudios.web.app/smoke-and-honey.html">Smoke &amp; Honey</a></li>
-                <li><a href="https://fivecatstudios.web.app/changelog.html">Dev Changelog</a></li>
-                <li><a href="https://github.com/qLu-jML/SmokeAndHoney">GitHub</a></li>
-                <li><a href="https://x.com/fiveCatsStudios">Twitter / X</a></li>
-                <li><a href="mailto:jedimasterlenny@gmail.com">Contact</a></li>
-                <li><a href="personal.html">Personal</a></li>
-                <li><a href="cybertruck_pitch.html">Bucket List</a></li>
-            </ul>
-        </div>
-        <div style="text-align: center; margin-top: 24px;">
-            <p class="footer-copy">&copy; 2026 Five Cats Studios LLC. All rights reserved.</p>
-        </div>
+    <footer class="footer">
+        <p>&copy; 2024-2026 Five Cats Studios. All rights reserved.</p>
+        <p><a href="https://twitter.com/fiveCatsStudios" target="_blank">Follow us on X/Twitter</a></p>
     </footer>
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyAyVBolWyHjUUUq4Dg7En9PtTJ3Xu6wZws",
-            authDomain: "five-cats-studios-3d236.firebaseapp.com",
-            projectId: "five-cats-studios-3d236",
-            storageBucket: "five-cats-studios-3d236.firebasestorage.app",
-            messagingSenderId: "36736049889",
-            appId: "1:36736049889:web:8e2e3a4a7a89cace824da0",
-            measurementId: "G-QLB87J8Z77"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        // Nav scroll highlighting
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-links a');
-
-        window.addEventListener('scroll', function() {
-            var current = '';
-            sections.forEach(function(s) {
-                if (window.scrollY >= s.offsetTop - 120) current = s.id;
-            });
-            navLinks.forEach(function(a) {
-                a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
-            });
-        });
-
-        // Newsletter form
-        var updateForm = document.getElementById('updateForm');
-        if (updateForm) {
-            updateForm.addEventListener('submit', async function(e) {
-                var emailInput = updateForm.querySelector('input[name="email"]');
-                var email = emailInput.value.trim();
-                var btn = updateForm.querySelector('button[type="submit"]');
-                btn.textContent = 'Subscribing...';
-                btn.disabled = true;
-
-                var params = new URLSearchParams(window.location.search);
-                var source = params.get('ref') || 'website';
-
-                try {
-                    await addDoc(collection(db, 'email_signups'), {
-                        email: email,
-                        timestamp: serverTimestamp(),
-                        source: source
-                    });
-                } catch (err) {
-                    console.warn('Firestore write failed (Buttondown still submitted):', err);
-                }
-
-                setTimeout(function() {
-                    updateForm.innerHTML = '<p style="color:#F4CC6E; font-size:17px; text-align:center; padding:16px 0;">You\'re in! Check your email to confirm your subscription.</p>';
-                }, 1500);
-            });
-        }
-    </script>
 </body>
 </html>
