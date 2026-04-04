@@ -1,1 +1,50 @@
-placeholder_changelog
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dev Changelog — Smoke &amp; Honey | Five Cats Studios</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/logo_32.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg-deep: #0F0D1A; --bg-main: #1A1A2E; --bg-card: rgba(255,255,255,0.04); --border: rgba(232,104,63,0.18); --orange: #E8683F; --gold: #F5CC5B; --amber: #E8A83E; --pink: #D4547A; --green: #4A7A3D; --cream: #FCF5D7; --text: #FCF5D7; --text-dim: rgba(252,245,215,0.65); --text-faint: rgba(252,245,215,0.35); }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-deep); color: var(--text); line-height: 1.7; min-height: 100vh; }
+.container { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+.back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--amber); text-decoration: none; font-size: 14px; font-weight: 500; margin-bottom: 32px; transition: color 0.2s; }
+.back-link:hover { color: var(--gold); }
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--cream); margin-bottom: 8px; }
+.subtitle { font-size: 15px; color: var(--text-faint); margin-bottom: 48px; }
+.day-section { margin-bottom: 48px; }
+.day-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.day-date { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--gold); }
+.day-count { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-faint); background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; }
+.latest-pill { background: var(--orange); color: var(--bg-deep); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+.entry { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; padding: 12px 16px; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; transition: border-color 0.2s; }
+.entry:hover { border-color: var(--border); }
+.tag { flex-shrink: 0; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; border: 1px solid; margin-top: 2px; white-space: nowrap; }
+.tag-feature { background: rgba(74,122,61,0.15); color: #6FBC5A; border-color: rgba(74,122,61,0.4); }
+.tag-fix { background: rgba(212,84,122,0.12); color: #E8809A; border-color: rgba(212,84,122,0.3); }
+.tag-overhaul { background: rgba(123,104,238,0.12); color: #A090F0; border-color: rgba(123,104,238,0.3); }
+.entry-text { font-size: 14px; line-height: 1.75; color: var(--text-dim); }
+.entry-text strong { color: var(--cream); font-weight: 600; }
+.entry-details { font-size: 12px; color: var(--text-faint); margin-top: 4px; line-height: 1.6; }
+.older-note { text-align: center; padding: 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; margin-top: 48px; }
+.older-note p { color: var(--text-faint); font-size: 14px; }
+.older-note a { color: var(--amber); text-decoration: none; font-weight: 600; }
+.older-note a:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← Back to Five Cats Studios</a>
+    <h1>Dev Changelog</h1>
+    <p class="subtitle">Full development log for Smoke & Honey. 324 entries and counting.</p>
+
+    <div class="day-section">
+        <div class="day-header">
+            <span class="day-date">April 3, 2026</span>
+            <span class="latest-pill">LATEST</span>
+            <span class="day-count">16 entries</span>
+        </div>
