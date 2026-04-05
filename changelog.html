@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dev Changelog &mdash; Smoke &amp; Honey | Five Cats Studios</title>
+<title>Dev Changelog — Smoke &amp; Honey | Five Cats Studios</title>
 <link rel="icon" type="image/png" sizes="32x32" href="images/logo_32.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap">
 <style>
@@ -40,12 +40,211 @@ h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); 
 <div class="container">
     <a href="index.html" class="back-link">&larr; Back to Five Cats Studios</a>
     <h1>Dev Changelog</h1>
-    <p class="subtitle">Full development log for Smoke &amp; Honey. 324 entries and counting.</p>
+    <p class="subtitle">Full development log for Smoke &amp; Honey. 377 entries and counting.</p>
+
+    <div class="day-section">
+        <div class="day-header">
+            <span class="day-date">April 4, 2026</span>
+            <span class="latest-pill">LATEST</span>
+            <span class="day-count">24 entries</span>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>Wave 1: Y1 quest infrastructure for all 8 NPC chains</strong></div>
+                <div class="entry-details">15 new quest definitions across Darlene, Frank, Silas, Ellen, Carl, Rose, June, and CVBA. CHAINS dictionary for ordered progression. Counter system for tracking attendance and sightings. Auto side-quest activation when conditions are met. Full save/load support.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>Wave 2: NPC world placement, portraits, interaction wiring</strong></div>
+                <div class="entry-details">5 new 128x128 NPC portraits. All 8 NPCs placed in world scenes with quest-aware dialogue. Unified NPC interaction loop in player.gd scans all groups and picks the closest within 64px. Honey House ruin examination for Silas quest chain.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>Wave 3: Gameplay trigger wiring for Y1 side-chain quests</strong></div>
+                <div class="entry-details">Market sale, queen spotted, bee package collected, honey delivery, and bulletin board events now fire to QuestManager. Rose's dialogue-based item delivery and Darlene's 8-line hive observation and queen marking sequences wired up.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>Wave 4: Compound quest objectives, CVBA meetings, Ellen milestones</strong></div>
+                <div class="entry-details">Grange Hall CVBA meeting system with 3 rotating meetings and attendance tracking. Saturday Regulars compound tracking (4 consecutive visits + 2 product types + $50 earnings). Ellen colony comparison and health monitoring milestone flags.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>Wave 5: Seasonal holidays and community events</strong></div>
+                <div class="entry-details">4 holidays: Quickening Morn (spring renewal), Founder's Beam (midsummer festival with market premium), Reaping Fire (harvest bonfire), Long Table (winter feast). Unique multi-line NPC dialogue, standing and XP rewards, attendance tracking, save/load support.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>Winter Workshop S1: Transition month clarification</strong></div>
+                <div class="entry-details">New is_transition_month() and get_season_phase() helpers in TimeManager. Season notifications now distinguish "Early [Season]" from "true [Season]" months. GDD updated with Phase column and design note.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-overhaul">Overhaul</span>
+            <div>
+                <div class="entry-text"><strong>Winter Workshop S2: Honey House starts open (no quest gate)</strong></div>
+                <div class="entry-details">Silas Q1-Q3 deprecated. Honey House is functional from Day 1 with expanded 16x12 layout. Five new stations: Workbench, Craft Table, Mead Corner, Goods Shelf, Goal Board. Harvest Yard removed; extraction moves inside.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-overhaul">Overhaul</span>
+            <div>
+                <div class="entry-text"><strong>Winter Workshop S3: Invisible fatigue system (energy bar removal)</strong></div>
+                <div class="entry-details">Energy bar hidden. Replaced with qualitative descriptions ("Feeling good" / "Getting tired"). Five speed tiers from 1.0x to 0.5x. Idle animations: stretch, yawn, rub eyes, sit down. "How am I feeling?" button in pause menu.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>Winter Workshop S4: Winterization equipment system</strong></div>
+                <div class="entry-details">7 winterization components with 4 craftable workbench recipes. New winterization overlay UI with 7-component checklist. Spring damage check assesses mouse (60%), moisture (40%), and starvation (50%) risks. Winter loss probability from missing components.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>Winter Workshop S5: Safety net systems</strong></div>
+                <div class="entry-details">Dr. Harwick research nuc offered if 0-1 colonized hives in early spring. Carl's tab auto-offers $150 credit when cash drops below $50. Equipment condition floor of 5 prevents total loss. Harwick periodic visits after nuc accepted.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>Winter Workshop S6: Annual Beekeeping Catalogue</strong></div>
+                <div class="entry-details">June delivers a yearly catalogue in Kindlemonth with 7 items (package bees through motorized uncapper). Year-gated filtering, early-order queen quality bonus. Orders delivered Quickening Day 1. Full browsing UI with keyboard navigation.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>Winter Workshop S7: Equipment degradation consequences</strong></div>
+                <div class="entry-details">Equipment condition ranges (100-80 through 19-5) with production, pest risk, winter survival, and repair impacts. Furniture polish item added to Tanner's catalogue ($6). Condition floor of 5 prevents complete destruction.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-overhaul">Overhaul</span>
+            <div>
+                <div class="entry-text"><strong>Year 1 quest chain completion: start day, frame tracking, GDD update</strong></div>
+                <div class="entry-details">Dev bypass starts at day 43 (Greening 15). Empty starting hotbar; all tools via Bob's onboarding. Updated Uncle Bob 8-quest chain: Q0 Meet Uncle Bob through Q7 Spring Count. Feeding now taught in Fall (Q5). Frame tracking for inspection quests.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-fix">Fix</span>
+            <div>
+                <div class="entry-text"><strong>Rename barrel_feeder to feeder_bucket (player-facing)</strong></div>
+                <div class="entry-details">Constant, string values, group references, sprite map, registry key, and display name all updated. Script and sprite filenames remain unchanged for backwards compatibility.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>Journal during inspection + smoker pre-inspection + sting system</strong></div>
+                <div class="entry-details">J key now works during inspection. Smoker is a separate pre-inspection action. New sting probability system: base 7%/15%/22% per step with bee suit, smoker, evening, and weather modifiers. Sting count displayed color-coded in header.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-overhaul">Overhaul</span>
+            <div>
+                <div class="entry-text"><strong>Empty starting inventory + chest-first onboarding</strong></div>
+                <div class="entry-details">Player starts with empty inventory. All tools and hive components in storage chest. Onboarding teaches drag-from-chest-to-toolbar flow. Every item needed for Year 1 is in the starting chest.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-fix">Fix</span>
+            <div>
+                <div class="entry-text"><strong>Fix startup quest notification spam</strong></div>
+                <div class="entry-details">Restored truncated QuestManager file (cut off at line 167). Added _suppress_notifications flag so daily quests and first_light auto-start silently. Quest notifications now only appear for quests started during gameplay.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>Onboarding polish: spring start, actionable dialogue, quest log tab</strong></div>
+                <div class="entry-details">Fixed dev bypass to day 1 spring start. Rewrote Uncle Bob onboarding with actionable instructions. Added Quest Log as third journal tab showing active and completed quests with status tags and detail view.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-overhaul">Overhaul</span>
+            <div>
+                <div class="entry-text"><strong>Onboarding rework: single toast + Uncle Bob walkthrough</strong></div>
+                <div class="entry-details">Replaced 6-toast guidance with single "Go talk to Uncle Bob" toast. Full Uncle Bob rebuild: 10-line first-visit walkthrough, 5-priority dialogue system, quest-aware lines for all Year 1 quests, seasonal pools, XP awards.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-overhaul">Overhaul</span>
+            <div>
+                <div class="entry-text"><strong>Knowledge Journal overlay rewrite</strong></div>
+                <div class="entry-details">Full visual rewrite matching PauseMenu warm palette. Proper root Control node, solid background, title bar with tab bar, category tags, detail panel, scroll position indicator, and footer hint bar. Layer 25 for correct z-ordering.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-fix">Fix</span>
+            <div>
+                <div class="entry-text"><strong>Fix journal open/close race condition</strong></div>
+                <div class="entry-details">Added set_input_as_handled() after creating journal overlay. Prevents the same J keypress from creating and destroying the overlay in the same frame.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-fix">Fix</span>
+            <div>
+                <div class="entry-text"><strong>Fix player.gd parse error + harvestable_tree.gd signal error</strong></div>
+                <div class="entry-details">Added missing _on_inspection_closed() method that was causing the entire player script to fail. Fixed harvestable_tree.gd crash with is_instance_valid() check on scene unload.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>Controls panel v2: tighter layout for 320x180 viewport</strong></div>
+                <div class="entry-details">Rewrote controls panel with font_size 4, row height 7px, and 190x176 panel. All 4 sections plus back button fit the viewport. Added M (Map) keybind to Menus section.</div>
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="tag tag-feature">Feature</span>
+            <div>
+                <div class="entry-text"><strong>New player guidance: first-day hints + controls reference</strong></div>
+                <div class="entry-details">6 timed notification toasts on new game covering movement, interaction, journal, and pause. New Controls button in pause menu with full keybinding reference in 4 sections. Persistent flag ensures hints fire only once per save.</div>
+            </div>
+        </div>
+    </div>
 
     <div class="day-section">
         <div class="day-header">
             <span class="day-date">April 3, 2026</span>
-            <span class="latest-pill">LATEST</span>
             <span class="day-count">16 entries</span>
         </div>
 
@@ -179,7 +378,7 @@ h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); 
     </div>
 
     <div class="older-note">
-        <p>Older entries (308 prior to April 3) are available in the <a href="https://github.com/qLu-jML/SmokeAndHoney/blob/main/changelog.txt">full changelog on GitHub</a>.</p>
+        <p>Older entries (337 prior to April 3) are available in the <a href="https://github.com/qLu-jML/SmokeAndHoney/blob/main/changelog.txt">full changelog on GitHub</a>.</p>
     </div>
 </div>
 </body>
